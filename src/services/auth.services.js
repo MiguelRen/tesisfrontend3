@@ -5,19 +5,20 @@ const API_URL = 'http://localhost:4500/api/auth/';
 class AuthService {
     login(user) {
   
-  console.log(user);
-      const response =  axios.post(API_URL + 'signin', {
-        username: user.username,
-        password: user.password
       
-      }
-      ).then(rslt => console.log(json.stringify(rslt))).catch(error => "el beta es \n" + error.message )
+      const response = new Promise((resolve, reject) => {
+        axios.post(API_URL + 'signin', {
+          username: user.username,
+          password: user.password
+        
+        }
+        )
+        resolve (response);
+      })
+      response.then(data => {console.log(data);})
       
     
       
-console.log(response);
-    
-   
 
 
     if (response.data.accessToken) {
