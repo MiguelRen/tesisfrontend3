@@ -68,7 +68,7 @@
     computed: {
       loggedIn() {
         const auth = useAuthStore();
-        
+        console.log(auth.status.loggedIn);
         return auth.status.loggedIn;
       },
     },
@@ -87,6 +87,7 @@
             this.$router.push("/profile");
           },
           (error) => {
+            console.log(error);
             this.loading = false;
             this.message =
               (error.response &&

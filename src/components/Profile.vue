@@ -25,11 +25,15 @@
   </template>
   
   <script>
+  import { useAuthStore } from "./../store/authStore"
+  const auth = useAuthStore();
   export default {
     name: 'Profile',
     computed: {
       currentUser() {
-        return this.$store.state.auth.user;
+        
+        console.log(auth.user.response);
+        return auth.$state.user;
       }
     },
     mounted() {
