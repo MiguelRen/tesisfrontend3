@@ -49,6 +49,7 @@
   
   <script>
   import { Form, Field, ErrorMessage } from "vee-validate";
+  import { useAuthStore } from "../store";
   import * as yup from "yup";
   
   export default {
@@ -82,11 +83,12 @@
         loading: false,
         message: "",
         schema,
+        auth: useAuthStore()
       };
     },
     computed: {
       loggedIn() {
-        return this.$store.state.auth.status.loggedIn;
+        return this.auth.status.loggedIn;
       },
     },
     mounted() {
@@ -100,7 +102,7 @@
         this.successful = false;
         this.loading = true;
   
-        this.$store.dispatch("auth/register", user).then(
+        this.auth.state.loggedIn.then(
           (data) => {
             this.message = data.message;
             this.successful = true;

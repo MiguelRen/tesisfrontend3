@@ -24,7 +24,7 @@ class UserService {
       console.log(error);
     }
   }
-
+ 
   getModeratorBoard() {
     return axios.get(API_URL + 'mod', { headers: authHeader() });
   }

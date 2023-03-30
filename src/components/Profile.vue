@@ -32,8 +32,8 @@
     computed: {
       currentUser() {
         
-        console.log(auth.user.response);
-        return auth.$state.user;
+       
+        return auth.initialState.status.user;
       }
     },
     mounted() {

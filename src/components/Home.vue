@@ -1,21 +1,54 @@
 <template>
-    <div class="container">
-      <header class="jumbotron">
-        <h3>{{ content }}</h3>
-      </header>
+    <div class="container-fluid">
+
+        <!--First Section Navbar -->
+        <div class="row">
+          <Navbar></Navbar>
+        </div>
+
+
+        <!-- Second Section content -->
+        <div class="row">
+             
+          <!-- SideBar -->
+              <div class="col-md-2">
+                <Sidebar></Sidebar>
+              </div>
+
+              <!-- Content -->
+              <div class="col parent">
+                <Dashboard></Dashboard>
+              </div>
+        </div>
+        
+
+        <!-- <h3>{{ content }}</h3> -->
+       
+        
+      <!-- <Navbar/> -->
     </div>
   </template>
   
   
 
   <script>
+  // Importing the whole important libraries
   import UserService from "../services/user.services";
-  
+  import Navbar from "./Navbar.vue";
+  import Sidebar from "./Sidebar.vue";
+  import Dashboard from "./Dashboard.vue";
+
   export default {
     name: "Home",
+    components:{
+      Navbar,
+      Sidebar,
+      Dashboard
+    },
     data() {
       return {
         content: "",
+
       };
     },
     mounted() {
@@ -37,3 +70,10 @@
     },
   };
   </script>
+ 
+ 
+ <style scoped>
+  .parent{
+    max-height: 35%;
+  }
+</style>
