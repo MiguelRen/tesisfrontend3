@@ -13,54 +13,48 @@ export const useAuthStore = defineStore("auth", {
     async login(user) {
       try {
         const resu = await AuthService.login(user);
-        
-          return new Promise(resolve => resolve(resu));
-        
+        console.log(resu);
+        return new Promise((resolve) => resolve(resu));
       } catch (error) {
-        console.log(error.message);
+        console.log(error);
+        return Promise.reject(error);
       }
-      
-      
 
       // .then((user) => {
-                
-              //   initialState.status.loggedIn = true;
-              //   initialState.user = user;
-              // return (user);
-              //   })
-              //   .catch((error) => {
 
-              //     initialState.status.loggedIn = false;
-              //     initialState.user = null;
-              //     return Promise.reject(error);
-              //   }
-              // )
-              // ,(error) => {
-              //   (error.response &&
-              //           error.response.data &&
-              //           error.response.data.message) ||
-              //           (error.message )||
-              //           (error.toString());
-              // }
-              
+      //   initialState.status.loggedIn = true;
+      //   initialState.user = user;
+      // return (user);
+      //   })
+      //   .catch((error) => {
+
+      //     initialState.status.loggedIn = false;
+      //     initialState.user = null;
+      //     return Promise.reject(error);
+      //   }
+      // )
+      // ,(error) => {
+      //   (error.response &&
+      //           error.response.data &&
+      //           error.response.data.message) ||
+      //           (error.message )||
+      //           (error.toString());
+      // }
     },
     logout() {
-     
       this.status.loggedIn = false;
       this.user = null;
       AuthService.logout();
     },
-    register(user) {
-      return AuthService.register(user).then(
-        (response) => {
-          this.state.status.loggedIn = false;
-          return Promise.resolve(response.data);
-        },
-        (error) => {
-          this.state.status.loggedIn = false;
-          return Promise.reject(error);
-        }
-      );
+    async register(user) {
+      try {
+        const result = await AuthService.register(user);
+        console.log(result);
+        return Promise.resolve(result);
+      } catch (error) {
+      
+        return Promise.reject(error);
+      }
     },
   },
 });

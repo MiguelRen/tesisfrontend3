@@ -3,7 +3,7 @@
 
         <!--First Section Navbar -->
         <div class="row">
-          <Navbar></Navbar>
+          <Navbar ></Navbar>
         </div>
 
 
@@ -17,7 +17,11 @@
 
               <!-- Content -->
               <div class="col parent">
-                <Dashboard></Dashboard>
+
+                <keep-alive>
+                  <components :is="component"></components>
+                </keep-alive>
+                <!-- <Dashboard></Dashboard> -->
               </div>
         </div>
         
@@ -43,13 +47,26 @@
     components:{
       Navbar,
       Sidebar,
-      Dashboard
+      Dashboard,
+      
     },
     data() {
       return {
         content: "",
+        componentName: "",
+
+        
 
       };
+    },
+    methods:{
+      componentChanger(()=>
+      this.componentName=this.component.Dashboard)
+    },
+    created(){
+      if(!localStorage.getItem("user")){
+        this.$router.push("/login")
+      }
     },
     mounted() {
       UserService.getPublicContent().then(

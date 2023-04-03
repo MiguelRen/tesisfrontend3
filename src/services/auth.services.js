@@ -18,9 +18,9 @@ class AuthService {
       
       return new Promise(resolve => resolve(data));
     
-
-    } catch (err) {
-      return err.message;
+ 
+    } catch (error) {
+      return Promise.reject(error);
     }
   }
 
@@ -28,12 +28,25 @@ class AuthService {
     localStorage.removeItem("user");
   }
 
-  register(user) {
-    return axios.post(API_URL + "signup", {
-      username: user.username,
-      email: user.email,
-      password: user.password,
-    });
+  async register(user) {
+    try {
+        
+        const response = await axios.post(API_URL + "signup", {
+          username: user.username,
+          email: user.email,
+          password: user.password,
+        }); 
+       return new Promise (resolve=>resolve({message: "Usuario Registrado Correctamente"}));
+        
+      
+      
+    } catch (error) {
+      
+       
+      
+      return Promise.reject(error);
+      
+    }
   }
 }
 

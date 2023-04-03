@@ -31,6 +31,12 @@
                     <span>Ingresar</span>
                   </button>
                 </div>
+                <div>
+                  <router-link to="/register">
+                      Registrarse
+                  </router-link>
+                </div>
+            
         
             <div class="form-group">
               <div v-if="message" class="alert alert-danger" role="alert">
@@ -71,21 +77,24 @@
 
       };
     },
-    computed: {
-      loggedIn() {
-        const auth = useAuthStore();
+   
+    // computed: {
+    //   loggedIn() {
+    //     const auth = useAuthStore();
         
-        return auth.status.loggedIn;
-      },
-    },
+    //     return auth.status.loggedIn;
+    //   },
+    // }
+    // ,
     beforeCreate(){
       document.body.className  = 'login';
     },
-    created() {
-      if (this.loggedIn) {
-        this.$router.push("/profile");
-      }
-    },
+    // created() {
+    //   if (this.loggedIn) {
+    //     this.$router.push("/profile");
+    //   }
+    // }
+    // ,
     methods: {
       handleLogin(user){
         
@@ -93,7 +102,7 @@
         this.auth.login(user)
         .then((resolve) => {
           
-     
+    //  console.log(typeof(resolve));
               this.$router.push("/Home");
              
             })
