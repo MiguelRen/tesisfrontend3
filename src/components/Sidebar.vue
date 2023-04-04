@@ -1,25 +1,33 @@
 <template>
- 
-        <div class="d-flex" id="wrapper">
-            <!-- Sidebar-->
-            <div class="border-end bg-white" id="sidebar-wrapper">
-                <!-- <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div> -->
-                <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Principal</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Estudiantes</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profesores</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Obreros</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Documentos</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Clases</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Calendario</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Pensum</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Notas</a>
-                </div>
-            </div>
-            <!-- Page content wrapper-->
-            <!-- <div id="page-content-wrapper">-->
-                <!-- Top navigation-->
-                <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+  <div class="d-flex" id="wrapper">
+    <!-- Sidebar-->
+    <div class="border-end bg-white" id="sidebar-wrapper">
+      <!-- <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div> -->
+      <div class="list-group list-group-flush">
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!" id="Dashboard"
+          @click="clickedTag">Principal</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!" id="Students"
+          @click="clickedTag">Estudiantes</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!" id="Teachers"
+          @click="clickedTag">Profesores</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!" id="Workers"
+          @click="clickedTag">Obreros</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!" id="Documents"
+          @click="clickedTag">Documentos</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!" id="Classes"
+          @click="clickedTag">Clases</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!" id="Calendar"
+          @click="clickedTag">Calendario</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!" id="Pensum"
+          @click="clickedTag">Pensum</a>
+        <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!" id="Grades"
+          @click="clickedTag">Notas</a>
+      </div>
+    </div>
+    <!-- Page content wrapper-->
+    <!-- <div id="page-content-wrapper">-->
+    <!-- Top navigation-->
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                     <div class="container-fluid">
                         <button class="btn btn-primary" id="sidebarToggle">Toggle Menu</button>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -40,8 +48,8 @@
                         </div>
                     </div>
                 </nav> -->
-                <!-- Page content-->
-                <!-- <div class="container-fluid">
+    <!-- Page content-->
+    <!-- <div class="container-fluid">
                     <h1 class="mt-4">Simple Sidebar</h1>
                     <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
                     <p>
@@ -52,27 +60,42 @@
                         ID which will toggle the menu when clicked.
                     </p>
                 </div>
-            </div> --> 
-        </div>
-
+            </div> -->
+  </div>
 </template>
 <script>
 import { ref } from 'vue';
 
 export default {
-  setup() {
+  
+  emits: ["componentChange"],
+  setup(props, { emit } ) {
     const showSidebar = ref(false);
 
     const toggleSidebar = () => {
       showSidebar.value = !showSidebar.value;
     };
 
+
+    const tagName = ref("");
+    const clickedTag = (event) => {
+      
+      tagName.value = event.target.id;
+      
+      emit('componentChange',tagName.value);
+    }
+
     return {
       showSidebar,
       toggleSidebar,
+      tagName,
+      clickedTag
+ 
     };
-  },
-};
+  }
+
+}
+
 </script>
 
 <style scoped>
