@@ -1,6 +1,5 @@
 import axios from "axios";
-import { Alert } from "bootstrap";
-import { object } from "yup";
+
 
 const API_URL = "http://localhost:4500/api/auth/";
 
@@ -36,6 +35,7 @@ class AuthService {
           email: user.email,
           password: user.password,
         }); 
+        console.log(response);
        return new Promise (resolve=>resolve({message: "Usuario Registrado Correctamente"}));
         
       
