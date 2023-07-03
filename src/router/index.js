@@ -9,6 +9,11 @@ const Profile = () => import("../components/Profile.vue")
 
 import NotFound from "../components/NotFound.vue";
 
+// const roles = {
+//   ADMINISTRADOR: "ADMINISTRADOR",
+//   MODERADOR: "MODERADOR",
+//   USUARIO: 'USUARIO'
+// }
 const routes = [
   {
     path: "/",
@@ -18,6 +23,9 @@ const routes = [
   {
     path: "/home",
     component: Home,
+    // meta:{
+    //   auth:[roles.USUARIO]
+    // }
   },
   {
     path: "/login",
@@ -32,8 +40,11 @@ const routes = [
     name: "profile",
     // lazy-loaded
     component: Profile,
+    // meta:{
+    //   auth:[roles.ADMINISTRADOR, roles.USUARIO] 
+    // }
   },
-
+ 
 
   {
     path:"/:pathMatch(.*)*",
@@ -87,3 +98,29 @@ const router = createRouter({
 });
 
 export default router */
+
+
+
+// import { storeToRefs } from "pinia"
+// import authStore from "../store/authStore"
+// const auth = authStore()
+// const {usuarioLogeado} = storeToRefs(auth)
+
+
+/**
+ *
+ * router.beforeEach((to, from, next) => {
+ *  const {auth} = to.meta 
+ *  if(auth 
+ *  && auth.some((verifique)=> !usuarioLogeado.usuer.persmisos.includes(verifique) )){
+ *  next("login")
+ * }
+ * next()
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */

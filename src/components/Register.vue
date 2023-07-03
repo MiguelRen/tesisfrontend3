@@ -1,42 +1,55 @@
-<template>
-  <div class=" fondo col-md-12 d-flex justify-contentn-center align-items-center text-center">
-    <div class="col-md-4 d-flex align-items-center mx-auto text-center justify-content-center">
+<template >
+  <div class=" fondo container-fluid d-flex justify-content-center align-items-center text-center">
+
+    <div class="row d-flex container-fluid ">
+
+      <div class="col-md-6 col-sm-12  ">
+        <h1 class="text-light display-1 font-weight-bold deepshd">SimpleClass</h1>
+        <h2 class="text-light display-2 font-weight-bold cursive">Registro de Usuario</h2>
+      </div>
+
+    
+
+   
+      <div class="col-md-6 col-sm-12">
+        <div class="card card-container opa bg-opacity-25 d-flex justify-content-center align-items-center">
 
 
-      <div class="card card-container opa bg-opacity-25 d-flex justify-content-center align-items-center">
-        <img id="profile-img" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" class="profile-img-card" />
-        <Form @submit="handleRegister" :validation-schema="schema">
-          <div v-if="!successful">
-            <div class="form-group">
-              <label for="username">Nombre de Usuario</label>
-              <Field name="username" type="text" class="form-control" />
-              <ErrorMessage name="username" class="error-feedback" />
-            </div>
-            <div class="form-group">
-              <label for="email">Email</label>
-              <Field name="email" type="email" class="form-control" />
-              <ErrorMessage name="email" class="error-feedback" />
-            </div>
-            <div class="form-group">
-              <label for="password">Contraseña</label>
-              <Field name="password" type="password" class="form-control" />
-              <ErrorMessage name="password" class="error-feedback" />
-            </div>
+          <Form @submit="handleRegister" :validation-schema="schema">
+            <div v-if="!successful">
+              <div class="form-group">
+                <label for="username">Nombre de Usuario</label>
+                <Field name="username" type="text" class="form-control" />
+                <ErrorMessage name="username" class="error-feedback" />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <Field name="email" type="email" class="form-control" />
+                <ErrorMessage name="email" class="error-feedback" />
+              </div>
+              <div class="form-group">
+                <label for="password">Contraseña</label>
+                <Field name="password" type="password" class="form-control" />
+                <ErrorMessage name="password" class="error-feedback" />
+              </div>
 
-            <div class="form-group">
-              <button class="btn btn-primary btn-block" :disabled="loading">
-                <span v-show="loading" class="spinner-border spinner-border-sm"></span>
-                Registrarse
-              </button>
+              <div class="form-group">
+                <button class="btn btn-primary btn-block" :disabled="loading">
+                  <span v-show="loading" class="spinner-border spinner-border-sm"></span>
+                  Registrarse
+                </button>
+              </div>
             </div>
+          </Form>
+
+          <div v-if="message" class="alert" :class="successful ? 'alert-success' : 'alert-danger'">
+            {{ message }}
           </div>
-        </Form>
-
-        <div v-if="message" class="alert" :class="successful ? 'alert-success' : 'alert-danger'">
-          {{ message }}
         </div>
+
       </div>
     </div>
+
   </div>
 </template>
   
@@ -154,5 +167,16 @@ export default {
 
 .opa {
   background-color: rgba(245, 245, 245, 0.5) !important;
+}
+
+.deepshd {
+  color: #e0dfdc;
+  /* background-color: #333; */
+  letter-spacing: .1em;
+  text-shadow: 0 -1px 0 #fff, 0 1px 0 #2e2e2e, 0 2px 0#2c2c2c, 0 3px 0 #2a2a2a, 0 4px 0 #282828, 0 5px 0 #262626, 0 6px 0 #242424, 0 7px 0 #222, 0 8px 0 #202020, 0 9px 0 #1e1e1e, 0 10px 0 #1c1c1c, 0 22px 30px rgba(0, 0, 0, 0.9);
+}
+
+.cursive {
+  text-shadow: 1px 1px 0 #1c1c1c, 0 22px 30px rgba(0, 0, 0, 0.9);
 }
 </style>

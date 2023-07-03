@@ -1,9 +1,9 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "http://localhost:4500/api/Period/";
+const API_URL = "http://localhost:4500/api/period/";
 
-class academicPeriods {
+class periodServices {
   async createPeriod(period) {
     try {
       const result = await axios.post(API_URL, period, {
@@ -17,15 +17,19 @@ class academicPeriods {
     }
   }
 
-  async findPeriod() {
+  async findCurrentPeriod() {
     try {
-      const result = await axios.get(API_URL);
+
+      const result = await axios.get(API_URL + "current");
+      console.log(result);
+      
       return result;
+      
     } catch (error) {
+      
       return error;
     }
   }
-
   async findOnePeriod(hint) {
     try {
       const result = await axios.post();
@@ -33,4 +37,6 @@ class academicPeriods {
     } catch (error) {}
   }
 }
-export default new academicPeriods();
+
+
+export default new periodServices();

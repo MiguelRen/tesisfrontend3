@@ -1,4 +1,4 @@
-import { Alert } from "bootstrap";
+
 import { defineStore } from "pinia";
 import AuthService from "../services/auth.services.js";
 

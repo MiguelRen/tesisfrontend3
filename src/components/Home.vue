@@ -1,20 +1,20 @@
-<template>
-  <div class="container-fluid">
+<template class="container-fluid m-0 p-0">
+  <div class="container-fluid m-0 p-0">
 
-    <div class="row  ">
-      <Navbar></Navbar>
+    <div class=" row  container-fluid m-0 p-0 ">
+      <Navbar class="container-fluid "></Navbar>
     </div>
 
 
-    <div class="row  ">
-      <div class="col-2">
+    <div class="row container-fluid p-0 m-0">
+      <div class="col-2 p-0">
         <Sidebar @componentChange="eventFromSidebar"></Sidebar>
       </div>
 
       <!-- content -->
-      <div class="col-10 ">
-        <keep-alive>
-          <component :is="componentName"></component>
+      <div class="col-10 p-0 m-0">
+        <keep-alive class="container-fluid p-0">
+          <component :is="componentName" class="container-fluid"></component>
         </keep-alive>
 
       </div>
@@ -30,7 +30,7 @@
 // Importing the whole important libraries
 // import UserService from "../services/user.services";
 import { ref } from "vue";
-import  academicPeriods  from "../services/period.services.js"
+// import  periodServices  from "../services/period.services.js"
 //main components
 import Navbar from "./Navbar.vue";
 import Sidebar from "./Sidebar.vue";
@@ -40,7 +40,7 @@ import Dashboard from "./sidebarComponents/Dashboard.vue";
 import Classes from "./sidebarComponents/Classes.vue"
 import Documents from "./sidebarComponents/Documents.vue"
 import Students from "./sidebarComponents/Students.vue"
-import Teachers from "./sidebarComponents/Teachers.vue"
+import Employees from "./sidebarComponents/Employees.vue"
 import Workers from "./sidebarComponents/Workers.vue"
 import Calendar from "./sidebarComponents/Calendar.vue"
 import Pensum from "./sidebarComponents/Pensum.vue"
@@ -58,14 +58,14 @@ export default {
     Classes,
     Documents,
     Students,
-    Teachers,
+    Employees,
     Workers,
     Calendar,
     Pensum,
     Grades,
     Academics
 
-  },
+  }, 
   data() {
     return {
       content: "",
@@ -90,21 +90,24 @@ export default {
 
   //  },
   methods:{
-    async getPeriod(){
-      const result = await academicPeriods.findPeriod();
-      console.log(result);
-      return result;
-    },
- 
+  //  async getPeriod(){
+     
+  //    const result = await periodServices.findPeriod();
+  //    console.log(result);
+  //    return result;
+  //  }
+},
   created() {
     if (!localStorage.getItem("user")) {
       this.$router.push("/login")
     }
-    // if(!getPeriod()){
-    //   // console.log("theres is a problem");
+    // else if(!this.getPeriod()){
+    //   console.log("theres is a problem");
     // }
-  }
-}
+    
+  },
+
+
 }
   // mounted() {
 
@@ -129,7 +132,9 @@ export default {
  
  
 <style scoped>
-/* .parent {
-  max-height: 35%;
+/* *{
+
+ margin:0;
+  padding: 0; 
 } */
 </style>
