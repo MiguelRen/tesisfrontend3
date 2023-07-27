@@ -1,3 +1,3 @@
 <template>
-    <h1>Im in the Document components</h1>
+    <h1>También en construcción</h1>
 </template>

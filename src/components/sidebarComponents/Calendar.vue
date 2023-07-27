@@ -1,3 +1,3 @@
 <template>
-    <h1>Estoy dentro del Calendario</h1>
+    <h1>Esto en construcción</h1>
 </template>

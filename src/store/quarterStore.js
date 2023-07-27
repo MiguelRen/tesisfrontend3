@@ -12,7 +12,10 @@ export const useQuarterStore =  defineStore ("quarter",{
     }),
     getters:{
         getQuarter(state){
-            return state.currentQuarter;
+            console.log(state)
+            const concat = state.currentQuarter[2] + " - "+ state.currentQuarter[3]
+            return concat
+            // return state.currentQuarter;
         },
         
     },
@@ -21,8 +24,8 @@ export const useQuarterStore =  defineStore ("quarter",{
             try {
                 const result = await quarterService.findCurrentQuarter();
                 if (!result){
-                    console.log(typeof(result));
-                    return this.currentQuarter = "No Hay periodos Asignados Actualmente";
+                    // console.log(typeof(result));
+                    return this.currentQuarter = null;
                 }else{
                     return this.currentQuarter =[
                         moment(result.quaQuarterIni).tz('America/New_York').format('YYYY-MM-DD') ,

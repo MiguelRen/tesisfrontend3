@@ -1,8 +1,10 @@
-<template class="container-fluid m-0 p-0">
-  <div class="container-fluid m-0 p-0">
+<template class="container-fluid m-0 p-0 ">
+  <div class="container-fluid m-0 p-0 ">
 
     <div class=" row  container-fluid m-0 p-0 ">
-      <Navbar class="container-fluid "></Navbar>
+      <div class="container-fluid col-12 m-0 p-0">
+        <Navbar class="container-fluid "></Navbar>
+      </div>
     </div>
 
 
@@ -14,7 +16,9 @@
       <!-- content -->
       <div class="col-10 p-0 m-0">
         <keep-alive class="container-fluid p-0">
-          <component :is="componentName" class="container-fluid"></component>
+          <div class="container-fluid col-md-12">
+            <component :is="componentName" ></component>
+          </div>
         </keep-alive>
 
       </div>
@@ -46,6 +50,10 @@ import Calendar from "./sidebarComponents/Calendar.vue"
 import Pensum from "./sidebarComponents/Pensum.vue"
 import Grades from "./sidebarComponents/Grades.vue"
 import Academics from "./sidebarComponents/Academics.vue";
+
+// sidebar sub components
+import EmployeesView from "../components/sidebarComponents/EmployeesView.vue";
+
 import { get } from "lodash";
 import { boolean } from "yup";
 
@@ -63,8 +71,8 @@ export default {
     Calendar,
     Pensum,
     Grades,
-    Academics
-
+    Academics,
+    EmployeesView,
   }, 
   data() {
     return {

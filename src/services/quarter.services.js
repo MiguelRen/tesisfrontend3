@@ -10,7 +10,7 @@ class quarterService {
       const result = await axios.post(API_URL, quarter, {
         headers: authHeader(),
       });
-      console.log(result);
+      // console.log(result);
       return Promise.resolve(result);
     } catch (error) {
       return Promise.reject(error);
@@ -20,6 +20,7 @@ class quarterService {
   async findCurrentQuarter() {
     try {
       const result = await axios.get(API_URL + "current");
+      // console.log(result);
       return result.data;
       
     } catch (error) {

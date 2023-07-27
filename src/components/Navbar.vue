@@ -1,42 +1,45 @@
-<template class="container-fluid ">
+<template class="container-fluid col-md-12">
   <nav class="container-fluid  navbar navbar-expand navbar-dark bg-success d-flex ">
 
-    <div class="container-fluid">
+    <div class="container-fluid d-flex justify-content-center col-md-3  ">
 
       <a href="/" class="navbar-brand">SimpleClass</a>
     </div>
 
-
-
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-4 text-white d-flex align-items-center">
+    <div class="container-fluid  d-flex justify-content-between d-none d-md-block m-0 p-0 col-md-4">
+      <div class="row d-flex justify-content-between align-items-center ">
+        <div class="col-sm-12 col-md-6 col-lg-4  text-white d-flex align-items-center">
           {{ todayDateFunction }}
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-4 text-white">
-          {{quarter.getQuarter}}
+        <div v-if="quarter.getQuarter" class="col-sm-12 col-md-6 col-lg-4 text-white">
+          <div class="text-center m-0 p-0">Periodo</div>
+          <div class="text-center m-0 p-0">{{ quarter.getQuarter  }}</div>
+
+          
         </div>
-        <div class="col-sm-12 col-md-12 col-lg-4 ">
-          Tipo Usuario
+        <div v-else> No Hay Periodos Registrados</div>
+
+        <div  class="col-sm-12 col-md-12 col-lg-4 text-white d-flex align-items-center">
+          {{ currentRole }}
         </div>
 
       </div>
     </div>
 
-    <div class="container-fluid p-0">
-      <div v-if="currentUser" class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <router-link to="/profile" class="nav-link px-0">
+    <div class="container-fluid d-none d-md-block  col-md-5  ">
+      <div v-if="currentUser" class="container-fluid navbar-nav ml-auto d-flex justify-content-around   m-0 p-0">
+        <li class="nav-item m-0 p-0">
+          <router-link to="" class="nav-link px-0">
             <font-awesome-icon icon="user" />
             {{ currentUser }}
           </router-link>
         </li>
         <li class="nav-item ">
 
-          <a style="cursor:pointer" class="nav-link px-0 " @click.prevent="logOut">
+          <a style="cursor:pointer" class="nav-link px-0 m-0 " @click.prevent="logOut">
             <font-awesome-icon icon="sign-out-alt" />
           </a>
- 
+
         </li>
       </div>
 
@@ -53,55 +56,88 @@ import { useAuthStore } from "../store"
 import { usePeriodStore } from "../store";
 import { useQuarterStore } from "../store";
 import { date } from "yup";
-import { ref ,reactive, watch, onMounted } from "vue";
+import { ref, reactive, watch, onMounted } from "vue";
+// import { storeToRefs } from "pinia";
 
-export default{
+export default {
   setup() {
     // const todayDate = watch("");
     // const currentPeriod = watch("");
-    const computedPeriod= ref("");
-   
+    const computedPeriod = ref("");
+
     const quarter = useQuarterStore();
     const period = usePeriodStore();
+    const auth = useAuthStore();
     return {
       // loginElement: true,
       // todayDate,
       // currentPeriod,
-        computedPeriod,
-       auth: useAuthStore(),
-       period,
-       quarter
+      computedPeriod,
+      auth,
+      period,
+      quarter,
 
     }
   },
-  
+
   computed: {
-   
+
     todayDateFunction() {
       return this.todayDate = this.showTodayDate();
     },
-   
+
     currentUser() {
-      
-      return localStorage.getItem("user");
+
+      const stringUser = localStorage.getItem("user");
+
+      const jsonUser = JSON.parse(stringUser);
+
+      const user = jsonUser.username;
+
+      return user;
+      // return user.replace(/["]+/g,'');
       // return this.auth.user;
 
     },
-    // showAdminBoard() {
-    //   if (this.currentUser && this.currentUser['roles']) {
-    //     return this.currentUser['roles'].includes('ROLE_ADMIN');
-    //   }
+    currentRole() {
 
-    //   return false;
-    // },
-    // showModeratorBoard() {
-    //   if (this.currentUser && this.currentUser['roles']) {
-    //     return this.currentUser['roles'].includes('ROLE_MODERATOR');
-    //   }
-    
-    //   return false;
-    // }
+      const stringUserRole = localStorage.getItem("user");
+      const jsonUserRole = JSON.parse(stringUserRole);
+      const userRole = jsonUserRole.roles;
+      //  console.log(userRole[2]);
+      if (userRole) {
+        for (let i = userRole.length - 1; i >= 0; i--) {
+          if (userRole[i] === "ADMINISTRADOR") {
+            return userRole[i];
+          }
+        }
+        for (let i = userRole.length - 1; i >= 0; i--) {
+          if (userRole[i] === "MODERADOR") {
+            return userRole[i];
+          } else {
+            return userRole[i];
+          }
+
+
+        }
+      }
+    }
   },
+  // showAdminBoard() {
+  //   if (this.currentUser && this.currentUser['roles']) {
+  //     return this.currentUser['roles'].includes('ROLE_ADMIN');
+  //   }
+
+  //   return false;
+  // },
+  // showModeratorBoard() {
+  //   if (this.currentUser && this.currentUser['roles']) {
+  //     return this.currentUser['roles'].includes('ROLE_MODERATOR');
+  //   }
+
+  //   return false;
+  // }
+
   methods: {
     logOut() {
       // this.$store.dispatch('auth/logout');
@@ -112,17 +148,19 @@ export default{
       return new Date().toLocaleDateString();
     },
 
-    
+
   },
-  mounted(){
-    
-    
+  mounted() {
+    console.log(this);
+    this.currentRole
+    // this.currentRole();
     // alert("navbar")
     this.quarter.updQuarter();
-    
+
   }
 
-};
+}
+
 
 </script>
 
@@ -130,4 +168,6 @@ export default{
 /* .col2{
     justify-content:end;
   } */
+
+  
 </style>

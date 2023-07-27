@@ -2,7 +2,7 @@
    
 </script>
 <template>
-  <div class="f" id="app">
+  <div class="f container-fluid m-0 p-0" id="app">
 
 
     <router-view />
@@ -17,6 +17,7 @@
   width: 100vw;
   padding: 0;
   margin:0;
+  /* overflow-x: hidden; */
 }
 router-view{
   height : 100vh;

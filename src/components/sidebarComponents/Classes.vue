@@ -1,4 +1,4 @@
 <template>
     
-    <h1>Im in the class components</h1>
+    <h1>Esto en construcción</h1>
 </template>

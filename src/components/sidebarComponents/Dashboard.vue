@@ -1,9 +1,9 @@
 <template>
     <div class="container-fluid  p-0">
-        <div class="row  my-4 mx-0 ">
-            <div class="col  child border mx-0 border-primary bg-light h-100 rounded-pill  p-0"> Tota Estudiantes</div>
-            <div class="col  child border mx-0 border-primary bg-light h-100 rounded-pill p-0"> Tota Profesores</div>
-            <div class="col  child border mx-0 border-primary bg-light h-100 rounded-pill p-0"> Tota Clases</div>
+        <div class="row  my-4 mx-0  font">
+            <div class="col  child border mx-0 border-primary bg-light h-100 rounded-pill  p-0"> Total Estudiantes</div>
+            <div class="col  child border mx-0 border-primary bg-light h-100 rounded-pill p-0"> Total Profesores</div>
+            <div class="col  child border mx-0 border-primary bg-light h-100 rounded-pill p-0"> Total Clases</div>
         </div>
         <div class="row  my-4 mx-0 justify-content-between" >
             <div class="col-2 child  bg-light h-100 p-0">% Estuduantes</div>
@@ -26,6 +26,19 @@
                 <div class="col child bg-primary text-center   rounded h-100 m-0 p-0">
                     <h3 class="text-white">Noticias</h3>
                 </div>
+
+                <div class="jumbotron" style=" color: red">
+                    <strong>
+                        <cursive>
+                            Importante !!!
+                        </cursive>
+                        <p>
+                            Todas las funcionalidades estan parcialmente elaboradas.
+                            NO se recomienda ingresar datos... por los momentos
+                        </p>
+                    </strong>
+                </div>
+                
         </div>
     </div>
 </template>
@@ -40,6 +53,14 @@ export default{
 <style scoped>
 .newborder{
     border-radius: 50% 10% 50% 10%;
+}
+.font{
+    font-size: 14px;
+}
+@media (max-with:720px){
+    .font{
+        font-size: 10px ;
+    }
 }
   
 </style>
