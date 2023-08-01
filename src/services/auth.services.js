@@ -9,7 +9,7 @@ class AuthService {
     const result = await axios.post(API_URL + "signin", user);
      // console.log( result);
      const data = result.data;
-     console.log(data);
+    //  console.log(data);
    
     //  console.log(data);
      if (data.accessToken) {

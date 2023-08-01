@@ -14,34 +14,36 @@
 
         <div class=" col-sm  h-75 card card-container w-75 p-0 opa bg-opacity-50  ">
 
-          <Form @submit="handleLogin" :validation-schema="schema" class=" container text-center">
+          <Form @submit="handleLogin" :validation-schema="schema" class=" container-fluid px-4 text-center mt-2 ">
             <div class="from-row mt-4 ">
-              <label for="username" class="">Usuario</label>
-              <Field name="username" type="text" class="form-control opa " />
-              <ErrorMessage name="username" class="error-feedback " />
+              <label for="username" class="h5">Usuario</label>
+              <Field name="username" type="text" class="form-control opa mt-2-sm" />
+              <ErrorMessage name="username" class="error-feedback  m-0 p-0 text-danger" />
             </div>
-            <div class="form-group ">
-              <label for="password">Contraseña</label>
-              <Field name="password" type="password" class="form-control opa" />
-              <ErrorMessage name="password" class="error-feedback" />
+            <div class="form-group mt-3">
+              <label for="password" class="h5">Contraseña</label>
+              <Field name="password" type="password"  id="theField" class="form-control opa mt-2-sm"/>
+              <span @click="showPassword" class="fa fa-fw fa-eye password-icon show-password eye "></span>
+
+              <ErrorMessage name="password" class="error-feedback m-0 p-0 text-danger" />
             </div>
 
 
-            <div class="form-group">
+            <div class="form-group mt-3 mt-lg-5">
               <button class="btn btn-primary btn-block" :disabled="loading">
-                <span v-show="loading" class="spinner-border spinner-border-sm"></span>
+                <span v-show="loading" class="spinner-border spinner-border-sm "></span>
                 <span>Ingresar</span>
               </button>
             </div>
-            <div>
-              <router-link to="/register" style="text-decoration:none">
+            <div class="mt-2 ">
+              <router-link to="/register" class="" style="text-decoration:none">
                 Registrarse
               </router-link>
             </div>
 
 
-            <div class="form-group">
-              <div v-if="message" class="alert alert-danger" role="alert">
+            <div class="form-group ">
+              <div v-if="message" class="alert b-4" :class="succesfull ? 'alert-success' : 'alert-danger' " role="alert">
                 {{ message }}
               </div>
             </div>
@@ -68,12 +70,13 @@ export default {
   },
   data() {
     const schema = yup.object().shape({
-      username: yup.string().required("Nombre de Usuario es requerido!"),
-      password: yup.string().required("La Contraseña es requerida!"),
+      username: yup.string().required("Usuario requerido!"),
+      password: yup.string().required("Contraseña requerida!"),
     });
 
     return {
       loading: false,
+      succesfull: false,
       message: "",
       schema,
       auth: useAuthStore()
@@ -99,14 +102,31 @@ export default {
   // }
   // ,
   methods: {
+    showPassword(){
+      const type = document.getElementById('theField').type; 
+      
+      if( type == 'text'){
+        
+        console.log(type.value);
+        document.getElementById('theField').type =  'password';
+      }
+      else{
+        document.getElementById('theField').type = 'text';
+      }
+    }
+    ,
     handleLogin(user) {
 
       this.loading = true;
       this.auth.login(user)
-        .then((resolve) => {
-
+        .then((resolve) => {   
+          
+          this.message= "Autenticado!";
+          this.succesfull = true;
           //  console.log(typeof(resolve));
-          this.$router.push("/Home");
+          setTimeout(() =>{
+            this.$router.push("/Home");
+          }, 500);
 
         })
         .catch((error) => {
@@ -144,7 +164,7 @@ export default {
 }
 
 .opa {
-  background-color: rgba(245, 245, 245, 0.7) !important;
+  background-color: rgba(245, 245, 245, 0.8) !important;
 }
 .deepshd{
   color: #e0dfdc;
@@ -154,6 +174,13 @@ export default {
 }
 .cursive{
   text-shadow :  1px 1px 0 #1c1c1c,0 22px 30px rgba(0,0,0,0.9);
+}
+.eye{
+  float: right;
+  position: relative;
+  margin: -25px 10px 0 0;
+  cursor: pointer;
+  color: #B0B1B1;
 }
 </style>
 

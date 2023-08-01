@@ -15,29 +15,34 @@
         <div class="card card-container opa bg-opacity-25 d-flex justify-content-center align-items-center">
 
 
-          <Form @submit="handleRegister" :validation-schema="schema">
+          <Form @submit="handleRegister" :validation-schema="schema" class="container-fluid px-4 text-center mt-2 ">
             <div v-if="!successful">
               <div class="form-group">
-                <label for="username">Nombre de Usuario</label>
-                <Field name="username" type="text" class="form-control" />
-                <ErrorMessage name="username" class="error-feedback" />
+                <label for="username" class="h6">Nombre de Usuario</label>
+                <Field name="username" type="text" class="form-control opa" />
+                <ErrorMessage name="username" class="error-feedback text-danger" />
               </div>
               <div class="form-group">
-                <label for="email">Email</label>
-                <Field name="email" type="email" class="form-control" />
-                <ErrorMessage name="email" class="error-feedback" />
+                <label for="email" class="h6">Email</label>
+                <Field name="email" type="email" class="form-control opa" />
+                <ErrorMessage name="email" class="error-feedback text-danger" />
               </div>
               <div class="form-group">
-                <label for="password">Contraseña</label>
-                <Field name="password" type="password" class="form-control" />
-                <ErrorMessage name="password" class="error-feedback" />
+                <label for="password" class="h6">Contraseña</label>
+                <Field name="password" type="password" class="form-control opa" />
+                <ErrorMessage name="password" class="error-feedback text-danger" />
               </div>
 
-              <div class="form-group">
+              <div class="form-group my-3">
                 <button class="btn btn-primary btn-block" :disabled="loading">
                   <span v-show="loading" class="spinner-border spinner-border-sm"></span>
                   Registrarse
                 </button>
+                <div class="mt-2 ">
+              <router-link to="/Home" class="" style="text-decoration:none">
+                Iniciar Sesión
+              </router-link>
+            </div>
               </div>
             </div>
           </Form>
@@ -69,19 +74,19 @@ export default {
     const schema = yup.object().shape({
       username: yup
         .string()
-        .required("Username is required!")
-        .min(3, "Must be at least 3 characters!")
-        .max(20, "Must be maximum 20 characters!"),
+        .required("Usuario requerido!")
+        .min(3, "Minimo 3 caracteres!")
+        .max(20, "Máximo 20 caracteres!"),
       email: yup
         .string()
-        .required("Email is required!")
-        .email("Email is invalid!")
-        .max(50, "Must be maximum 50 characters!"),
+        .required("Email Requerido!")
+        .email("Email inválido!")
+        .max(50, "Máximo 50 caracteres!"),
       password: yup
         .string()
-        .required("Password is required!")
-        .min(6, "Must be at least 6 characters!")
-        .max(40, "Must be maximum 40 characters!"),
+        .required("Contraseña requerida!")
+        .min(6, "Mínimo 6 caracteres!")
+        .max(40, "Máximo 40 caracteres!"),
     });
 
     return {
@@ -120,14 +125,14 @@ export default {
 
         const result = await this.auth.register(user)
 
-        console.log(result);
+
         this.message = result.message;
         this.successful = true;
         this.loading = false;
         setTimeout(() => {
           this.$router.push("login");
 
-        }, 500);
+        }, 2000);
 
       } catch (error) {
 
@@ -166,7 +171,7 @@ export default {
 }
 
 .opa {
-  background-color: rgba(245, 245, 245, 0.5) !important;
+  background-color: rgba(245, 245, 245, 0.8) !important;
 }
 
 .deepshd {

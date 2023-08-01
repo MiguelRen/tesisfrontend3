@@ -1,5 +1,5 @@
-<template class="container-fluid m-0 p-0 ">
-  <div class="container-fluid m-0 p-0 ">
+<template class="container-fluid m-0 p-0  ">
+  <div class="container-fluid m-0 p-0  adjust">
 
     <div class=" row  container-fluid m-0 p-0 ">
       <div class="container-fluid col-12 m-0 p-0">
@@ -14,7 +14,7 @@
       </div>
 
       <!-- content -->
-      <div class="col-10 p-0 m-0">
+      <div class="col-10 p-0 m-0 positioning">
         <keep-alive class="container-fluid p-0">
           <div class="container-fluid col-md-12">
             <component :is="componentName" ></component>
@@ -140,9 +140,13 @@ export default {
  
  
 <style scoped>
-/* *{
-
- margin:0;
-  padding: 0; 
-} */
+.adjust{
+position: relative; 
+}
+@media (max-with: 320px){
+  .positioning{
+    position:relative;
+    top: 100px;
+  }
+}
 </style>
