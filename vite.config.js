@@ -19,7 +19,7 @@ export default defineConfig({
     // }
 
   )],
-  base: 'https://MiguelRen.github.io/tesisfrontend3'
+  base: 'https://MiguelRen.github.io/tesisfrontend3/'
 
 
  
