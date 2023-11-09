@@ -9,6 +9,8 @@
     "preview": "vite preview",
     "lint": "eslint . -ext .js"
   },
+  "proxy": "http://localhost:4500",
+
   "dependencies": {
     "@fortawesome/fontawesome-free": "^6.2.0",
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
