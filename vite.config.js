@@ -7,6 +7,19 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        format: 'es',
+        plugins: [
+          commonjs({
+            include: []
+          })
+        ]
+      }
+    }
+  }
+  ,
   
   plugins: [vue(
     // {
