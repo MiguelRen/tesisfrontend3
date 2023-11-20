@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import * as vue from '@vitejs/plugin-vue'
 // import vue from 'https://unpkg.com/vue@next'npm install
 
 
@@ -7,19 +7,19 @@ import vue from '@vitejs/plugin-vue'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  build: {
-    rollupOptions: {
-      output: {
-        format: 'es',
-        plugins: [
-          commonjs({
-            include: []
-          })
-        ]
-      }
-    }
-  }
-  ,
+  // build: {
+  //   rollupOptions: {
+  //     output: {
+  //       format: 'es',
+  //       plugins: [
+  //         commonjs({
+  //           include: []
+  //         })
+  //       ]
+  //     }
+  //   }
+  // }
+  // ,
   
   plugins: [vue(
     // {
