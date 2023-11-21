@@ -21,6 +21,7 @@ export default defineConfig({
   // }
   // ,
   
+  base: '/tesisfrontend3/',
   plugins: [vue(
     // {
     //   template: {
@@ -32,7 +33,6 @@ export default defineConfig({
     // }
 
   )],
-  base: '/tesisfrontend3/'
 
 
  
