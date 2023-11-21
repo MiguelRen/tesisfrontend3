@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 // const API_URL = "http://localhost:4500/api/auth/";
-const API_URL = "https://despliegue-backend-tesis.onrender.com/";
+const API_URL = "https://despliegue-backend-tesis.onrender.com/api/auth";
 
 class AuthService {
  async login(user) {
