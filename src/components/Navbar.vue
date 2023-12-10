@@ -1,6 +1,6 @@
 <template class="container-fluid col-md-12">
   <nav
-    class="container-fluid navbar navbar-expand navbar-dark bg-success d-flex"
+    class="container-fluid navbar navbar-expand navbar-dark principal-color d-flex"
   >
     <div class="container-fluid d-flex justify-content-center col-md-3">
       <a href="/" class="navbar-brand">SimpleClass</a>
@@ -33,9 +33,7 @@
     </div>
 
     <div class="container-fluid d-none d-md-block col-md-5">
-      <div
-        v-if="currentUser"
-        class="container-fluid navbar-nav ml-auto d-flex justify-content-around m-0 p-0"
+      <div class="container-fluid navbar-nav ml-auto d-flex justify-content-around m-0 p-0"
       >
         <li class="nav-item m-0 p-0">
           <router-link to="" class="nav-link px-0">
@@ -61,9 +59,10 @@
         <li class="nav-item">
           <a
             style="cursor: pointer"
-            class="nav-link px-0 m-0"
+            class="nav-link  "
             @click.prevent="logOut"
           >
+          Salir
             <font-awesome-icon icon="sign-out-alt" />
           </a>
         </li>
@@ -176,6 +175,10 @@ export default {
 </script>
 
 <style scoped>
+
+.principal-color{
+  background-color:#666f88 ;
+}
 /* .col2{
     justify-content:end;
   } */
