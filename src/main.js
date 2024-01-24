@@ -27,7 +27,7 @@ import VueAxios from 'vue-axios'
 //.use(VueAxios, axigos) 
 
 // axios.defaults.baseURL = 'http://localhost:4500'
-axios.defaults.baseURL = 'https://despliegue-backend-tesis.onrender.com'
+// axios.defaults.baseURL = 'https://despliegue-backend-tesis.onrender.com'
 
 
 createApp(App)

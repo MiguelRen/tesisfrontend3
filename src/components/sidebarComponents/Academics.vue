@@ -1,6 +1,8 @@
 <template>
   <div class="container-fluid h-100 m-0 p-0">
     <h1>Configuraciones Académicas</h1>
+    <div>{{ periodStore.yearStart }} -- {{ periodStore.yearEnd }}</div>
+
     <div class="row m-0 h-100 p-0">
       <div
         class="col-sm-12 col-md-6 col-lg-4 m-3 p-0 bg-light border rounded d-flex flex-direction-column"
@@ -8,6 +10,7 @@
         <Form
           class="m-3 text-center"
           @submit="handleCreatePeriod"
+          
           :validation-schema="periodSchema"
         >
           <h2 clsas="m-0 ">Nuevo año Escolar</h2>
@@ -49,7 +52,27 @@
           <button class="btn butom btn-block">Crear</button>
           <!-- <label>Periodo 2000-2001</label>
                                 <label for="">Periodos resgistrados</label> -->
+          <div class="form-group">
+            <div
+              v-if="message"
+              class="alert b-4"
+              :class="succesfull ? 'alert-success' : 'alert-danger'"
+              role="alert"
+            >
+              {{ message }}
+            </div>
+          </div>
         </Form>
+      </div>
+      <div
+        class="col-sm-12 col-md-6 col-lg-4 m-3 p-0 bg-light border rounded d-flex flex-direction-column"
+      >
+      <ul>
+        <li v-for="items in allPeriodsObject">
+          <strong>{{ items.perperiodid}} - {{ items.peryearstart}} - {{ items.peryearend}}</strong>
+        </li>
+      </ul>>
+
       </div>
 
       <!-- 
@@ -115,7 +138,9 @@ import academicPeriods from "../../services/period.services.js";
 import * as yup from "yup";
 import courseService from "../../services/course.services.js";
 import sectionService from "../../services/section.services.js";
-import quarterService from "../../services/quarter.services.js";
+// import quarterService from "../../services/quarter.services.js";
+import periodServices from "../../services/period.services.js";
+import { usePeriodStore } from "../../store/periodStore";
 
 export default {
   name: "Academics",
@@ -128,97 +153,69 @@ export default {
     const periodSchema = yup.object().shape({
       dateStart: yup.date().required("Es necesario indicar la fecha de Inicio"),
       dateEnd: yup
-      .date()
-      .required("Es necesario indicar la fecha de finalización")
-      .when(
-        "dateStart",
-        (dateStart, periodSchema) =>
-        dateStart &&
-        periodSchema.min(
+        .date()
+        .required("Es necesario indicar la fecha de finalización")
+        .when(
+          "dateStart",
+          (dateStart, periodSchema) =>
+            dateStart &&
+            periodSchema.min(
               dateStart,
               "Fecha Inicial debe ser anterior a Fecha Final"
             )
         ),
-      });
-      // const periodSchema = yup.object().cast({
-      //   periodSchema
-      // });
+    });
 
-    // const quarterSchema = yup.object().shape({
-    //   quarterPeriod: yup.number().required("Es necesario indicar el período"),
-    //   trimIni: yup.date().required("Es necesario indicar la fecha de Inicio"),
-    //   trimEnd: yup
-    //     .date()
-    //     .required("Es necesario indicar la fecha de finalización")
-    //     .when(
-    //       "dateStart",
-    //       (dateIni, quarterSchema) =>
-    //         dateIni &&
-    //         quarterSchema.min(
-    //           dateIni,
-    //           "Fecha Inicial debe ser anterior a Fecha Final"
-    //         )
-    //     ),
-    // });
-
-    // const courseSchema = yup.object().shape({
-    //   courseName: yup
-    //     .string(45)
-    //     .required(
-    //       "Es necesario ingresar un nombre de materia si desea crearla"
-    //     ),
-    // });
-    // const sectionSchema = yup.object().shape({
-    //   sectionName: yup
-    //     .string(45)
-    //     .required(
-    //       "Es necesario ingresar un nombre de Sección si desea crearla"
-    //     ),
-    //   courseFrom: yup
-    //     .number()
-    //     .required(
-    //       "Es importante indicar la Materia a la cual pertenece esta seccion"
-    //     ),
-    // });
 
     return {
-      period: academicPeriods,
+      period: periodServices,
       course: courseService,
       section: sectionService,
-      quarter: quarterService,
+      // quarter: quarterService,
+      // allperiods : periodServices,
       periodSchema,
-      // prePeriodSchema,
-      // courseSchema,
-      // sectionSchema,
-      // quarterSchema,
+      message: "",
+      succesfull: false,
+      periodList: "",
+      allPeriodsObject : "",
+      periodStore : usePeriodStore(),
+  
     };
   },
-  // created(){
-  //     let self = this;
-  //     this.$validator.extend
-  // },
+   mounted(){
+
+     this.getAllPeriods();
+     this.periodStore.updateCurrent();
+    
+  },
+
   methods: {
+    
+    async getAllPeriods(){
+
+      this.allPeriodsObject = await this.period.findAllPeriod();
+      console.log(this.allPeriodsObject);
+    
+
+    }
+    ,
     async handleCreatePeriod(userPeriodData) {
-      //   const prove = await periodSchema.validate(
-      //       {
-      //           dateIni:"12/08/2023",
-      //           dateEnd : "12/08/2024"
-      //       },
-      //       {
-      //           strict:true
-      //       }
-      //   );
-      //   console.log(prove);
-      // console.log("dkskadfsgj", this.userPerioddata);
-        console.log(userPeriodData);
+  
       const result = this.period.createPeriod(userPeriodData);
-      console.log(result);
+      if (result) {
+        this.message = "Creado";
+        this.succesfull = true;
+        setTimeout(() => {
+          this.message = "";
+          this.getAllPeriods();
+        }, 1000);
+      }
       return result;
     },
-    async handleCreateQuarter(userQuarterData) {
-      console.log(userQuarterData);
-      const result = this.quarter.createQuarter(userQuarterData);
-    },
+    // async handleCreateQuarter(userQuarterData) {
+    //   console.log(userQuarterData);
+    //   const result = this.quarter.createQuarter(userQuarterData);
+    // },
     async handleCreateCourse(data) {
       console.log(data);
       const result = this.course.createCourse(data);

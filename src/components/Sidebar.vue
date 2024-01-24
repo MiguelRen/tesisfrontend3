@@ -102,10 +102,7 @@
             </a>
 
             <a style="cursor:pointer" class="nav-link p-2 m-0 list-group-item list-group-item-action list-group-item-light   customText   d-md-none " @click.prevent="logOut">
-            <div>
-
-              <font-awesome-icon icon="sign-out-alt" /> Salir
-            </div>
+         
           </a>
           </div>
         </div>

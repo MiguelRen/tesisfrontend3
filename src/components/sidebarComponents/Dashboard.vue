@@ -29,9 +29,9 @@
 
                 <div class="jumbotron" style=" color: red">
                     <strong>
-                        <cursive>
+                        <strong>
                             Importante !!!
-                        </cursive>
+                        </strong>
                         <p>
                             Todas las funcionalidades estan parcialmente elaboradas.
                             NO se recomienda ingresar datos... por los momentos

@@ -23,7 +23,7 @@
             <div class="form-group mt-3">
               <label for="password" class="h5">Contraseña</label>
               <Field name="password" type="password"  id="theField" class="form-control opa mt-2-sm"/>
-              <span @click="showPassword" class="fa fa-fw fa-eye password-icon show-password eye "></span>
+              <!-- <span @click="showPassword" class="fa fa-fw fa-eye password-icon show-password eye "></span> -->
 
               <ErrorMessage name="password" class="error-feedback m-0 p-0 text-danger" />
             </div>

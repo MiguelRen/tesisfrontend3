@@ -12,7 +12,7 @@ export const useQuarterStore =  defineStore ("quarter",{
     }),
     getters:{
         getQuarter(state){
-            console.log(state)
+            // console.log(state)
             const concat = state.currentQuarter[2] + " - "+ state.currentQuarter[3]
             return concat
             // return state.currentQuarter;

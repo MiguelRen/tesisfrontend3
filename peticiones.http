@@ -1,0 +1,1 @@
+GET http://localhost:4500/api/period HTTP/1.1

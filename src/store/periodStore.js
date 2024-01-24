@@ -1,24 +1,27 @@
 import {defineStore} from "pinia";
-import  periodServices  from "../services/period.services.js.js";
+import  periodServices  from "../services/period.services.js";
 
-// const getInitialState = async ()=>{
-//     try {
-//         const result = await periodServices.findCurrentPeriod();
-//         console.log(result);    
-//         return result;
-//     } catch (error) {
-//         console.log(error);
-//         return error;
+const getInitialState = async ()=>{
+    try {
+        const result = await periodServices.findCurrentPeriod();
+        console.log(result);    
+        return result;
+    } catch (error) {
+        console.log(error);
+        return error;
         
-//     }
-// };
+    }
+};
 
-
+getInitialState();
 
 export const usePeriodStore = defineStore("period",{
     state:()=>({
-       currentPeriod: "",
-       isLoading: false
+        periodid : "",
+       yearStart: "",
+       yearEnd : "",
+       
+       
     }),
     getters:{
         getState(state){
@@ -33,13 +36,14 @@ export const usePeriodStore = defineStore("period",{
     },
     actions:{
         async updateCurrent(){
-            this.isLoading = true;
+            // this.isLoading = true;
             try {
                
                 const result = await periodServices.findCurrentPeriod();
-                console.log(result);
 
-                this.currentPeriod = result.data;
+                this.periodid = result.perperiodid;
+                this.yearStart = result.peryearstart;
+                this.yearEnd = result.peryearend;
                 
             } catch (error) {
                 console.log(error);
