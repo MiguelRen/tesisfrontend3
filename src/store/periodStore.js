@@ -13,7 +13,7 @@ const getInitialState = async ()=>{
     }
 };
 
-getInitialState();
+// getInitialState();
 
 export const usePeriodStore = defineStore("period",{
     state:()=>({

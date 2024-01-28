@@ -56,6 +56,7 @@ import EmployeesView from "../components/sidebarComponents/EmployeesView.vue";
 
 import { get } from "lodash";
 import { boolean } from "yup";
+import { usePeriodStore } from "../store";
 
 export default {
   name: "Home",
@@ -77,6 +78,7 @@ export default {
   data() {
     return {
       content: "",
+      period : usePeriodStore(),
       // period : academicPeriods
 
     };
@@ -115,9 +117,11 @@ export default {
     
   },
 
+  mounted() {
+    this.period.updateCurrent();
+  }
 
 }
-  // mounted() {
 
   //   UserService.getPublicContent().then(
   //     (response) => {

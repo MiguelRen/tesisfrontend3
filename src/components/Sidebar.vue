@@ -14,7 +14,7 @@
             
             <a class="list-group-item list-group-item-action list-group-item-light p-2" href="#!" id="Dashboard"
               @click="clickedTag">Principal</a>
-            <template v-if="quarter.currentQuarter">
+            <template v-if="period.yearStart">
 
               <a class="list-group-item list-group-item-action list-group-item-light p-2" href="#!">
 
@@ -118,6 +118,8 @@ import { useAuthStore } from '../store';
 
 import Dropdown from '../components/sidebarComponents/Dropdown.vue'
 import DropdownContent from '../components/sidebarComponents/DropdownContent.vue'
+import { usePeriodStore } from '../store';
+
 
 export default {
 
@@ -146,6 +148,8 @@ export default {
     const quarter = useQuarterStore();
     const auth = useAuthStore();
     const showList = ref(false);
+    const period = usePeriodStore();
+    // console.log(period.yearStart);
     // const currentRole =  () => {
     //   try {
     //     const role =  auth.getRole();
@@ -163,7 +167,8 @@ export default {
       tagName,
       clickedTag,
       auth,
-      showList
+      showList,
+      period ,
       // currentRole
 
     };

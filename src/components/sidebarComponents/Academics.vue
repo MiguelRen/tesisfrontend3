@@ -1,7 +1,7 @@
 <template>
   <div class="container-fluid h-100 m-0 p-0">
     <h1>Configuraciones Académicas</h1>
-    <div>{{ periodStore.yearStart }} -- {{ periodStore.yearEnd }}</div>
+    <!-- <div>{{ periodStore.yearStart }} -- {{ periodStore.yearEnd }}</div> -->
 
     <div class="row m-0 h-100 p-0">
       <div
