@@ -41,6 +41,7 @@ export const usePeriodStore = defineStore("period",{
                
                 const result = await periodServices.findCurrentPeriod();
 
+                // console.log(result);
                 this.periodid = result.perperiodid;
                 this.yearStart = result.peryearstart;
                 this.yearEnd = result.peryearend;
@@ -53,6 +54,7 @@ export const usePeriodStore = defineStore("period",{
 
     },
     
-})
+}
+)
 
 

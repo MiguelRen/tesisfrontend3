@@ -1,43 +1,33 @@
 <template>
-    <div class="container-fluid  p-0">
-        <div class="row  my-4 mx-0  font">
-            <div class="col  child border mx-0 border-primary bg-light h-100 rounded-pill  p-0"> Total Estudiantes</div>
-            <div class="col  child border mx-0 border-primary bg-light h-100 rounded-pill p-0"> Total Profesores</div>
-            <div class="col  child border mx-0 border-primary bg-light h-100 rounded-pill p-0"> Total Clases</div>
+    <div class=" row  m-0 p-0 ">
+        <div class="row m-0 p-0  ">
+            <div class="col-3  child border mx-0   gray500 h-100 rounded-pill p-0 text-center text-white"> Total Estudiantes : 859</div>
+            <div class="col-3     child border mx-0   gray500 rounded-pill p-0 text-center text-white"> Total Profesores : 69</div>
+            <div class="col-6  child border mx-0   gray500 bg-gradient  rounded-pill p-0 text-center text-white"> Total Clases : 97</div>
         </div>
-        <div class="row  my-4 mx-0 justify-content-between" >
-            <div class="col-2 child  bg-light h-100 p-0">% Estuduantes</div>
-            <div class="col-2 child  border rounded-pill  bg-primary h-100 m-0 p-0">Varones </div>
-            <div class="col-2 child  border rounded-pill  bg-secondary h-100 m-0 p-0">Hembras</div>
-            <div class="col child  border rounded-pill  bg-primary h-100 m-0 p-0">info aquí</div>
+        <div class="row  m-0 p-0" >
+            <div class="col-3 child  gray400 h-100 p-0">% Estuduantes</div>
+            <div class="col-3 child  border rounded-pill  gray500 h-100 m-0 p-0 text-center">Varones </div>
+            <div class="col-3 child  border rounded-pill  gray300 h-100 m-0 p-0 text-center">Hembras</div>
+            <div class="col-3 child  border rounded-pill  gray400 h-100 m-0 p-0 text-center">info aquí</div>
         </div>
-        <div class="row gx-4 d-flex justify-content-center  my-3 mx-0  p-0">
-                <div class="col child bg-primary text-center rounded m-0 h-100 p-0">
-                    <h1 class="text-white">Bienvenido a SimpleClass</h1>
+        <div class="row  m-0 p-0">
+                <div class="col-4 child gray900 d-flex justify-content-center align-items-center text-center rounded m-0 h-100 p-0">
+                    <h1 class="text-white  display-3">Bienvenido <br>a <br>SimpleClass</h1>
                 </div>
-                <div class="col child bg-light  text-center    rounded m-0 h-100 p-0">
-                    <h2>Manejador de Escuelas</h2>
+                <div class="col-8 child gray500  text-center d-flex align-items-center  justify-content-center  rounded m-0 h-100 p-0">
+                    <h1>Manejador de Escuelas</h1>
                 </div>
         </div>
-        <div class="row d-flex justify-content-center  my-3  mx-0  p-0">
-                <div class="col child bg-success text-center   rounded h-100 m-0 p-0">
-                  <h3 class="text-white">Calendario</h3>  
+        <div class="row m-0 p-0">
+                <div class="col-6 child  gray400  d-flex align-items-center justify-content-center text-center rounded h-100 m-0 p-0">
+                  <h1 class="text-white">Calendario</h1>  
                 </div>
-                <div class="col child bg-primary text-center   rounded h-100 m-0 p-0">
+                <div class="col-6 child gray600 text-center   rounded h-100 m-0 p-0">
                     <h3 class="text-white">Noticias</h3>
                 </div>
 
-                <div class="jumbotron" style=" color: red">
-                    <strong>
-                        <strong>
-                            Importante !!!
-                        </strong>
-                        <p>
-                            Todas las funcionalidades estan parcialmente elaboradas.
-                            NO se recomienda ingresar datos... por los momentos
-                        </p>
-                    </strong>
-                </div>
+                
                 
         </div>
     </div>
@@ -62,5 +52,44 @@ export default{
         font-size: 10px ;
     }
 }
-  
+
+.gray100{
+
+    background-color:#f9f9fb !important
+}
+.gray200{
+
+       background-color: #e8edef !important
+    }
+.gray300{
+
+   background-color :#dfe2e7 !important
+}
+.gray400{
+
+    background-color:#ced4da !important;
+    background-image: var(--bs-gradient) !important;
+}
+.gray500{
+
+    background-color:#adb4bc !important;
+    background-image: var(--bs-gradient) !important;
+}
+.gray600{
+
+    background-color:#6c747c !important;
+    background-image: var(--bs-gradient) !important;
+}
+.gray700{
+
+    background-color:#495156 !important
+}
+.gray800{
+
+    background:#343a40 !important
+}
+.gray900{
+
+    background-color:#343a40 !important
+}
 </style>

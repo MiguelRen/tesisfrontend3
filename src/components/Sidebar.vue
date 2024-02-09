@@ -1,16 +1,16 @@
 <template>
-  <nav class="navbar navbar-expand-sm relative  ">
-    <button class="navbar-toggler nav-link " type="button" data-bs-toggle="collapse" data-bs-target="#opciones"
+  <nav class="navbar  navbar-expand-sm  m-0 p-0 h-100 ">
+    <button class="navbar-toggler nav-link h-100" type="button" data-bs-toggle="collapse" data-bs-target="#opciones"
       name="button">
       <span class="navbar-toggler-icon">
       </span>
     </button>
 
 
-    <div class="collapse navbar-collapse couterRelative" id="opciones">
-      <div class="  border-end bg-white responsiveHeight" id="sidebar-wrapper">
+    <div class="collapse navbar-collapse h-100 w-100 m-0 p-0" id="opciones">
+      <div class="  border-end bg-white responsiveHeight h-100 w-100 m-0 p-0" id="sidebar-wrapper">
         <div class=" container-fluid d-flex h-100  p-0" id="wrapper">
-          <div class=" list-group list-group-flush ">
+          <div class=" list-group list-group-flush h-100">
             
             <a class="list-group-item list-group-item-action list-group-item-light p-2" href="#!" id="Dashboard"
               @click="clickedTag">Principal</a>
@@ -252,7 +252,7 @@ export default {
 .relative {
   position: relative;
   bottom: 55px;
-  left: 10px;
+  
 }
 
 .couterRelative {

@@ -27,28 +27,28 @@ class periodServices {
       }
  
     );
-      console.log("find current",result);
+      // console.log("find current",result);
       
-      return Promise.resolve(result.data);
+      return Promise.resolve(result.data[0]);
       
     } catch (error) {
       console.log(error);
       return error;
     }
   }
-  async findOnePeriod(hint) {
-    try {
-      const result = await axios.post(API_URL,{headers:authHeader()});
-      return Promise.resolve(result.data);
-    } catch (error) {}
-  }
+  // async findOnePeriod(hint) {
+  //   try {
+  //     const result = await axios.post(API_URL,{headers:authHeader()});
+  //     return Promise.resolve(result.data);
+  //   } catch (error) {}
+  // }
   async findAllPeriod(){
     try{
       const result = await axios.get(API_URL, 
         {
         headers: authHeader(),
       });
-      console.log("find all",result);
+      // console.log("find all",result);
       return Promise.resolve(result.data);
     }catch(error){
       console.log(error);

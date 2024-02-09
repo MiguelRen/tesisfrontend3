@@ -1,6 +1,6 @@
-<template class="container-fluid col-md-12">
+<template >
   <nav
-    class="container-fluid navbar navbar-expand navbar-dark principal-color d-flex"
+    class=" navbar navbar-expand navbar-dark principal-color d-flex p-0 m-0 h-100" 
   >
     <div class="container-fluid d-flex justify-content-center col-md-3">
       <h1>

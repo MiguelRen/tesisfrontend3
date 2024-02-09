@@ -1,34 +1,27 @@
-<template class="container-fluid m-0 p-0  ">
-  <div class="container-fluid m-0 p-0  adjust">
-
-    <div class=" row  container-fluid m-0 p-0 ">
-      <div class="container-fluid col-12 m-0 p-0">
-        <Navbar class="container-fluid "></Navbar>
+<template>
+  <div class="container-fluid p-0 m-0 vh-100 vw-100
+  ">
+    <div class="row h-25 m-0 p-0">
+      <div class="col container-fluid m-0 p-0">
+        <Navbar class="container-fluid"></Navbar>
       </div>
     </div>
 
-
-    <div class="row container-fluid p-0 m-0">
-      <div class="col-2 p-0">
+    <div class="row h-75 m-0 p-0">
+      <div class="col p-0 m-0">
         <Sidebar @componentChange="eventFromSidebar"></Sidebar>
       </div>
 
-      <!-- content -->
-      <div class="col-10 p-0 m-0 positioning">
-        <keep-alive class="container-fluid p-0">
-          <div class="container-fluid col-md-12">
-            <component :is="componentName" ></component>
+      <div class="col-10 p-0 m-0  container-fluid">
+        <keep-alive class="container-fluid m-0 p-0">
+          <div class=" p-0 m-0 container-fluid">
+            <component :is="componentName"></component>
           </div>
         </keep-alive>
-
       </div>
     </div>
-
-
   </div>
 </template>
-  
-  
 
 <script>
 // Importing the whole important libraries
@@ -38,17 +31,17 @@ import { ref } from "vue";
 //main components
 import Navbar from "./Navbar.vue";
 import Sidebar from "./Sidebar.vue";
- 
+
 //secondary components
 import Dashboard from "./sidebarComponents/Dashboard.vue";
-import Classes from "./sidebarComponents/Classes.vue"
-import Documents from "./sidebarComponents/Documents.vue"
-import Students from "./sidebarComponents/Students.vue"
-import Employees from "./sidebarComponents/Employees.vue"
-import Workers from "./sidebarComponents/Workers.vue"
-import Calendar from "./sidebarComponents/Calendar.vue"
-import Pensum from "./sidebarComponents/Pensum.vue"
-import Grades from "./sidebarComponents/Grades.vue"
+import Classes from "./sidebarComponents/Classes.vue";
+import Documents from "./sidebarComponents/Documents.vue";
+import Students from "./sidebarComponents/Students.vue";
+import Employees from "./sidebarComponents/Employees.vue";
+import Workers from "./sidebarComponents/Workers.vue";
+import Calendar from "./sidebarComponents/Calendar.vue";
+import Pensum from "./sidebarComponents/Pensum.vue";
+import Grades from "./sidebarComponents/Grades.vue";
 import Academics from "./sidebarComponents/Academics.vue";
 
 // sidebar sub components
@@ -74,13 +67,12 @@ export default {
     Grades,
     Academics,
     EmployeesView,
-  }, 
+  },
   data() {
     return {
       content: "",
-      period : usePeriodStore(),
+      period: usePeriodStore(),
       // period : academicPeriods
-
     };
   },
   setup() {
@@ -88,69 +80,66 @@ export default {
 
     const eventFromSidebar = (tagName) => {
       componentName.value = tagName;
-
-    }
+    };
     return {
       eventFromSidebar,
-      componentName
-
-    }
+      componentName,
+    };
   },
   //  computed:{
 
   //  },
-  methods:{
-  //  async getPeriod(){
-     
-  //    const result = await periodServices.findPeriod();
-  //    console.log(result);
-  //    return result;
-  //  }
-},
+  methods: {
+    //  async getPeriod(){
+    //    const result = await periodServices.findPeriod();
+    //    console.log(result);
+    //    return result;
+    //  }
+  },
   created() {
     if (!localStorage.getItem("user")) {
-      this.$router.push("/login")
+      this.$router.push("/login");
     }
     // else if(!this.getPeriod()){
     //   console.log("theres is a problem");
     // }
-    
   },
 
   mounted() {
     this.period.updateCurrent();
-  }
+  },
+};
 
-}
+//   UserService.getPublicContent().then(
+//     (response) => {
 
-  //   UserService.getPublicContent().then(
-  //     (response) => {
+//       this.content = response.data;
+//     },
+//     (error) => {
 
-  //       this.content = response.data;
-  //     },
-  //     (error) => {
-
-  //       this.content =
-  //         (error.response &&
-  //           error.response.data &&
-  //           error.response.data.message) ||
-  //         error.message ||
-  //         error.toString();
-  //     }
-  //   );
-  // },
-
+//       this.content =
+//         (error.response &&
+//           error.response.data &&
+//           error.response.data.message) ||
+//         error.message ||
+//         error.toString();
+//     }
+//   );
+// },
 </script>
- 
- 
+
 <style scoped>
-.adjust{
-position: relative; 
+.adjust {
+  position: relative;
 }
-@media (max-with: 320px){
-  .positioning{
-    position:relative;
+@media (max-with: 320px) {
+  .positioning {
+    position: relative;
     top: 100px;
   }
 }
+* {
+  outline: 1px solid red;
+}
+
 </style>

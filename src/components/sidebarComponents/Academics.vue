@@ -68,8 +68,8 @@
         class="col-sm-12 col-md-6 col-lg-4 m-3 p-0 bg-light border rounded d-flex flex-direction-column"
       >
       <ul>
-        <li v-for="items in allPeriodsObject">
-          <strong>{{ items.perperiodid}} - {{ items.peryearstart}} - {{ items.peryearend}}</strong>
+        <li v-for="(item,index) in allPeriodsObject">
+          <strong>{{ index + 1 }} - {{ item.peryearstart}} - {{ item.peryearend}}</strong>
         </li>
       </ul>>
 
@@ -194,17 +194,18 @@ export default {
     async getAllPeriods(){
 
       this.allPeriodsObject = await this.period.findAllPeriod();
-      console.log(this.allPeriodsObject);
+      // console.log(this.allPeriodsObject);
     
 
     }
     ,
     async handleCreatePeriod(userPeriodData) {
-  
+ //  console.log(userPeriodData);
       const result = this.period.createPeriod(userPeriodData);
       if (result) {
         this.message = "Creado";
         this.succesfull = true;
+        this.periodStore.updateCurrent();
         setTimeout(() => {
           this.message = "";
           this.getAllPeriods();
