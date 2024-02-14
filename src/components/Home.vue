@@ -1,20 +1,20 @@
 <template>
-  <div class="container-fluid p-0 m-0 vh-100 vw-100
+  <div class=" p-0 m-0 vh-100 vw-100
   ">
-    <div class="row h-25 m-0 p-0">
-      <div class="col container-fluid m-0 p-0">
-        <Navbar class="container-fluid"></Navbar>
+    <div class="row custom-height-15  m-0 p-0">
+      <div class="col  m-0 p-0">
+        <Navbar ></Navbar>
       </div>
     </div>
 
-    <div class="row h-75 m-0 p-0">
-      <div class="col p-0 m-0">
+    <div class="row custom-height-85 m-0 p-0">
+      <div class="col-2 p-0 m-0">
         <Sidebar @componentChange="eventFromSidebar"></Sidebar>
       </div>
 
-      <div class="col-10 p-0 m-0  container-fluid">
-        <keep-alive class="container-fluid m-0 p-0">
-          <div class=" p-0 m-0 container-fluid">
+      <div class="col-10 p-0 m-0  ">
+        <keep-alive class="container-fluid h-100 w-100 m-0 p-0">
+          <div >
             <component :is="componentName"></component>
           </div>
         </keep-alive>
@@ -141,5 +141,10 @@ export default {
 * {
   outline: 1px solid red;
 }
-
+.custom-height-15{
+  height : 15% ;
+}
+.custom-height-85{
+  height: 85%;
+}
 </style>

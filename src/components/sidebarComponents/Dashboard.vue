@@ -1,26 +1,26 @@
-<template>
-    <div class=" row  m-0 p-0 ">
-        <div class="row m-0 p-0  ">
+<template  class="container-fluid">
+    <div class=" row-col m-0 p-0 h-100">
+        <div class="row m-0 p-4  ">
             <div class="col-3  child border mx-0   gray500 h-100 rounded-pill p-0 text-center text-white"> Total Estudiantes : 859</div>
             <div class="col-3     child border mx-0   gray500 rounded-pill p-0 text-center text-white"> Total Profesores : 69</div>
             <div class="col-6  child border mx-0   gray500 bg-gradient  rounded-pill p-0 text-center text-white"> Total Clases : 97</div>
         </div>
-        <div class="row  m-0 p-0" >
+        <div class="row m-0 p-3 " >
             <div class="col-3 child  gray400 h-100 p-0">% Estuduantes</div>
             <div class="col-3 child  border rounded-pill  gray500 h-100 m-0 p-0 text-center">Varones </div>
             <div class="col-3 child  border rounded-pill  gray300 h-100 m-0 p-0 text-center">Hembras</div>
             <div class="col-3 child  border rounded-pill  gray400 h-100 m-0 p-0 text-center">info aquí</div>
         </div>
-        <div class="row  m-0 p-0">
-                <div class="col-4 child gray900 d-flex justify-content-center align-items-center text-center rounded m-0 h-100 p-0">
+        <div class="row m-0 p-3 h-50">
+                <div class="col-4 child gray900 justify-content-center align-items-center text-center rounded m-0 h-100 p-3">
                     <h1 class="text-white  display-3">Bienvenido <br>a <br>SimpleClass</h1>
                 </div>
-                <div class="col-8 child gray500  text-center d-flex align-items-center  justify-content-center  rounded m-0 h-100 p-0">
+                <div class="col-8 child gray500  text-center  align-items-center  justify-content-center  rounded m-0 h-100 p-3">
                     <h1>Manejador de Escuelas</h1>
                 </div>
         </div>
-        <div class="row m-0 p-0">
-                <div class="col-6 child  gray400  d-flex align-items-center justify-content-center text-center rounded h-100 m-0 p-0">
+        <div class="row m-0 p-3 h-25">
+                <div class="col-6 child  gray400  align-items-center justify-content-center text-center rounded h-100 m-0 p-0">
                   <h1 class="text-white">Calendario</h1>  
                 </div>
                 <div class="col-6 child gray600 text-center   rounded h-100 m-0 p-0">

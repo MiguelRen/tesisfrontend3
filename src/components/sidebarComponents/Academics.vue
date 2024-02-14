@@ -218,7 +218,7 @@ export default {
     //   const result = this.quarter.createQuarter(userQuarterData);
     // },
     async handleCreateCourse(data) {
-      console.log(data);
+      // console.log(data);
       const result = this.course.createCourse(data);
     },
     async handleCreateSection(data) {

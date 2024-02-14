@@ -8,7 +8,7 @@ class AuthService {
  async login(user) {
    try {
     const result = await axios.post(API_URL + "signin", user);
-     // console.log( result);
+     console.log( result);
      const data = result.data;
     //  console.log(data);
    

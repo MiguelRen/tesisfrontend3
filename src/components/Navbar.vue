@@ -1,71 +1,62 @@
-<template >
-  <nav
-    class=" navbar navbar-expand navbar-dark principal-color d-flex p-0 m-0 h-100" 
-  >
-    <div class="container-fluid d-flex justify-content-center col-md-3">
-      <h1>
-        <a href="/" class="navbar-brand fs-1">SimpleClass</a>
-      </h1>
-    </div>
+<template>
+  <div role="navbar" class="row  navbar navbar-expand-md navbar-dark principal-color gradient-custom  text-center px-4 m-0 h-100 ">
+   
+    <!-- Brand-->
+        <a href="/" class="col-sm-3  navbar-brand fs-1">SimpleClass</a>
+      
 
-    <div
-      class="container-fluid d-flex justify-content-between d-none d-md-block m-0 p-0 col-md-3"
-    >
-      <div class="row d-flex justify-content-between align-items-center">
-        <div class="text-white d-flex align-items-center">
-          {{ todayDateFunction }}
-        </div>
-        <div
+   <!--Date-->
+   <div class="col-sm-2  text-center">
+     <div class="  text-white ">
+       Hoy {{ todayDateFunction }}
+     </div>
+     <div class=" text-white  ">
+       <div class=" m-0 p-0 ">Periodo</div>
+       <div class=" m-0 p-0">
+         del {{ period.yearStart }} al {{ period.yearEnd }}
+       </div>
+     </div>
+   </div>
+        <!--User and Role-->
+    <div class="col-sm-2  text-center p-1" >
+      <h3 class=" text-center m-0 p-0">
+         
           
-          class="col-sm-12 col-md-6 col-lg-4 text-white"
-        >
-          <div class="text-center m-0 p-0">Periodo</div>
-        <div class="text-center m-0 p-0">{{ period.yearStart }}- {{ period.yearEnd  }}</div> 
-        <!-- <div class="text-center m-0 p-0">{{ period.yearEnd }}</div>  -->
-        </div>
-        <!-- <div v-else>No Hay Periodos Registrados</div> -->
+            {{ currentUser }}
+         
+        </h3>
+        <div class="text-center m-0 p-0 ">
+        {{ currentRole }}
       </div>
     </div>
 
-    <div class="container-fluid d-none d-md-block col-md-3">
-      <div
-        class="container-fluid navbar-nav ml-auto d-flex justify-content-around m-0 p-0"
-      >
-        <li class="nav-item m-0 p-0">
-          <router-link to="" class="nav-link px-0">
-            <!-- <font-awesome-icon icon="user" /> -->
-            {{ currentUser }}
-          </router-link>
-        </li>
-
-        <li class="container-fluid m-0">
-          <form class="d-flex col-3" role="search">
+      <!--Search Form-->
+  
+      <div class="col-sm-5 nav-item  container ">
+        <div class="row w-100 ">
+          
+          <form class="col-10 text-center d-flex  " role="search">
             <input
-              class="form-control"
+              class="form-control mx-1"
               type="search"
-              placeholder="Buscar"
+              placeholder="Inserta una palabra"
               aria-label="Buscar"
             />
-            <button class="btn btn-outline-success text-white" type="submit">
+            <button class="btn btn-outline-light text-white " type="submit">
               Buscar
             </button>
           </form>
-        </li>
-
-        <li class="nav-item">
-          <a style="cursor: pointer" class="nav-link" @click.prevent="logOut">
+      
+          <!--Exit -->
+          <a style="cursor: pointer" class=" col-2 btn btn-outline-dark p-1" @click.prevent="logOut">
             Salir
             <!-- <font-awesome-icon icon="sign-out-alt" />  -->
           </a>
-        </li>
-        <div
-          class="col-sm-12 col-md-12 col-lg-4 text-white d-flex align-items-center"
-        >
-          {{ currentRole }}
         </div>
+        </div>
+        
+  
       </div>
-    </div>
-  </nav>
 </template>
 
 <script>
@@ -78,26 +69,19 @@ import { ref, reactive, watch, onMounted } from "vue";
 
 export default {
   data() {
-    // const todayDate = watch("");
-    // const currentPeriod = watch("");
-    // const computedPeriod = ref("");
-
-    // const quarter = useQuarterStore();
+    
     const period = usePeriodStore();
     const auth = useAuthStore();
 
     return {
-      // loginElement: true,
-      // todayDate,
-      // currentPeriod,
-      // computedPeriod,
+     
       auth,
       period,
       // quarter,
     };
   },
 
-  computed: {
+ computed: {
     todayDateFunction() {
       const today = new Date();
 
@@ -147,12 +131,17 @@ export default {
 
     currentUser() {
       const stringUser = localStorage.getItem("user");
-      //console.log(stringUser);
+      // console.log(stringUser);
       const jsonUser = JSON.parse(stringUser);
-
+// console.log(jsonUser);
       const user = jsonUser.username;
+      const firstLetterCap = user.charAt(0).toUpperCase();
+      const remindLetters = user.slice(1);
+      
 
-      return user;
+// console.log(user);
+
+      return firstLetterCap+remindLetters;
       // return user.replace(/["]+/g,'');
       // return this.auth.user;
     },
@@ -177,20 +166,7 @@ export default {
       }
     },
   },
-  // showAdminBoard() {
-  //   if (this.currentUser && this.currentUser['roles']) {
-  //     return this.currentUser['roles'].includes('ROLE_ADMIN');
-  //   }
 
-  //   return false;
-  // },
-  // showModeratorBoard() {
-  //   if (this.currentUser && this.currentUser['roles']) {
-  //     return this.currentUser['roles'].includes('ROLE_MODERATOR');
-  //   }
-
-  //   return false;
-  // }
 
   methods: {
     logOut() {
@@ -204,6 +180,7 @@ export default {
   },
   mounted() {
     // console.log(this);
+    this.currentUser;
     this.currentRole;
     // this.currentRole();
     // alert("navbar")
@@ -216,6 +193,29 @@ export default {
 .principal-color {
   background-color: #666f88;
 }
+
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #3e3d3f;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-linear-gradient(
+    to right,
+    rgba(46, 45, 47, 0.902),
+    rgba(186, 190, 197, 0.9)
+  );
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(
+    to right,
+    rgba(46, 45, 47, 0.902),
+    rgba(186, 190, 197, 0.9)
+  );
+}
+
+/* * {
+  outline: 1px solid blue;
+} */
 /* .col2{
     justify-content:end;
   } */

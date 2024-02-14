@@ -2,7 +2,7 @@
    
 </script>
 <template >
-  <div class="container-fluid m-0 p-0" id="app">
+  <div  id="app">
 
 
     <router-view />

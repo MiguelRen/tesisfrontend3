@@ -26,8 +26,8 @@
 
                   <DropdownContent>
                     <ul>
-                      <li> <a href="">Ver Estudiantes</a> </li>
-                      <li> <a href="#!" id="Students" @click="clickedTag">Gestionar Estudiantes</a> </li>
+                      <li> <a href="" class="text-decoration-none">Ver Estudiantes</a> </li>
+                      <li> <a href="#!" class="text-decoration-none" id="Students" @click="clickedTag">Gestionar Estudiantes</a> </li>
                     </ul>
                   </DropdownContent>
                 </Dropdown>

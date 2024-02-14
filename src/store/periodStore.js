@@ -4,7 +4,7 @@ import  periodServices  from "../services/period.services.js";
 const getInitialState = async ()=>{
     try {
         const result = await periodServices.findCurrentPeriod();
-        console.log(result);    
+        // console.log(result);    
         return result;
     } catch (error) {
         console.log(error);

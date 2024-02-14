@@ -6,7 +6,7 @@ const API_URL = "http://localhost:4500/api/period/";
 class periodServices {
   async createPeriod(period) {
     try {
-      console.log(period);
+      // console.log(period);
       const result = await axios.post(API_URL, period, {
         headers: authHeader(),
       });
