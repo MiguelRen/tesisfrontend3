@@ -1,22 +1,22 @@
 <template>
-  <nav class="navbar  navbar-expand-sm  m-0 p-0 h-100 ">
-    <button class="navbar-toggler nav-link h-100" type="button" data-bs-toggle="collapse" data-bs-target="#opciones"
+  <nav class="navbar  navbar-expand-sm bg-secondary  m-0 p-0 navbar-dark position-relative ">
+    <button class="navbar-toggler nav-link relative border-light mx-1 " type="button" data-bs-toggle="collapse" data-bs-target="#opciones"
       name="button">
-      <span class="navbar-toggler-icon">
+      <span class="navbar-toggler-icon " >
       </span>
     </button>
 
 
-    <div class="collapse navbar-collapse h-100 w-100 m-0 p-0" id="opciones">
+    <div class="collapse navbar-collapse h-100 w-100 m-0 p-0  position-absolute " id="opciones">
       <div class="  border-end bg-white responsiveHeight h-100 w-100 m-0 p-0" id="sidebar-wrapper">
         <div class=" container-fluid d-flex h-100  p-0" id="wrapper">
-          <div class=" list-group list-group-flush h-100">
+          <div class=" list-group list-group-flush  h-100 text-center bgcolorgray600">
             
             <a class="list-group-item list-group-item-action list-group-item-light p-2" href="#!" id="Dashboard"
               @click="clickedTag">Principal</a>
             <template v-if="period.yearStart">
 
-              <a class="list-group-item list-group-item-action list-group-item-light p-2" href="#!">
+              <a class="list-group-item list-group-item-action list-group-item-light  p-2" href="#!">
 
                 <Dropdown>
                   Estudiantes
@@ -251,14 +251,10 @@ export default {
 
 .relative {
   position: relative;
-  bottom: 55px;
+  bottom: 50px;
   
 }
 
-.couterRelative {
-  position: relative;
-  bottom: -10px;
-}
 
 .customText {
   font-size: 12px;
@@ -269,5 +265,12 @@ export default {
     margin-top: 50px;
   }
 }
+.bgcolorgray600{
+  background-color:#6c747c !important;
+
+}
+/* *{
+  outline : 1px solid greenyellow;
+} */
 
 </style>

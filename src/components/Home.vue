@@ -1,18 +1,18 @@
 <template>
-  <div class=" p-0 m-0 vh-100 vw-100
+  <div class=" container-fluid  p-0 m-0 vh-100 vw-100
   ">
-    <div class="row custom-height-15  m-0 p-0">
-      <div class="col  m-0 p-0">
+    <div class="row   m-0 p-0 ">
+      <div class="col  m-0 p-0 ">
         <Navbar ></Navbar>
       </div>
     </div>
 
-    <div class="row custom-height-85 m-0 p-0">
-      <div class="col-2 p-0 m-0">
+    <div class="row  m-0 p-0 position-relative">
+      <div class="col-2 p-0 m-0  container  positioning z-1">
         <Sidebar @componentChange="eventFromSidebar"></Sidebar>
       </div>
 
-      <div class="col-10 p-0 m-0  ">
+      <div class="col-10  p-0 m-0   positioning">
         <keep-alive class="container-fluid h-100 w-100 m-0 p-0">
           <div >
             <component :is="componentName"></component>
@@ -132,12 +132,6 @@ export default {
 .adjust {
   position: relative;
 }
-@media (max-with: 320px) {
-  .positioning {
-    position: relative;
-    top: 100px;
-  }
-}
 * {
   outline: 1px solid red;
 }
@@ -147,4 +141,12 @@ export default {
 .custom-height-85{
   height: 85%;
 }
+@media (max-width: 576px) {
+  .positioning {
+    position: absolute ;
+  
+  }
+}
+
+
 </style>

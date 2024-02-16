@@ -2,23 +2,25 @@
   <div role="navbar" class="row  navbar navbar-expand-md navbar-dark principal-color gradient-custom  text-center px-4 m-0 h-100 ">
    
     <!-- Brand-->
-        <a href="/" class="col-sm-3  navbar-brand fs-1">SimpleClass</a>
-      
+        <a href="/" class="col-md-3  navbar-brand fs-1 ">SimpleClass</a>
 
-   <!--Date-->
-   <div class="col-sm-2  text-center">
-     <div class="  text-white ">
-       Hoy {{ todayDateFunction }}
-     </div>
-     <div class=" text-white  ">
-       <div class=" m-0 p-0 ">Periodo</div>
-       <div class=" m-0 p-0">
-         del {{ period.yearStart }} al {{ period.yearEnd }}
+
+          
+          <!--Date-->
+     <div class="col-md-2 d-none d-sm-block text-center">
+       <div class="  text-white ">
+         Hoy {{ todayDateFunction }}
+       </div>
+       <div class=" text-white  ">
+         <div class=" m-0 p-0 ">Periodo</div>
+         <div class=" m-0 p-0">
+           del {{ period.yearStart }} al {{ period.yearEnd }}
+         </div>
        </div>
      </div>
-   </div>
+   
         <!--User and Role-->
-    <div class="col-sm-2  text-center p-1" >
+    <div class="col-md-2  text-center d-none d-sm-block align-items-center p-1 " >
       <h3 class=" text-center m-0 p-0">
          
           
@@ -32,7 +34,7 @@
 
       <!--Search Form-->
   
-      <div class="col-sm-5 nav-item  container ">
+      <div class="col-md-5 nav-item d-none d-md-block container ">
         <div class="row w-100 ">
           
           <form class="col-10 text-center d-flex  " role="search">
@@ -54,8 +56,7 @@
           </a>
         </div>
         </div>
-        
-  
+      
       </div>
 </template>
 
