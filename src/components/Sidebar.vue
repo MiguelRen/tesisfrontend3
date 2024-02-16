@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar  navbar-expand-sm bg-secondary  m-0 p-0 navbar-dark position-relative ">
+  <nav class="navbar  navbar-expand-sm   m-0 p-0  navbar-dark position-relative ">
     <button class="navbar-toggler nav-link relative border-light mx-1 " type="button" data-bs-toggle="collapse" data-bs-target="#opciones"
       name="button">
       <span class="navbar-toggler-icon " >
@@ -9,8 +9,8 @@
 
     <div class="collapse navbar-collapse h-100 w-100 m-0 p-0  position-absolute " id="opciones">
       <div class="  border-end bg-white responsiveHeight h-100 w-100 m-0 p-0" id="sidebar-wrapper">
-        <div class=" container-fluid d-flex h-100  p-0" id="wrapper">
-          <div class=" list-group list-group-flush  h-100 text-center bgcolorgray600">
+        <div class=" container-fluid d-flex h-100 w-100 p-0" id="wrapper">
+          <div class=" list-group list-group-flush w-100 h-100 text-center bgcolorgray600">
             
             <a class="list-group-item list-group-item-action list-group-item-light p-2" href="#!" id="Dashboard"
               @click="clickedTag">Principal</a>
@@ -51,8 +51,8 @@
                   </DropdownContent>
                 </Dropdown>
 
-                <div name="personalWrapper" class="menuWrapper">
-                </div>
+                <!-- <div name="personalWrapper" class="menuWrapper">
+                </div> -->
 
 
               </a>
@@ -237,17 +237,17 @@ export default {
 </script>
 
 <style scoped>
-.componentWrapper {
+/* .componentWrapper {
   position: relative;
-}
+} */
 
-.menuWrapper {
+/* .menuWrapper {
   position: absolute;
   top: 100%;
   left: 0;
   z-index: 9999;
   background: white;
-}
+} */
 
 .relative {
   position: relative;
@@ -259,16 +259,21 @@ export default {
 .customText {
   font-size: 12px;
 }
-
-@media (min-width:720px){
-  .responsiveHeight{
-    margin-top: 50px;
-  }
-}
 .bgcolorgray600{
   background-color:#6c747c !important;
 
 }
+
+a{
+  background: #000;
+
+}
+/* @media (min-width:768px){
+  .responsiveHeight{
+    margin-top: 50px;
+    
+  }
+} */
 /* *{
   outline : 1px solid greenyellow;
 } */

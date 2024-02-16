@@ -8,11 +8,11 @@
     </div>
 
     <div class="row  m-0 p-0 position-relative">
-      <div class="col-2 p-0 m-0  container  positioning z-1">
+      <div class=" col-md-2  col-sm-3 col-5   p-0 m-0    positioning z-1">
         <Sidebar @componentChange="eventFromSidebar"></Sidebar>
       </div>
 
-      <div class="col-10  p-0 m-0   positioning">
+      <div class=" col-md-10  col-sm-9 p-0 m-0   positioning">
         <keep-alive class="container-fluid h-100 w-100 m-0 p-0">
           <div >
             <component :is="componentName"></component>
@@ -129,24 +129,23 @@ export default {
 </script>
 
 <style scoped>
-.adjust {
-  position: relative;
-}
-* {
+
+/* * {
   outline: 1px solid red;
-}
+} */
 .custom-height-15{
   height : 15% ;
 }
 .custom-height-85{
   height: 85%;
 }
-@media (max-width: 576px) {
+
+/* @media (max-width:576px) {
   .positioning {
     position: absolute ;
   
   }
-}
+} */
 
 
 </style>
