@@ -4,11 +4,11 @@ import  periodServices  from "../services/period.services.js";
 const getInitialState = async ()=>{
     try {
         const result = await periodServices.findCurrentPeriod();
-        // console.log(result);    
-        return result;
-    } catch (error) {
-        console.log(error);
-        return error;
+        console.log(result);  
+        return result;  
+    } catch (error) {   
+        console.log(error);     
+        return error;           
         
     }
 };
@@ -55,6 +55,7 @@ export const usePeriodStore = defineStore("period",{
     },
     
 }
+
 )
 
 

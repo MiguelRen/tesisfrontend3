@@ -25,9 +25,9 @@ class periodServices {
       
         headers : authHeader(),  
       }
- 
+     
     );
-      // console.log("find current",result);
+      console.log("find current",result);
       
       return Promise.resolve(result.data[0]);
       

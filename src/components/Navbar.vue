@@ -1,13 +1,13 @@
 <template>
-  <div role="navbar" class="row  navbar navbar-expand-md navbar-dark principal-color gradient-custom  text-center px-4 m-0 h-100 ">
+  <div role="navbar" class="row  navbar navbar-expand-md navbar-dark principal-color gradient-custom  text-center px-4 m-0  h-100 ">
    
     <!-- Brand-->
-        <a href="/" class="col-md-3  navbar-brand fs-1 ">SimpleClass</a>
+        <a href="/" class="col-md-3  navbar-brand fs-1  d-flex justify-content-end justify-content-sm-center">SimpleClass</a>
 
 
           
-          <!--Date-->
-     <div class="col-md-2 d-none d-sm-block text-center">
+          <!--Date and Period-->
+     <div class="col-md-3 d-none d-md-block text-center">
        <div class="  text-white ">
          Hoy {{ todayDateFunction }}
        </div>
@@ -20,7 +20,7 @@
      </div>
    
         <!--User and Role-->
-    <div class="col-md-2  text-center d-none d-sm-block align-items-center p-1 " >
+    <div class="col-md-2  text-center d-none d-md-block align-items-center p-1 " >
       <h3 class=" text-center m-0 p-0">
          
           
@@ -34,8 +34,8 @@
 
       <!--Search Form-->
   
-      <div class="col-md-5 nav-item d-none d-md-block container ">
-        <div class="row w-100 ">
+      <div class="col-md-4 nav-item d-none d-sm-block container ">
+        <div class="row w-100 justify-content-center ">
           
           <form class="col-10 text-center d-flex  " role="search">
             <input
@@ -50,7 +50,7 @@
           </form>
       
           <!--Exit -->
-          <a style="cursor: pointer" class=" col-2 btn btn-outline-dark p-1" @click.prevent="logOut">
+          <a style="cursor: pointer" class=" col-2 btn btn-outline-dark  d-none d-md-block p-1" @click.prevent="logOut">
             Salir
             <!-- <font-awesome-icon icon="sign-out-alt" />  -->
           </a>
@@ -90,44 +90,44 @@ export default {
       let month = today.getMonth();
       switch (month) {
         case 0:
-          month = "Enero";
+          month = "Ene";
           break;
         case 1:
-          month = "Febrero";
+          month = "Feb";
           break;
         case 2:
-          month = "Marzo";
+          month = "Mar";
           break;
         case 3:
-          month = "Abril";
+          month = "Abr";
           break;
         case 4:
-          month = "Mayo";
+          month = "May";
           break;
         case 5:
-          month = "Junio";
+          month = "Jun";
           break;
         case 6:
-          month = "Julio";
+          month = "Jul";
           break;
         case 7:
-          month = "Agosto";
+          month = "Ago";
           break;
         case 8:
-          month = "Septiembre";
+          month = "Sep";
           break;
         case 9:
-          month = "Octubre";
+          month = "Oct";
           break;
         case 10:
-          month = "Noviembre";
+          month = "Nov";
           break;
         case 11:
-          month = "Diciembre";
+          month = "Dic";
           break;
       }
       const year = today.getFullYear();
-      return (this.todayDate = `${day} de ${month} de ${year}`);
+      return (this.todayDate = `${day} ${month}  ${year}`);
     },
 
     currentUser() {

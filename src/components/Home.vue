@@ -1,18 +1,18 @@
 <template>
-  <div class=" container-fluid  p-0 m-0 vh-100 vw-100
+  <div class=" container-fluid  p-0 m-0 vh-100 w-100
   ">
-    <div class="row   m-0 p-0 ">
-      <div class="col  m-0 p-0 ">
+    <div class="row m-0 p-0   viewportHeight20" >
+      <div class="col-12  m-0 p-0   w-100 ">
         <Navbar ></Navbar>
       </div>
     </div>
 
-    <div class="row  m-0 p-0 position-relative">
-      <div class=" col-md-2  col-sm-3 col-5   p-0 m-0    positioning z-1">
+    <div class="row  m-0 p-0 position-relative viewportHeight80">
+      <div class=" col-md-2  col-sm-3 col-5   p-0 m-0   positioning h-100  z-1">
         <Sidebar @componentChange="eventFromSidebar"></Sidebar>
       </div>
 
-      <div class=" col-md-10  col-sm-9 p-0 m-0   positioning">
+      <div class=" col-md-10  col-sm-9 p-0 m-0  positioning h-100 ">
         <keep-alive class="container-fluid h-100 w-100 m-0 p-0">
           <div >
             <component :is="componentName"></component>
@@ -130,22 +130,33 @@ export default {
 
 <style scoped>
 
-/* * {
-  outline: 1px solid red;
-} */
-.custom-height-15{
-  height : 15% ;
+.viewportHeight20{
+  height: 20vh;
 }
-.custom-height-85{
-  height: 85%;
+.viewportHeight80{
+  height: 80vh;
 }
 
-/* @media (max-width:576px) {
-  .positioning {
-    position: absolute ;
-  
+@media (max-width:576px){
+  .positioning{
+    position: absolute;
   }
+  .viewportHeight20{
+    height: 10vh
+  }
+  .viewportHeight80{
+    height: 20vh
+  }
+}
+
+
+ /** {
+  border : 1px solid red;
+  }
+  */
+ 
+
+/* *{
+outline: 1px solid red;
 } */
-
-
 </style>

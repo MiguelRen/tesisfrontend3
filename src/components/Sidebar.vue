@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar  navbar-expand-sm   m-0 p-0  navbar-dark position-relative ">
+  <nav class="navbar  navbar-expand-sm   m-0 p-0   position-relative ">
     <button class="navbar-toggler nav-link relative border-light mx-1 " type="button" data-bs-toggle="collapse" data-bs-target="#opciones"
       name="button">
       <span class="navbar-toggler-icon " >
@@ -10,13 +10,13 @@
     <div class="collapse navbar-collapse h-100 w-100 m-0 p-0  position-absolute " id="opciones">
       <div class="  border-end bg-white responsiveHeight h-100 w-100 m-0 p-0" id="sidebar-wrapper">
         <div class=" container-fluid d-flex h-100 w-100 p-0" id="wrapper">
-          <div class=" list-group list-group-flush w-100 h-100 text-center bgcolorgray600">
+          <div class=" list-group list-group-flush w-100 h-100 text-center  bgcolorgray600">
             
-            <a class="list-group-item list-group-item-action list-group-item-light p-2" href="#!" id="Dashboard"
+            <a class="list-group-item list-group-item-action  p-2" href="#!" id="Dashboard"
               @click="clickedTag">Principal</a>
             <template v-if="period.yearStart">
 
-              <a class="list-group-item list-group-item-action list-group-item-light  p-2" href="#!">
+              <a class="list-group-item list-group-item-action   p-2" href="#!">
 
                 <Dropdown>
                   Estudiantes
@@ -34,7 +34,7 @@
 
 
               </a>
-              <a class="list-group-item list-group-item-action list-group-item-light p-2 componentWrapper" href="#!"
+              <a class="list-group-item list-group-item-action  p-2 componentWrapper" href="#!"
                 id="Employees">
 
                 <Dropdown>
@@ -56,28 +56,28 @@
 
 
               </a>
-              <!-- <a class="list-group-item list-group-item-action list-group-item-light p-2" href="#!" id="Workers"
+              <!-- <a class="list-group-item list-group-item-action text-light p-2" href="#!" id="Workers"
                   @click="clickedTag">Obreros</a> -->
-              <a class="list-group-item list-group-item-action list-group-item-light p-2" href="#!" id="Documents"
+              <a class="list-group-item list-group-item-action  p-2" href="#!" id="Documents"
                 @click="clickedTag">Documentos</a>
-              <!-- <a class="list-group-item list-group-item-action list-group-item-light p-2" href="#!" id="Classes"
+              <!-- <a class="list-group-item list-group-item-action text-light p-2" href="#!" id="Classes"
                 @click="clickedTag">Clases</a> -->
-              <a class="list-group-item list-group-item-action list-group-item-light p-2" href="#!" id="Calendar"
+              <a class="list-group-item list-group-item-action  p-2" href="#!" id="Calendar"
                 @click="clickedTag">Calendario</a>
-              <!-- <a class="list-group-item list-group-item-action list-group-item-light p-2" href="#!" id="Pensum"
+              <!-- <a class="list-group-item list-group-item-action text-light p-2" href="#!" id="Pensum"
                 @click="clickedTag">Pensum</a> -->
-              <a class="list-group-item list-group-item-action list-group-item-light p-2" href="#!" id="Grades"
+              <a class="list-group-item list-group-item-action  p-2" href="#!" id="Grades"
                 @click="clickedTag">Asistencias y Notas</a>
-              <a class="list-group-item list-group-item-action list-group-item-light p-2" href="#!" id="Curses"
+              <a class="list-group-item list-group-item-action  p-2" href="#!" id="Curses"
                 @click="clickedTag">Cursos</a>
             </template>
-            <a class="list-group-item list-group-item-action list-group-item-light p-2" href="#!" id="Academics"
+            <a class="list-group-item list-group-item-action  p-2" href="#!" id="Academics"
               @click="clickedTag">Académicos{{ auth.getRole }}</a>
             <a v-if="currentRole == 'ADMINISTRADOR'"
-              class="list-group-item list-group-item-action list-group-item-light p-2" href="#!" id="Records"
+              class="list-group-item list-group-item-action  p-2" href="#!" id="Records"
               @click="clickedTag">Registros </a>
 
-              <a class="list-group-item list-group-item-action list-group-item-light p-2 customText   d-md-none " href="#!">
+              <a class="list-group-item list-group-item-action  p-2 customText   d-md-none " href="#!">
               <div class="">
 
                 {{ todayDateFunction }}
@@ -88,7 +88,7 @@
                   Periodo
                 </div>
                 <div>
-                  {{ quarter.getQuarter }}
+                  Del{{ period.yearStart}} Al {{ period.yearEnd }}
                 </div>
               </div>
               <div class="">
@@ -101,8 +101,9 @@
 
             </a>
 
-            <a style="cursor:pointer" class="nav-link p-2 m-0 list-group-item list-group-item-action list-group-item-light   customText   d-md-none " @click.prevent="logOut">
-         
+            <a style="cursor:pointer" class="nav-link p-2 m-0 list-group-item list-group-item-action text-light 
+              customText   d-md-none " @click.prevent="logOut">
+            Salir 
           </a>
           </div>
         </div>
@@ -251,7 +252,8 @@ export default {
 
 .relative {
   position: relative;
-  bottom: 50px;
+  bottom: 58px;
+  left:25px
   
 }
 
@@ -259,15 +261,20 @@ export default {
 .customText {
   font-size: 12px;
 }
-.bgcolorgray600{
+/* .bgcolorgray600{
   background-color:#6c747c !important;
 
-}
+} */
 
 a{
-  background: #000;
-
+  background: #424143;
+  color:white;
 }
+/* a::active{
+  background-color:white !important;
+  color:black  !important;
+} */
+
 /* @media (min-width:768px){
   .responsiveHeight{
     margin-top: 50px;
