@@ -1,14 +1,14 @@
 <template>
-  <div class="container-fluid h-100 m-0 p-0">
+  <div class="container-fluid h-100 w-100  m-0 p-0">
     <h1>Configuraciones Académicas</h1>
     <!-- <div>{{ periodStore.yearStart }} -- {{ periodStore.yearEnd }}</div> -->
 
-    <div class="row m-0 h-100 p-0">
+    <div class="row  h-100 p-0 m-0 w-100">
       <div
-        class="col-sm-12 col-md-6 col-lg-4 m-3 p-0 bg-light border rounded d-flex flex-direction-column"
+        class="col    p-0 bg-light border rounded d-inline-flex  w-100"
       >
         <Form
-          class="m-3 text-center"
+          class="m-3 text-center m-0 p-0"
           @submit="handleCreatePeriod"
           
           :validation-schema="periodSchema"
@@ -52,10 +52,10 @@
           <button class="btn butom btn-block">Crear</button>
           <!-- <label>Periodo 2000-2001</label>
                                 <label for="">Periodos resgistrados</label> -->
-          <div class="form-group">
+          <div class="form-group w-100">
             <div
               v-if="message"
-              class="alert b-4"
+              class="alert b-4 w-100"
               :class="succesfull ? 'alert-success' : 'alert-danger'"
               role="alert"
             >
@@ -65,7 +65,7 @@
         </Form>
       </div>
       <div
-        class="col-sm-12 col-md-6 col-lg-4 m-3 p-0 bg-light border rounded d-flex flex-direction-column"
+        class="col p-0 bg-light border rounded d-inline-flex "
       >
       <ul>
         <li v-for="(item,index) in allPeriodsObject">
@@ -230,5 +230,8 @@ export default {
 <style scoped>
 .butom {
   background-color: #adb5bd;
+}
+*{
+  outline: 1px solid rgb(233, 229, 236);
 }
 </style>

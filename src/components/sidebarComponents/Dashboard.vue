@@ -1,26 +1,25 @@
-<template class="">
-  <div class="row  p-0 m-0">
-    <div class="col-auto  p-0 m-0">
-      <div class="row m-0 p-0 container-fluid  ">
-        <div class="col m-0 p-0 ">
-          <div class="row p-0 m-0 ">
+<template >
+ 
+      <div class="row m-0 p-0 container-fluid  heightData15 w-100">
+        <div class="col m-0 p-0 h-100 w-100">
+          <div class="row p-0 m-0 h-50 w-100">
             <div
-              class="col-sm-6 col-lg-3 border gray500  rounded-pill text-center text-white"
+              class=" col-4 border gray500  rounded-pill text-center text-white"
             >
               Total Estudiantes : 859
             </div>
             <div
-              class="col-sm-6 col-lg-3 border gray500 rounded-pill text-center text-white"
+              class=" col-4 border gray500 rounded-pill text-center text-white"
             >
               Total Profesores : 69
             </div>
             <div
-              class="col-md-12 col-lg-6 border gray500 bg-gradient rounded-pill text-center text-white"
+              class=" col-4 border gray500 bg-gradient rounded-pill text-center text-white "
             >
               Total Clases : 97
             </div>
           </div>
-          <div class="row p-0 m-0 ">
+          <div class="row p-0 h-50 w-100">
             <div class="col-3 gray400  text center rounded">
               % Estudiantes
             </div>
@@ -37,36 +36,34 @@
         </div>
       </div>
 
-      <div class="row container-fluid  m-0 p-0 vh-50 ">
+      <div class="row container-fluid  m-0 p-4 heightData85  ">
         <div
-          class="col-lg-4 gray900 align-items-center text-center rounded vh-25 "
+          class="col-sm-4 m-2 gray900 d-flex align-items-center justify-content-center text-center rounded   "
         >
-          <div class="">
-            <h1 class="text-white display-4 g-1">
+            <h1 class="text-white display-4 ">
               Bienvenido<br />
               a <br />SimpleClass
             </h1>
-          </div>
+         
         </div>
         <div
-          class="col-lg-5 gray500 text-center align-items-center rounded vh-25  "
+          class="col-sm-7 m-2 gray500 text-center d-flex align-items-center rounded  "
         >
-          <div class="mx-3">
-            <h3>Manejador de Escuelas</h3>
+          <div class=" w-100">
+            <h2>Manejador de Escuelas</h2>
           </div>
         </div>
 
         <div
-          class="col-lg-6 gray400 align-items-center justify-content-center text-center rounded vh-25   "
+          class="col-sm-5 m-2 gray400 d-flex align-items-center justify-content-center text-center rounded    "
         >
-          <h1 class="text-white">Calendario</h1>
+          <h1 class="text-black">Calendario</h1>
         </div>
-        <div class="col-lg-6 gray600 text-center rounded vh-25  ">
+        <div class="col-sm-6 m-2 gray600 d-flex align-items-center justify-content-center text-center rounded   ">
           <h3 class="text-white">Noticias</h3>
         </div>
       </div>
-    </div>
-  </div>
+   
 </template>
 
 <script>
@@ -79,6 +76,12 @@ export default {};
 }
 .font {
   font-size: 14px;
+}
+.heightData15{
+  height:15%
+}
+.heightData85{
+  height:85%;
 }
 @media (max-with: 720px) {
   .font {
@@ -116,7 +119,6 @@ export default {};
 .gray900 {
   background-color: #343a40 !important;
 }
-/* * {
-  border: 1px solid green;
-} */
+
+
 </style>

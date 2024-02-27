@@ -26,8 +26,8 @@
 
                   <DropdownContent>
                     <ul>
-                      <li> <a href="" class="text-decoration-none">Ver Estudiantes</a> </li>
-                      <li> <a href="#!" class="text-decoration-none" id="Students" @click="clickedTag">Gestionar Estudiantes</a> </li>
+                      <li> <a href="#!" class="text-decoration-none" id="StudentsView" @click="clickedTag">Ver Estudiantes</a> </li>
+                      <li> <a href="#!" class="text-decoration-none" id="StudentsAdd" @click="clickedTag">Gestionar Estudiantes</a> </li>
                     </ul>
                   </DropdownContent>
                 </Dropdown>
@@ -45,8 +45,8 @@
 
                   <DropdownContent>
                     <ul>
-                      <li> <a href="#!" id="EmployeesView" @click="clickedTag">Ver Empleados</a> </li>
-                      <li> <a href="#!" id="Employees" @click="clickedTag">Gestionar Empleados</a> </li>
+                      <li> <a href="#!" class="text-decoration-none" id="EmployeesView" @click="clickedTag">Ver Empleados</a> </li>
+                      <li> <a href="#!" class="text-decoration-none" id="EmployeesAdd" @click="clickedTag">Gestionar Empleados</a> </li>
                     </ul>
                   </DropdownContent>
                 </Dropdown>
@@ -117,7 +117,7 @@ import { useQuarterStore } from '../store';
 import { onMounted, ref } from 'vue';
 import { useAuthStore } from '../store';
 
-import Dropdown from '../components/sidebarComponents/Dropdown.vue'
+import Dropdown from '../components/sidebarComponents/Dropdown.vue' 
 import DropdownContent from '../components/sidebarComponents/DropdownContent.vue'
 import { usePeriodStore } from '../store';
 

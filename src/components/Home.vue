@@ -36,11 +36,12 @@ import Sidebar from "./Sidebar.vue";
 import Dashboard from "./sidebarComponents/Dashboard.vue";
 import Classes from "./sidebarComponents/Classes.vue";
 import Documents from "./sidebarComponents/Documents.vue";
-import Students from "./sidebarComponents/Students.vue";
-import Employees from "./sidebarComponents/Employees.vue";
-import Workers from "./sidebarComponents/Workers.vue";
+import StudentsAdd from "./sidebarComponents/StudentsAdd.vue";
+import StudentsView from "./sidebarComponents/StudentsView.vue";
+import EmployeesAdd from "./sidebarComponents/EmployeesAdd.vue";  
+// import Workers from "./sidebarComponents/Workers.vue";
 import Calendar from "./sidebarComponents/Calendar.vue";
-import Pensum from "./sidebarComponents/Pensum.vue";
+// import Pensum from "./sidebarComponents/Pensum.vue";
 import Grades from "./sidebarComponents/Grades.vue";
 import Academics from "./sidebarComponents/Academics.vue";
 
@@ -59,14 +60,15 @@ export default {
     Dashboard,
     Classes,
     Documents,
-    Students,
-    Employees,
-    Workers,
+    StudentsAdd,
+    StudentsView,
+    EmployeesAdd,
+    EmployeesView,
+    // Workers,
     Calendar,
-    Pensum,
+    // Pensum,
     Grades,
     Academics,
-    EmployeesView,
   },
   data() {
     return {
@@ -145,7 +147,7 @@ export default {
     height: 10vh
   }
   .viewportHeight80{
-    height: 20vh
+    height: 90vh
   }
 }
 
@@ -156,7 +158,4 @@ export default {
   */
  
 
-/* *{
-outline: 1px solid red;
-} */
 </style>
