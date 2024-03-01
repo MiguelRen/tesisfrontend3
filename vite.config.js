@@ -21,18 +21,9 @@ export default defineConfig({
   // }
   // ,
   
-  // base: '/tesisfrontend3/',
-  plugins: [vue(
-    // {
-    //   template: {
-    //     compilerOptions: {
-    //       // treat all tags with a dash as custom elements
-    //       isCustomElement: (tag) => tag.includes('-Navbar')
-    //     }
-    //   }
-    // }
-
-  )],
+  plugins: [vue()],
+  
+  
 
 
  
