@@ -1,7 +1,9 @@
 import axios from "axios";
 import authHeader from "./auth-header";
 
-const API_URL = "http://localhost:4500/api/period/";
+// const API_URL = "http://localhost:4500/api/period/";
+
+const API_URL = "https://despliegue-backend-tesis.onrender.com/api/period/";
 
 class periodServices {
   async createPeriod(period) {
