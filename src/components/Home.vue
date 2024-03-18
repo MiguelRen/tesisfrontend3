@@ -29,6 +29,7 @@
 import { ref } from "vue";
 // import  periodServices  from "../services/period.services.js"
 //main components
+
 import Navbar from "./Navbar.vue";
 import Sidebar from "./Sidebar.vue";
 
@@ -39,11 +40,13 @@ import Documents from "./sidebarComponents/Documents.vue";
 import StudentsAdd from "./sidebarComponents/StudentsAdd.vue";
 import StudentsView from "./sidebarComponents/StudentsView.vue";
 import EmployeesAdd from "./sidebarComponents/EmployeesAdd.vue";  
-// import Workers from "./sidebarComponents/Workers.vue";
+import AttendancesView from "./sidebarComponents/AttendancesView.vue";
+import AttendancesAdd from "./sidebarComponents/AttendancesAdd.vue";
 import Calendar from "./sidebarComponents/Calendar.vue";
 // import Pensum from "./sidebarComponents/Pensum.vue";
 import Grades from "./sidebarComponents/Grades.vue";
 import Academics from "./sidebarComponents/Academics.vue";
+
 
 // sidebar sub components
 import EmployeesView from "../components/sidebarComponents/EmployeesView.vue";
@@ -64,9 +67,9 @@ export default {
     StudentsView,
     EmployeesAdd,
     EmployeesView,
-    // Workers,
     Calendar,
-    // Pensum,
+    AttendancesView,
+    AttendancesAdd,
     Grades,
     Academics,
   },
@@ -158,4 +161,4 @@ export default {
   */
  
 
-</style>
+</style>./sidebarComponents/AttendancesView.vue
