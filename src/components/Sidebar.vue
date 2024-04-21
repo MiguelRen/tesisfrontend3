@@ -128,6 +128,7 @@
     </div>
   </nav>
 </template>
+
 <script>
 import { useQuarterStore } from '../store';
 import { onMounted, ref } from 'vue';

@@ -3,7 +3,7 @@
   ">
     <div class="row m-0 p-0   viewportHeight20" >
       <div class="col-12  m-0 p-0   w-100 ">
-        <Navbar ></Navbar>
+        <Navbar @componentChange="eventFromNavbar"></Navbar>
       </div>
     </div>
 
@@ -46,6 +46,7 @@ import Calendar from "./sidebarComponents/Calendar.vue";
 // import Pensum from "./sidebarComponents/Pensum.vue";
 import Grades from "./sidebarComponents/Grades.vue";
 import Academics from "./sidebarComponents/Academics.vue";
+import Profile from "./navbarComponents/Profile.vue";
 
 
 // sidebar sub components
@@ -72,6 +73,7 @@ export default {
     AttendancesAdd,
     Grades,
     Academics,
+    Profile,
   },
   data() {
     return {
@@ -86,8 +88,14 @@ export default {
     const eventFromSidebar = (tagName) => {
       componentName.value = tagName;
     };
+    const eventFromNavbar = (tagName) => {
+      
+      componentName.value = tagName;
+    };
+    console.log(componentName);
     return {
       eventFromSidebar,
+      eventFromNavbar,
       componentName,
     };
   },

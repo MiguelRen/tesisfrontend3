@@ -25,7 +25,7 @@
   </template>
   
   <script>
-  import { useAuthStore } from "./../store/authStore"
+  import { useAuthStore } from "../store/authStore"
   const auth = useAuthStore();
   export default {
     name: 'Profile',
@@ -42,4 +42,4 @@
       }
     }
   };
-  </script>
+  </script>../store/authStore../store/authStore
