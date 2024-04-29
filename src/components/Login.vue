@@ -1,5 +1,5 @@
 <template >
-  <div class=" fondo  ">
+  <div class="fondo" >
 
     <div class="container h-100 d-flex justify-content-center align-items-center">
 
@@ -154,7 +154,7 @@ export default {
   padding: 0;
   position: absolute;
   object-fit: cover;
-  background-image: url(../assets/fondo.jpg);
+  background-image: url(../assets/keyboardBackground.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 0 0;
@@ -162,7 +162,7 @@ export default {
   height: 100vh;
   width: 100%;
 }
-
+ 
 .opa {
   background-color: rgba(245, 245, 245, 0.8) !important;
 }

@@ -12,27 +12,7 @@ export const useAuthStore = defineStore("auth", {
   state: () => {
     return initialState;
   },
-  // getters: {
-  //   getRole(state) {
-  //     console.log(state);
-  //     const userRole = state.user;
-
-  //     if (state.user) {
-  //       for (let i = userRole.length - 1; i >= 0; i--) {
-  //         if (userRole[i] === "ADMINISTRADOR") {
-  //           return userRole[i];
-  //         }
-  //       }
-  //       for (let i = userRole.length - 1; i >= 0; i--) {
-  //         if (userRole[i] === "MODERADOR") {
-  //           return userRole[i];
-  //         } else {
-  //           return userRole[i];
-  //         }
-  //       }
-  //     }
-  //   },
-  // },
+ 
   actions: {
     async login(user) {
       try {
@@ -52,14 +32,14 @@ export const useAuthStore = defineStore("auth", {
       AuthService.logout();
     },
 
-    async register(user) {
-      try {
-        const result = await AuthService.register(user);
-        // console.log(result);
-        return Promise.resolve(result);
-      } catch (error) {
-        return Promise.reject(error);
-      }
-    },
+    // async register(user) {
+    //   try {
+    //     const result = await AuthService.register(user);
+    //     // console.log(result);
+    //     return Promise.resolve(result);
+    //   } catch (error) {
+    //     return Promise.reject(error);
+    //   }
+    // },
   },
 });

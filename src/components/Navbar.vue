@@ -200,7 +200,7 @@ export default {
   methods: {
     logOut() {
       // this.$store.dispatch('auth/logout');
-      // this.auth.logout();
+      this.auth.logout();
       this.$router.push("/Login");
     },
     showTodayDate() {

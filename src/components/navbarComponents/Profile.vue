@@ -32,15 +32,25 @@
 
 </template>
 <script>
-// import AuthService from "../../services/auth.services.js"
-// console.log(AuthService);
+
+import UserServices from '../../services/user.services.js';
+import {useAuthStore} from "../../store";
+
 export default {
-    // data(){
-    //     const userData=AuthService.Login();
-    //     console.log(userData);
-    //     return{
-    //         userData,
-    //     }
-    // },
+     data(){
+        const userData = "";
+        return{
+            userData,
+            
+        }
+    },
+    async beforeMount(){
+      
+        const currentUser = useAuthStore().user.username;
+        this.userData = await UserServices.getUser(currentUser);
+        console.log(this.userData);
+    
+    }
+    
 }
 </script>

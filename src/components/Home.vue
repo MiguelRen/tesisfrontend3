@@ -92,7 +92,7 @@ export default {
       
       componentName.value = tagName;
     };
-    console.log(componentName);
+    // console.log(componentName);
     return {
       eventFromSidebar,
       eventFromNavbar,

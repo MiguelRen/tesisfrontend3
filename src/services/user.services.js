@@ -1,36 +1,48 @@
 import axios from 'axios';
 import authHeader from './auth-header';
 
-const API_URL = 'http://localhost:4500/api/users/';
+
+const API_URL = 'http://localhost:4500/api/user/';
 class UserService {
-  getPublicContent () {
+  async register(user) {
     try {
-      return  axios.get(API_URL );
+      
+    
+        const response = await axios.post(API_URL , {
+          username: user.username,
+          email: user.email,
+          password: user.password,
+        }); 
+        if(response.status == 200){
+          return "Usuario Registrado Correctamente";
+        }else if(response.status == 409){
+          return "Usuario NO registrado";
+        }else{
+          return "Problema no registrado código "+ response.status;
+        }
+      
+       
+      
       
     } catch (error) {
-      console.log(error);
+      console.log("register services ERROR \n", error.message); 
     }
-  } 
-  
-  getUserBoard() {
-    try {
-      console.log("what is this am feeling");
-      const resp = axios.get(API_URL + 'user', { headers: authHeader() });
-      console.log(resp);
-      return resp;
-      
-    } catch (error) {
-      console.log("im not here");
-      console.log(error);
-    }
-  }
- 
-  getModeratorBoard() {
-    return axios.get(API_URL + 'mod', { headers: authHeader() });
   }
 
-  getAdminBoard() {
-    return axios.get(API_URL + 'admin', { headers: authHeader() });
+
+  async getUser(currentUser){
+    try {
+
+      
+      const apiAnswer = await axios.get( API_URL ,currentUser, {
+        headers: authHeader()
+        
+      });
+      console.log(apiAnswer);
+
+    } catch (error) {
+      console.log("getUser services ERROR\n", error.message);
+    }
   }
 }
 export default new UserService();
