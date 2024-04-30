@@ -95,7 +95,7 @@ export default {
       loading: false,
       message: "",
       schema,
-      user: UserService,
+   
     };
   },
 
@@ -109,10 +109,9 @@ export default {
         this.loading = true;
         console.log(user);
 
-        const result = await this.user
+        const result = await UserService.register(user);
         
-
-        this.message = result.message;
+        this.message = result;
         this.successful = true;
         this.loading = false;
         setTimeout(() => {

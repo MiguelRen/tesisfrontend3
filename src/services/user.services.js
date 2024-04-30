@@ -8,17 +8,17 @@ class UserService {
     try {
       
     
-        const response = await axios.post(API_URL , {
+        const apiResponse = await axios.post(API_URL , {
           username: user.username,
           email: user.email,
           password: user.password,
         }); 
-        if(response.status == 200){
+        if(apiResponse.status == 200){
           return "Usuario Registrado Correctamente";
-        }else if(response.status == 409){
+        }else if(apiResponse.status == 409){
           return "Usuario NO registrado";
         }else{
-          return "Problema no registrado código "+ response.status;
+          return "Problema no registrado código "+ apiResponse.status;
         }
       
        
@@ -33,13 +33,15 @@ class UserService {
   async getUser(currentUser){
     try {
 
-      
-      const apiAnswer = await axios.get( API_URL ,currentUser, {
-        headers: authHeader()
-        
-      });
-      console.log(apiAnswer);
-
+      console.log(currentUser);
+      const apiResponse = await axios.post( API_URL+ "user",
+      {
+        username:currentUser,
+      }
+      );
+      console.log("inside getuser");
+      console.log(apiResponse); 
+      return apiResponse.data;
     } catch (error) {
       console.log("getUser services ERROR\n", error.message);
     }

@@ -7,7 +7,7 @@ const user = JSON.parse(data);
 const initialState = user
   ? { status: { loggedIn: true }, user }
   : { status: { loggedIn: false }, user: null };
-console.log(initialState);
+
 export const useAuthStore = defineStore("auth", {
   state: () => {
     return initialState;
