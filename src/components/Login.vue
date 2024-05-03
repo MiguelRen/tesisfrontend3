@@ -57,6 +57,7 @@
   
 <script>
 import { useAuthStore } from "../store";
+import {useSessionStore} from "../store"
 import { Form, Field, ErrorMessage } from "vee-validate";
 import * as yup from "yup";
 
@@ -79,28 +80,13 @@ export default {
       succesfull: false,
       message: "",
       schema,
-      auth: useAuthStore()
+      auth: useAuthStore(),
+      session: useSessionStore(),
 
     };
   },
 
-  // computed: {
-  //   loggedIn() {
-  //     const auth = useAuthStore();
 
-  //     return auth.status.loggedIn;
-  //   },
-  // }
-  // ,
-  beforeCreate() {
-    document.body.className = 'login';
-  },
-  // created() {
-  //   if (this.loggedIn) {
-  //     this.$router.push("/profile");
-  //   }
-  // }
-  // ,
   methods: {
     showPassword(){
       const type = document.getElementById('theField').type; 
@@ -118,6 +104,10 @@ export default {
     handleLogin(user) {
 
       this.loading = true;
+      this.session.login(user)
+        .then((resolve)=>{
+          console.log(resolve)
+        });
       this.auth.login(user)
         .then((resolve) => {   
           

@@ -33,14 +33,12 @@ class UserService {
   async getUser(currentUser){
     try {
 
-      console.log(currentUser);
       const apiResponse = await axios.post( API_URL+ "user",
       {
         username:currentUser,
       }
       );
-      console.log("inside getuser");
-      console.log(apiResponse); 
+     
       return apiResponse.data;
     } catch (error) {
       console.log("getUser services ERROR\n", error.message);

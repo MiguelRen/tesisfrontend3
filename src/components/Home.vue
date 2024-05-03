@@ -55,6 +55,12 @@ import EmployeesView from "../components/sidebarComponents/EmployeesView.vue";
 import { get } from "lodash";
 import { boolean } from "yup";
 import { usePeriodStore } from "../store";
+import { useSessionStore } from "../store";
+//for watch
+import { useAuthStore } from "../store";
+import {watch} from "vue";
+
+
 
 export default {
   name: "Home",
@@ -74,15 +80,27 @@ export default {
     Grades,
     Academics,
     Profile,
+    //pinia,
   },
   data() {
+   
     return {
       content: "",
       period: usePeriodStore(),
+     
       // period : academicPeriods
     };
   },
   setup() {
+    const session = useSessionStore();
+   
+   
+    const store = useAuthStore();
+
+    
+    
+
+
     let componentName = ref("Dashboard");
 
     const eventFromSidebar = (tagName) => {
@@ -92,30 +110,24 @@ export default {
       
       componentName.value = tagName;
     };
-    // console.log(componentName);
+ 
     return {
       eventFromSidebar,
       eventFromNavbar,
       componentName,
-    };
+    };  
   },
-  //  computed:{
 
-  //  },
+ 
   methods: {
-    //  async getPeriod(){
-    //    const result = await periodServices.findPeriod();
-    //    console.log(result);
-    //    return result;
-    //  }
+    
   },
   created() {
+   
     if (!localStorage.getItem("user")) {
       this.$router.push("/login");
     }
-    // else if(!this.getPeriod()){
-    //   console.log("theres is a problem");
-    // }
+  
   },
 
   mounted() {
@@ -123,22 +135,7 @@ export default {
   },
 };
 
-//   UserService.getPublicContent().then(
-//     (response) => {
 
-//       this.content = response.data;
-//     },
-//     (error) => {
-
-//       this.content =
-//         (error.response &&
-//           error.response.data &&
-//           error.response.data.message) ||
-//         error.message ||
-//         error.toString();
-//     }
-//   );
-// },
 </script>
 
 <style scoped>

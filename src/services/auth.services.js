@@ -7,22 +7,16 @@ class AuthService {
  async login(user) {
    try {
   
-    const result = await axios.post(API_URL + "signin", user);
-     
-     const data = result.data;
-    //  console.log(data);
+    const result = await axios.post(API_URL + "signin", user); 
+    const data = result.data;
    
-    //  console.log(data);
      if (data.accessToken) {
        localStorage.setItem("user", JSON.stringify(data));
-      //  console.log(
-      //   'im in the auth services     '+
-      //     localStorage.getItem("user")
-      //  );
-       
+       console.log(JSON.stringify(data));    
       }
       
-      return new Promise(resolve => resolve(data));
+      return data;
+      // return new Promise(resolve => resolve(data));
     
     } catch (error) {
       console.log(error);
