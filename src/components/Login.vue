@@ -15,7 +15,7 @@
         <div class=" col-sm  h-75 card card-container w-75 p-0 opa bg-opacity-50  ">
 
           <Form @submit="handleLogin" :validation-schema="schema" class=" container-fluid px-4 text-center mt-2 ">
-            <div class="from-row mt-4 ">
+            <div class="form-row mt-4 ">
               <label for="username" class="h5">Usuario</label>
               <Field name="username" type="text" class="form-control opa mt-2-sm" />
               <ErrorMessage name="username" class="error-feedback  m-0 p-0 text-danger" />

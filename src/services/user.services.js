@@ -44,5 +44,24 @@ class UserService {
       console.log("getUser services ERROR\n", error.message);
     }
   }
+
+  async updateUsername(lastUsername,newUsername){
+    try {
+      const apiResponse = await axios.patch( API_URL+ "userupdate",{
+        lastUserName : lastUsername,
+        newUserName : newUsername,
+
+      });
+     if (apiResponse.status === 200 ) {
+        return "Actualizado Correctamente"
+     } else {
+      console.log(apiResponse.status);
+        return "Problemas para actualizar"    
+     }
+     
+    } catch (error) {
+      console.log("updateUser services ERROR\n", error.message);
+    }
+  }
 }
 export default new UserService();
