@@ -5,8 +5,8 @@
 
 <div class="col bg-secondary">
     <h1 class="m-0 p-0">Personal Agregado</h1>
-    <ul>
-        <li v-for="(item,index) in allEmployee">
+    <ul class="list-group list-group-light">
+        <li v-for="(item,index) in allEmployee" class="list-group-item d-flex justify-content-between align-items-center fw-bold">
             {{ index + 1 }} - {{item.emp_employeeid}} 
             - {{ item.emp_employee1name}} - {{ item.emp_employee2name }} 
             - {{ item.emp_employee1lastname }} - {{ item.emp_employee2lastname }}

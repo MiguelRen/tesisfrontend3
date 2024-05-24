@@ -30,9 +30,9 @@
             <div class="row h-100 w-100 p-0 m-0">
 
                 <div class="col bg-secondary">
-                    <h1 class="m-0 p-0">Estudiantes</h1>
-                    <ul>
-                        <li v-for="(item,index) in allStudents">
+                    <h1 class="m-0 p-0 text-center">Estudiantes</h1>
+                    <ul class="list-group list-group-light">
+                        <li v-for="(item,index) in allStudents" class="list-group-item d-flex justify-content-between align-items-center fw-bold">
                             {{ index + 1 }} - {{item.stu_studenid}} 
                             - {{ item.stu_student1name}} - {{ item.stu_student2name }} 
                             - {{ item.stu_student1lastname }} - {{ item.stu_student2lastname }}

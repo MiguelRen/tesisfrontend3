@@ -56,7 +56,7 @@
           </form>
       
           <!--Exit -->
-          <a style="cursor: pointer" class=" col-2 btn btn-outline-dark  d-none d-md-block p-1" @click.prevent="logOut">
+          <a style="cursor: pointer" class=" col-2 btn btn-outline-light  d-none d-md-block p-1" @click.prevent="logOut">
             Salir
             <!-- <font-awesome-icon icon="sign-out-alt" />  -->
           </a>
