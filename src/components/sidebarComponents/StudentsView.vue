@@ -1,5 +1,7 @@
             <script>
               import studentServices from '../../services/student.services';
+              import {Form,ErrorMessage,Field} from "vee-validate"
+import { validate } from 'vee-validate';
               export default{
                   data(){
                       
@@ -7,6 +9,12 @@
                           students: studentServices,
                           allStudents: "",
                         }
+                    },
+                    components:{
+                        Form,
+                        ErrorMessage,
+                        Field,
+                        
                     },
                     
                     mounted(){
@@ -31,6 +39,12 @@
 
                 <div class="col bg-secondary">
                     <h1 class="m-0 p-0 text-center">Estudiantes</h1>
+                    <div>
+                        <Form>
+                            <label for="studentSearch"> Buscar</label>
+                            <Field name="studentSearch"/>
+                        </Form>
+                    </div>
                     <ul class="list-group list-group-light">
                         <li v-for="(item,index) in allStudents" class="list-group-item d-flex justify-content-between align-items-center fw-bold">
                             {{ index + 1 }} - {{item.stu_studenid}} 

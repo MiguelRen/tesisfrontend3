@@ -1,4 +1,4 @@
-<template>
+<template >
   <div role="navbar" class="row  navbar navbar-expand-md navbar-dark principal-color gradient-custom  text-center px-4 m-0  h-100 ">
    
     <!-- Brand-->
@@ -243,10 +243,5 @@ export default {
 }
 
 
-/* * {
-  outline: 1px solid blue;
-} */
-/* .col2{
-    justify-content:end;
-  } */
+
 </style>

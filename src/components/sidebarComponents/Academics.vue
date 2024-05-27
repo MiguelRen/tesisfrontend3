@@ -6,10 +6,15 @@
 
 <!--Periods-->
 <div class="row  p-0 m-0 w-100">
-  <h3>Periodos</h3>
+  <h3 class="greyColor">Periodos</h3>
   
   <div class="col  form-group w-100">
             <h3>Creados </h3>
+            
+            <div class="d-flex justify-content-around">
+              <h5>Inicio</h5> <h5>Fin</h5>  
+            </div>
+            
             <ul class="list-group list-group-dark">
                <li v-for="(item,index) in allPeriodsObject" class="list-group-item d-flex justify-content-between align-items-center">
                  <strong>{{ index + 1 }} - {{ item.peryearstart}} - {{ item.peryearend}}</strong>
@@ -48,11 +53,16 @@
 
         
 
-      <div class="col p-0 bg-light border rounded d-inline-flex " >
+      <div class="col p-0 bg-light border rounded  " >
        <h3>
          Actualizar datos
        </h3>
-
+       <div>
+        <Form>
+          <label for="updatePeriod">periodo</label>
+          <Field name="updatePediod"/>
+        </Form>
+       </div>
       </div>
 
 
@@ -69,7 +79,7 @@
 
     <div id="coursesSection" class="row  h-100 p-0 m-0 w-100">
       
-      <h2>
+      <h2 class="greyColor">
               Materias
       </h2>
 
@@ -157,7 +167,7 @@
 <!--Sections-->
 
     <div class="row  p-0 m-0 w-100">
-            <h2>
+            <h2 class="greyColor">
               Secciones
             </h2>
     
@@ -291,6 +301,9 @@ export default {
 <style scoped>
 .butom {
   background-color: #adb5bd;
+}
+.greyColor{
+background-color: rgb(233, 229, 236);;
 }
 *{
   outline: 1px solid rgb(233, 229, 236);

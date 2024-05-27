@@ -1,18 +1,18 @@
 <template>
-  <div class=" container-fluid  p-0 m-0 vh-100 w-100
+  <div class=" container-fluid  p-0 m-0 vh-100 w-100 
   ">
-    <div class="row m-0 p-0   viewportHeight20" >
+    <div class="row m-0 p-0   viewportHeight20 fixed-top" >
       <div class="col-12  m-0 p-0   w-100 ">
-        <Navbar @componentChange="eventFromNavbar"></Navbar>
+        <Navbar @componentChange="eventFromNavbar" ></Navbar>
       </div>
     </div>
 
-    <div class="row  m-0 p-0 position-relative viewportHeight80">
-      <div class=" col-md-2  col-sm-3 col-5   p-0 m-0   positioning h-100  z-1">
+    <div class="row  mr-0 ml-0 mb-0 p-0 position-relative viewportHeight80 stickySidebar marginTop ">
+      <div class=" col-md-2  col-sm-3 col-5    p-0 m-0   positioning h-100 sticky marginTop ">
         <Sidebar @componentChange="eventFromSidebar"></Sidebar>
       </div>
 
-      <div class=" col-md-10  col-sm-9 p-0 m-0  positioning h-100 ">
+      <div class="  col-md-10  col-sm-9 ms-md-auto p-0 m-0   positioning h-100 ">
         <keep-alive class="container-fluid h-100 w-100 m-0 p-0">
           <div >
             <component :is="componentName"></component>
@@ -39,7 +39,7 @@ import Classes from "./sidebarComponents/Classes.vue";
 import Documents from "./sidebarComponents/Documents.vue";
 import StudentsAdd from "./sidebarComponents/StudentsAdd.vue";
 import StudentsView from "./sidebarComponents/StudentsView.vue";
-import EmployeesAdd from "./sidebarComponents/EmployeesAdd.vue";  
+import EmployeesAdd from "./sidebarComponents/EmployeesAdd.vue";
 import AttendancesView from "./sidebarComponents/AttendancesView.vue";
 import AttendancesAdd from "./sidebarComponents/AttendancesAdd.vue";
 import Calendar from "./sidebarComponents/Calendar.vue";
@@ -83,22 +83,22 @@ export default {
     //pinia,
   },
   data() {
-   
+
     return {
       content: "",
       period: usePeriodStore(),
-     
+
       // period : academicPeriods
     };
   },
   setup() {
     const session = useSessionStore();
-   
-   
+
+
     const store = useAuthStore();
 
-    
-    
+
+
 
 
     let componentName = ref("Dashboard");
@@ -107,27 +107,27 @@ export default {
       componentName.value = tagName;
     };
     const eventFromNavbar = (tagName) => {
-      
+
       componentName.value = tagName;
     };
- 
+
     return {
       eventFromSidebar,
       eventFromNavbar,
       componentName,
-    };  
+    };
   },
 
- 
+
   methods: {
-    
+
   },
   created() {
-   
+
     if (!localStorage.getItem("user")) {
       this.$router.push("/login");
     }
-  
+
   },
 
   mounted() {
@@ -147,6 +147,16 @@ export default {
   height: 80vh;
 }
 
+.marginTop{
+  margin-top: 20vh;
+}
+.sticky{
+  position: fixed;
+  top: 20vh;
+  z-index:2;
+  clear: both;
+} 
+
 @media (max-width:576px){
   .positioning{
     position: absolute;
@@ -160,10 +170,5 @@ export default {
 }
 
 
- /** {
-  border : 1px solid red;
-  }
-  */
- 
 
 </style>./sidebarComponents/AttendancesView.vue
