@@ -62,6 +62,7 @@
 import { Form, Field, ErrorMessage } from "vee-validate";
 import { useAuthStore } from "../store";
 import * as yup from "yup";
+import UserService from "../services/user.services.js"
 
 export default {
   name: "Register",
@@ -94,39 +95,23 @@ export default {
       loading: false,
       message: "",
       schema,
-      auth: useAuthStore()
+   
     };
   },
-  // computed: {
-  //     loggedIn() {
-  //       const auth = useAuthStore();
 
-  //       return auth.status.loggedIn;
-  //     },
-  // },
-  // mounted() {
-
-  //   if (this.loggedIn) {
-  //     this.$router.push("/profile");
-  //   }
-  // },
   methods: {
     async handleRegister(user) {
-
-
-
-
 
       try {
 
         this.message = "";
         this.successful = false;
         this.loading = true;
+        console.log(user);
 
-        const result = await this.auth.register(user)
-
-
-        this.message = result.message;
+        const result = await UserService.register(user);
+        
+        this.message = result;
         this.successful = true;
         this.loading = false;
         setTimeout(() => {
@@ -161,7 +146,7 @@ export default {
   padding: 0;
   position: absolute;
   object-fit: cover;
-  background-image: url(../assets/fondo.jpg);
+  background-image: url(../assets/keyboardBackground.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 0 0;

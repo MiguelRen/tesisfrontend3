@@ -1,4 +1,4 @@
-<template>
+<template >
   <div role="navbar" class="row  navbar navbar-expand-md navbar-dark principal-color gradient-custom  text-center px-4 m-0  h-100 ">
    
     <!-- Brand-->
@@ -20,15 +20,21 @@
      </div>
    
         <!--User and Role-->
-    <div class="col-md-2  text-center d-none d-md-block align-items-center p-1 " >
+    <div class="col-md-2  text-center d-none d-md-block align-items-center p-1  text-white " >
       <h3 class=" text-center m-0 p-0">
-         
+          
           
             {{ currentUser }}
          
         </h3>
         <div class="text-center m-0 p-0 ">
         {{ currentRole }}
+      </div>
+
+      <div>
+        <a  href="#!" >
+          <img @click="clickedTag" id="Profile" src="../assets/gear-fill.svg">
+        </a>
       </div>
     </div>
 
@@ -50,7 +56,7 @@
           </form>
       
           <!--Exit -->
-          <a style="cursor: pointer" class=" col-2 btn btn-outline-dark  d-none d-md-block p-1" @click.prevent="logOut">
+          <a style="cursor: pointer" class=" col-2 btn btn-outline-light  d-none d-md-block p-1" @click.prevent="logOut">
             Salir
             <!-- <font-awesome-icon icon="sign-out-alt" />  -->
           </a>
@@ -68,20 +74,42 @@ import { date } from "yup";
 import { ref, reactive, watch, onMounted } from "vue";
 // import { storeToRefs } from "pinia";
 
-export default {
-  data() {
-    
-    const period = usePeriodStore();
-    const auth = useAuthStore();
+import Profile from "./navbarComponents/Profile.vue"
 
-    return {
-     
+export default {
+  
+  emits: ["componentChange"],
+
+  data() {
+  
+  const period = usePeriodStore();
+  const auth = useAuthStore();
+  return{
       auth,
       period,
+  }
+  },
+
+  setup(props, { emit }) {
+    
+
+
+    const tagName = ref("");
+    const clickedTag = (event) => {
+
+      tagName.value = event.target.id;
+
+      emit('componentChange', tagName.value);
+    }
+    
+    return {
+     
+     
+      clickedTag,
+      tagName,
       // quarter,
     };
   },
-
  computed: {
     todayDateFunction() {
       const today = new Date();
@@ -134,13 +162,13 @@ export default {
       const stringUser = localStorage.getItem("user");
       // console.log(stringUser);
       const jsonUser = JSON.parse(stringUser);
-// console.log(jsonUser);
+           
       const user = jsonUser.username;
       const firstLetterCap = user.charAt(0).toUpperCase();
       const remindLetters = user.slice(1);
       
 
-// console.log(user);
+
 
       return firstLetterCap+remindLetters;
       // return user.replace(/["]+/g,'');
@@ -209,15 +237,11 @@ export default {
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   background: linear-gradient(
     to right,
-    rgba(46, 45, 47, 0.902),
-    rgba(186, 190, 197, 0.9)
+    #0e3c62,  #1F6EAF
   );
+
 }
 
-/* * {
-  outline: 1px solid blue;
-} */
-/* .col2{
-    justify-content:end;
-  } */
+
+
 </style>

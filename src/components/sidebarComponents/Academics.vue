@@ -1,19 +1,50 @@
 <template>
-  <div class="container-fluid h-100 w-100  m-0 p-0">
-    <h1>Configuraciones Académicas</h1>
-    <!-- <div>{{ periodStore.yearStart }} -- {{ periodStore.yearEnd }}</div> -->
+  <div class="container-fluid h-100 w-100 m-0 p-0">
+    <h1 class="text-center">Configuraciones Académicas</h1>
 
-    <div class="row  h-100 p-0 m-0 w-100">
-      <div
-        class="col    p-0 bg-light border rounded d-inline-flex  w-100"
-      >
+    <!--Periods-->
+    <div class="row p-0 m-0 w-100">
+      <h3 class="greyColor">Periodos</h3>
+
+      <div class="col form-group w-100">
+        <h3>Creados</h3>
+
+        <div class="d-flex justify-content-around">
+          <h5>Inicio</h5>
+          <h5>Fin</h5>
+        </div>
+
+        <ul class="list-group list-group-dark overflowHidden">
+          <li
+            v-for="(item, index) in allPeriodsObject"
+            class="list-group-item d-flex justify-content-between align-items-center justify-content-around btn "
+            id="liPeriodValue"
+            :class="isCurrentDate(item.peryearstart, item.peryearend).className"
+            @click="periodItemClicked(event, item, index);"
+          >
+            <strong>{{ index + 1 }}</strong>
+            <strong>{{ item.peryearstart }}</strong>
+            <strong>{{ item.peryearend }}</strong>
+          </li>
+        </ul>
+        >
+        <div
+          v-if="message"
+          class="alert b-4 w-100"
+          :class="succesfull ? 'alert-success' : 'alert-danger'"
+          role="alert"
+        >
+          {{ message }}
+        </div>
+      </div>
+
+      <div class="col p-0 bg-light border rounded d-inline-flex w-100">
         <Form
           class="m-3 text-center m-0 p-0"
           @submit="handleCreatePeriod"
-          
           :validation-schema="periodSchema"
         >
-          <h2 clsas="m-0 ">Nuevo año Escolar</h2>
+          <h3 clsas="m-0 ">Nuevo Periodo Escolar</h3>
           <div class="form-group row m-4 py-3">
             <label for="dateStart" class="py-2">Fecha Inicio</label>
             <Field name="dateStart" type="date" class="" />
@@ -21,117 +52,162 @@
             <label for="dateEnd" class="py-2">Fecha fin </label>
             <Field name="dateEnd" type="date" />
             <ErrorMessage name="dateEnd" class="error-feedback" />
-            <!-- 
-                                    <label for="">1er Trimestre</label>
-                                    <label for="trim1Ini"> Inicio </label>
-                                    <Field name="trim1Ini" type="date" />
-                                    <ErrorMessage name="trim1Ini" class="error-feedback" />
 
-                                    <label for="trim1End">Fin</label>
-                                    <Field name="trim1End" type="date" />
-                                    <ErrorMessage name="1er Trimestre" class="error-feedback" />
-
-
-                                    <label for="">2do Trimestre</label>
-                                    <label for="trim2Ini">Inicio</label>
-                                    <Field name="trim2Ini" type="date" />
-                                    <ErrorMessage name="trim2Ini" class="error-feedback" />
-                                    <label for="trim2End">Fin</label>
-                                    <Field name="trim2End" type="date" />
-                                    <ErrorMessage name="trim2End" class="error-feedback" />
-
-                                    <label for="">3er Trimestre</label>
-                                    <label for="trim3Ini">Inicio</label>
-                                    <Field name="trim3Ini" type="date" />
-                                    <ErrorMessage name="trim3Ini" class="error-feedback" />
-                                    <label for="trim3End">Fin</label>
-                                    <Field name="trim3End" type="date" />
-                                    <ErrorMessage name="trim3End" class="error-feedback" /> -->
-          </div>
-
-          <button class="btn butom btn-block">Crear</button>
-          <!-- <label>Periodo 2000-2001</label>
-                                <label for="">Periodos resgistrados</label> -->
-          <div class="form-group w-100">
-            <div
-              v-if="message"
-              class="alert b-4 w-100"
-              :class="succesfull ? 'alert-success' : 'alert-danger'"
-              role="alert"
-            >
-              {{ message }}
-            </div>
+            <button class="btn butom btn-block">Crear</button>
           </div>
         </Form>
       </div>
-      <div
-        class="col p-0 bg-light border rounded d-inline-flex "
-      >
-      <ul>
-        <li v-for="(item,index) in allPeriodsObject">
-          <strong>{{ index + 1 }} - {{ item.peryearstart}} - {{ item.peryearend}}</strong>
-        </li>
-      </ul>>
 
+      <div class="col p-0 bg-light border rounded">
+        <h3>Actualizar datos</h3>
+        <div>
+          <Form>
+            
+            <div class="row">
+              <h5 class="col-12">Indice {{ updateIndexData }}</h5>
+  
+              <label for="updatePeriod" class="col-12">Inicio de Periodo</label>
+              <Field name="updatePediod" v-model="updatePeriodDataStart" class="col-12"/>
+              
+              <label for="startPeriod" class="col-12">Fin de Periodo</label>
+              <Field name="startPeriod" v-model="updatePeriodDataEnd" class="col-12"/>
+              
+            </div>
+
+            <div class="row d-inline justify-content-between">
+              <button type="button" class="btn butom btn-primary">Actualizar</button>
+              <button type="button" class="btn butom btn-primary">Eliminar</button>
+
+            </div>
+            
+          </Form>
+        </div>
       </div>
-
-      <!-- 
-                        <div class="col-sm-12 col-md-6 col-lg-4 m-0 p-0 bg-light border rounded d-flex flex-direction-column">
-                            <Form @submit="handleCreateQuarter" :validation-schema="quarterSchema">
-                            <h2>Crear Nuevo Trimestre</h2>
-                                <div class="form-group">
-
-                                    <label for="quarterPeriod">Período </label>
-                                    <Field name="quarterPeriod" type="number" />
-                                    <ErrorMessage name="quarterPeriod" class="error-feedback" />
-                                    <label for="trimIni"> Inicio </label>
-                                    <Field name="trimIni" type="date" />
-                                    <ErrorMessage name="trim1Ini" class="error-feedback" />
-
-                                    <label for="trimEnd">Fin</label>
-                                    <Field name="trimEnd" type="date" />
-                                    <ErrorMessage name="Trimestre" class="error-feedback" />
-
-                                </div>
-
-
-                                <button class="btn btn-primary btn-block">Crear</button>
-                                <label>Periodo 2000-2001</label>
-                                <label for="">Periodos resgistrados</label>
-                            </Form>
-                        </div> -->
-
-      <!-- <div class="col-sm-12 col-md-6 col-lg-4 m-0 p-0 bg-light border rounded">
-                            <Form @submit="handleCreateCourse" :validation-schema="courseSchema">
-                                <div class="form-group">
-                                    <h1>Creación de Materia</h1>
-                                    <label for="courseName">Nombre de la Materia</label>
-                                    <Field name="courseName" type="text" />
-                                    <ErrorMessage name="courseName" class="error-feedback" />
-                                    <button class="btn btn-primary btn-block"> Crear</button>
-                                </div>
-                            </Form>
-                        </div> -->
     </div>
 
-    <!-- <div class="row m-0 h-100">
-                        <div class="col-sm-12 col-md-6 col-lg-4 m-0 p-0 bg-light border rounded">
-                            <Form @submit="handleCreateSection" :validation-schema="sectionSchema">
-                                <div class="form-group">
-                                    <h1>Creación de Secciones</h1>
-                                    <label for="sectionName">Nombre de la Sección</label>
-                                    <Field name="sectionName" type="text" />
-                                    <ErrorMessage name="sectionName" class="error-feedback" />
-                                    <label for="courseFrom">Materia a la que pertence</label>
-                                    <Field name="courseFrom" type="text" />
-                                    <ErrorMessage name="courseFrom" class="error-feedback" />
-                                    <button class="btn btn-primary btn-block"> Crear</button>
-                                </div>
-                            </Form>
-                        </div>
-                    </div> -->
+    <!--Courses-->
+
+    <div id="coursesSection" class="row h-100 p-0 m-0 w-100">
+      <h2 class="greyColor d-inline">Materias</h2>
+
+      <div id="createCourse" class="col">
+        <h3>Crear materias</h3>
+        <Form class="">
+          <div class="col-2">
+            <label for="coursePeriod">periodo</label>
+            <Field name="coursePeriod" />
+            <ErrorMessage name="coursePeriod"></ErrorMessage>
+          </div>
+
+          <div class="col-2">
+            <label for="courseName">Nombre</label>
+            <Field name="courseName" type="text" />
+            <ErrorMassage name="courseName"></ErrorMassage>
+          </div>
+
+          <div class="col-2">
+            <label for="courseType">Tipo</label>
+            <Field name="courseType" />
+            <ErrorMessage name="courseType"></ErrorMessage>
+          </div>
+
+          <div class="col-2">
+            <label for="courseReq">Pre-requisito</label>
+            <Field name="courseReq" />
+            <ErrorMessage name="courseReq"></ErrorMessage>
+          </div>
+
+          <div class="col-2">
+            <label for="courseSchedule">horario</label>
+            <Field name="courseType" />
+            <ErrorMessage name="courseType"></ErrorMessage>
+          </div>
+
+          <Button class="btn btn-primary"> Crear Materia</Button>
+        </Form>
+      </div>
+
+      <div id="searchCourse" class="col">
+        <div class="col-2">
+          <h3>Buscador</h3>
+          <Form>
+            <label for="">Periodo</label>
+            <Field name="" />
+
+            <label for="">Materia</label>
+            <Field name="" />
+          </Form>
+
+          <textarea   placeholder="materias del periodo aquí">
+            
+          </textarea>
+        </div>
+      </div>
+
+      <div id="updateCourse" class="col">
+        <div class="col-2">
+          <h3>Actualizar</h3>
+          <Form>
+            <label for="periodSearch">Periodo</label>
+            <Field name="periodSearch" />
+
+            <label for="periodSearch">Materia</label>
+            <Field name="periodSearch" />
+          </Form>
+          <p style="color: red">
+     
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!--Sections-->
+
+    <div class="row p-0 m-0 w-100">
+      <h2 class="greyColor">Secciones</h2>
+
+      <div class="col">
+        <Form>
+          <h4>Crear</h4>
+          <label for="creationSection"> Periodo</label>
+          <Field name="creationSection" />
+
+          <label for="creationSection"> Materia</label>
+          <Field name="creationSection" />
+
+          <label for="creationSection"> Sección</label>
+          <Field name="creationSection" />
+        </Form>
+      </div>
+
+      <div class="col">
+        <h3>Registradas</h3>
+        <textarea name="" id="" cols="30" rows="10">
+                gestionar secciones
+              </textarea
+        >
+      </div>
+
+      <div class="col">
+        <h3>Actualizar secciones</h3>
+        
+        <Form>
+          <label for="updateSection">Perido</label>
+        <Field name="updateSection" />
+
+        <label for="updateSection">Materia</label>
+        <Field name="updateSection" />
+
+        <label for="updateSection">Sección</label>
+        <Field name="updateSection" />
+        <button class="btn butom btn-primary">Actualizar</button>
+                <button class="btn butom btn-primary">Eliminar</button>
+        </Form>
+      </div>
+    </div>
   </div>
 </template>
+
 <script>
 import { Form, Field, ErrorMessage } from "vee-validate";
 import academicPeriods from "../../services/period.services.js";
@@ -141,6 +217,9 @@ import sectionService from "../../services/section.services.js";
 // import quarterService from "../../services/quarter.services.js";
 import periodServices from "../../services/period.services.js";
 import { usePeriodStore } from "../../store/periodStore";
+// components
+// import CourseDropdown from '../academicComponents/CourseDropdown.vue'
+import {ref} from "vue"
 
 export default {
   name: "Academics",
@@ -148,7 +227,9 @@ export default {
     Form,
     Field,
     ErrorMessage,
+    // CourseDropdown,
   },
+
   data() {
     const periodSchema = yup.object().shape({
       dateStart: yup.date().required("Es necesario indicar la fecha de Inicio"),
@@ -166,6 +247,10 @@ export default {
         ),
     });
 
+    // const yearStartRef =ref("");
+    // const yearEndRef =ref("");
+
+
 
     return {
       period: periodServices,
@@ -179,25 +264,56 @@ export default {
       periodList: "",
       allPeriodsObject : "",
       periodStore : usePeriodStore(),
-  
+      yearStartRef : "",
+      yearEndRef : "",
+
+      updatePeriodDataStart: "",
+      updatePeriodDataEnd: "",
+      updateIndexData:"",
     };
   },
    mounted(){
 
      this.getAllPeriods();
      this.periodStore.updateCurrent();
-    
+
+
+
   },
 
   methods: {
-    
+  
+    periodItemClicked(event, item, index){
+      this.updatePeriodDataStart = item.peryearstart;
+      this.updatePeriodDataEnd = item.peryearend;
+      console.log(item.peryearstart);
+       console.log(item.peryearend);
+       console.log(index);
+       this.updateIndexData = index + 1;
+  },
+
     async getAllPeriods(){
 
       this.allPeriodsObject = await this.period.findAllPeriod();
       // console.log(this.allPeriodsObject);
-    
+    },
 
-    }
+      isCurrentDate(startDate,endDate){
+        const currentDate = new Date();
+        
+        const periodStartDate = new Date(startDate);
+  
+        const periodEndDate = new Date(endDate);
+        const isActive = currentDate >= periodStartDate && currentDate <= periodEndDate;
+        const className =  isActive ? 'active' : "";
+       
+        return {
+          isActive,
+          className,
+
+        }
+      }
+
     ,
     async handleCreatePeriod(userPeriodData) {
  //  console.log(userPeriodData);
@@ -225,13 +341,25 @@ export default {
       const result = this.section.createSection(data);
     },
   },
-};
+}
+
 </script>
 <style scoped>
 .butom {
   background-color: #adb5bd;
 }
-*{
+.greyColor {
+  background-color: rgb(233, 229, 236);
+}
+
+.overflowHidden {
+  height: 15em;
+  line-height: 1em;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+* {
   outline: 1px solid rgb(233, 229, 236);
 }
 </style>
