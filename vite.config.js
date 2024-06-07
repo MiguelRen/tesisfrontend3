@@ -4,9 +4,9 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   
   plugins: [vue()],
-<<<<<<< HEAD
+// <<<<<<< HEAD
   base:'/tesisfrontend3/',  
-=======
+// =======
   // build:{
   //   rollupOptions:{
   //     output:{
@@ -16,6 +16,6 @@ export default defineConfig({
   //     }
     // }
   // }
->>>>>>> main
+// >>>>>>> main
  
 })
