@@ -66,8 +66,24 @@
                 @click="clickedTag">Calendario</a>
               <!-- <a class="list-group-item list-group-item-action text-light p-2" href="#!" id="Pensum"
                 @click="clickedTag">Pensum</a> -->
-              <a class="list-group-item list-group-item-action  p-2" href="#!" id="Grades"
-                @click="clickedTag">Asistencias y Notas</a>
+              <a class="list-group-item list-group-item-action  p-2" href="#!" id="Attendances"
+                @click="clickedTag">
+                <Dropdown>
+                  Asistencias
+                  <template slot="toggler">
+                    <button>Toggler</button>
+                  </template>
+
+                  <DropdownContent>
+                    <ul>
+                      <li> <a href="#!" class="text-decoration-none" id="AttendancesView" @click="clickedTag">Ver Asistencias</a> </li>
+                      <li> <a href="#!" class="text-decoration-none" id="AttendancesAdd" @click="clickedTag">Gestionar Asistencias</a> </li>
+                    </ul>
+                  </DropdownContent>
+                </Dropdown>
+              </a>
+                <a class="list-group-item list-group-item-action  p-2" href="#!" id="Grades"
+                @click="clickedTag">Notas</a>
               <a class="list-group-item list-group-item-action  p-2" href="#!" id="Curses"
                 @click="clickedTag">Cursos</a>
             </template>
@@ -112,6 +128,7 @@
     </div>
   </nav>
 </template>
+
 <script>
 import { useQuarterStore } from '../store';
 import { onMounted, ref } from 'vue';

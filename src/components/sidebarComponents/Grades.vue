@@ -1,8 +1,8 @@
 <template>
     <div class="container-fluid p-0 m-0">
         <div class="row p-0 m-0">
-            <div class="col rounded bg-light p-0">
-                <h1>Ingreso de Notas</h1>
+            <div class="col rounded bg-light p-0 ">
+                <h1>Notas</h1>
                 <div class="form-group p-0">
                     <Form @submit="handleInsertGrade" :validation-schema="gradeSchema" class="p-0">
                         <label for="courseGrade">Materia</label>
