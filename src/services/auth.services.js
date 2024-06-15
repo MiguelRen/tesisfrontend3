@@ -1,9 +1,8 @@
 import axios from "axios";
 
-// <<<<<<< HEAD
+import {apiUrl} from "../api/apiUrl"
 
-// const API_URL = "http://localhost:4500/api/auth/";
-const API_URL = "https://tesisbackend3.onrender.com/api/auth/";
+const API_URL = apiUrl + "/api/auth/";
 // =======
 // const API_URL = "http://localhost:4500/api/auth/";
 

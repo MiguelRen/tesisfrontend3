@@ -1,4 +1,4 @@
-import {apiUrl} from apiUrl
+import {apiUrl} from "../api/apiUrl"
 console.log(apiUrl);
 export default function authHeader() {
 
@@ -11,4 +11,4 @@ export default function authHeader() {
       
       return {};
     }
-  }
+  } 
