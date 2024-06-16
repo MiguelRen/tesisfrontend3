@@ -1,14 +1,10 @@
 import axios from 'axios';
 import authHeader from './auth-header';
+import {apiUrl} from "../api/apiUrl"
 
-// <<<<<<< HEAD
-// const API_URL = 'http://localhost:4500/api/users/';
-const API_URL = "https://despliegue-backend-tesis.onrender.com/api/user/";
-// https://despliegue-backend-tesis.onrender.com
-// =======
 
-// const API_URL = 'http://localhost:4500/api/user/';
-// >>>>>>> main
+const API_URL = apiUrl + "/api/user/";
+
 class UserService {
   async register(user) {
     try {
