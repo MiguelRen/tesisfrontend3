@@ -5,7 +5,8 @@ export default defineConfig({
   
   plugins: [vue()],
 // <<<<<<< HEAD
-  base:'/tesisfrontend3/',  
+  // base:'/tesisfrontend3/',
+  base:'',  
 // =======
   // build:{
   //   rollupOptions:{

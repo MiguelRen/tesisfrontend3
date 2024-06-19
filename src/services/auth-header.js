@@ -1,5 +1,5 @@
-import {apiUrl} from "../api/apiUrl"
-console.log(apiUrl);
+
+
 export default function authHeader() {
 
     var user = JSON.parse(localStorage.getItem(user));

@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar  navbar-expand-sm   m-0 p-0   position-relative ">
+  <nav class="navbar  navbar-expand-sm   m-0 p-0  position-relative  ">
     <button class="navbar-toggler nav-link relative border-light mx-1 " type="button" data-bs-toggle="collapse" data-bs-target="#opciones"
       name="button">
       <span class="navbar-toggler-icon " >
