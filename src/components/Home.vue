@@ -12,7 +12,7 @@
         <Sidebar @componentChange="eventFromSidebar"></Sidebar>
       </div>
 
-      <div class="  col-md-10  col-sm-9 ms-md-auto p-0 m-0   positioning h-100 ">
+      <div class="  col-md-10  col-sm-9 col-7  ms-md-auto p-0 m-0   positioning h-100 ">
         <keep-alive class="container-fluid h-100 w-100 m-0 p-0 zdown">
           <div >
             <component :is="componentName"></component>

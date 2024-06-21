@@ -3,7 +3,10 @@ import authHeader from './auth-header';
 import {apiUrl} from "../api/apiUrl"
 
 
-const API_URL = apiUrl + "/api/user/";
+const API_URL = apiUrl + "api/user/";
+// const API_URL = "http://localhost:4500/api/student/api/user/";
+
+
 
 class UserService {
   async register(user) {

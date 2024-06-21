@@ -2,7 +2,7 @@ import axios from "axios";
 
 import {apiUrl} from "../api/apiUrl"
 
-const API_URL = apiUrl + "/api/auth/";
+const API_URL = apiUrl + "api/auth/";
 // =======
 // const API_URL = "http://localhost:4500/api/auth/";
 

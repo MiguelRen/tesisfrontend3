@@ -1,8 +1,8 @@
 <template >
  
       <div class="row m-0 p-0 container-fluid  heightData15 w-100">
-        <div class="col m-0 p-0 h-100 w-100 m-3">
-          <div class="row p-0 m-0 h-50 w-100 m-1">
+        <div class="col m-0 p-0 h-100  m-0">
+          <div class="row p-0 m-0 h-50  m-0 ">
             <div
               class=" col-4 border gray500  rounded-pill text-center text-white "
             >
@@ -36,7 +36,7 @@
         </div>
       </div>
 
-      <div class="row container-fluid  m-0 p-4 heightData85  ">
+      <div class="row container-fluid  m-0 p-4 heightData85  w-100">
         <div
           class="col-sm-4 m-2 gray900 d-flex align-items-center justify-content-center text-center rounded   "
         >

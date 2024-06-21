@@ -1,9 +1,10 @@
 import axios from "axios";
 import authHeader from "./auth-header";
+import { apiUrl} from "../api/apiUrl";
 
-// const API_URL = "http://localhost:4500/api/student";
+const API_URL = apiUrl + "api/student";
 
-const API_URL = "https://tesisbackend3.onrender.com/api/student/";
+// const API_URL = "https://tesisbackend3.onrender.com/api/student/";
 
 class studentServices {
     async createStudent(userData){
