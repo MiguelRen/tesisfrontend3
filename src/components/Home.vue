@@ -1,5 +1,5 @@
 <template>
-  <div class=" container-fluid  p-0 m-0 vh-100 w-100 
+  <div class=" container-fluid  p-0  vh-100 w-100 
   ">
     <div class="row m-0 p-0   viewportHeight20 fixed-top zdown" >
       <div class="col-12  m-0 p-0   w-100 ">
@@ -7,13 +7,13 @@
       </div>
     </div>
 
-    <div class="row  mr-0 ml-0 mb-0 p-0 position-relative viewportHeight80 stickySidebar marginTop ">
+    <div class="row  mr-0 ml-0 mb-0 p-0 position-relative viewportHeight80 stickySidebar marginTop w-100 ">
       <div class=" col-md-2  col-sm-3 col-5    p-0 m-0   positioning h-100 sticky marginTop ">
         <Sidebar @componentChange="eventFromSidebar"></Sidebar>
       </div>
 
       <div class="  col-md-10  col-sm-9 col-7  ms-md-auto p-0 m-0   positioning h-100 ">
-        <keep-alive class="container-fluid h-100 w-100 m-0 p-0 zdown">
+        <keep-alive class="container-fluid h-100  m-0 p-0 zdown">
           <div >
             <component :is="componentName"></component>
           </div>
@@ -167,10 +167,14 @@ export default {
     z-index:-3;
   }
   .viewportHeight20{
-    height: 10vh
+    height: 10vh;
+    margin-right: 0;
+    margin-left: 0;
   }
   .viewportHeight80{
-    height: 90vh
+    height: 90vh;
+    margin-right: 0;
+    margin-left: 0;
   }
 }
 
