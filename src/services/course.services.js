@@ -5,7 +5,7 @@ import { apiUrl } from "../api/apiUrl"
 
 
 // const API_URL = apiUrl + "/api/course/";
-const API_URL = apiUrl + "api/course/"
+const API_URL = apiUrl + "/api/course/"
 
 class courseService{
     async createCourse(data) {

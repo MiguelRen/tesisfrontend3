@@ -2,7 +2,7 @@ import axios from "axios";
 import authHeader from "./auth-header";
 import { apiUrl } from "../api/apiUrl";
 
-const API_URL = apiUrl + "api/employee";
+const API_URL = apiUrl + "/api/employee";
 // const API_URL = "https://tesisbackend3.onrender.com/api/employee/";
 class employeeServices {
   async createEmployee(employeeData) {
