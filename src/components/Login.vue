@@ -1,7 +1,7 @@
 <template >
   <div class="fondo " >
 
-    <div class="container-fluid w-100 p-0 m-p h-100 d-flex justify-content-center align-items-center">
+    <div class="container-fluid w-100 p-0 m-p h-100 d-flex justify-content-center ">
 
       <div class=" row h-75  m-0  px-12 d-flex justify-content-center align-items-center ">
 
