@@ -4,32 +4,32 @@
         <div class="col m-0 p-0 h-100  m-0">
           <div class="row p-0 m-0 h-50  m-0 ">
             <div
-              class=" col-4 border gray500  rounded-pill text-center text-white "
+              class=" col-4 border gray500  rounded-pill text-center text-white m-0"
             >
               Total Estudiantes : 859
             </div>
             <div
-              class=" col-4 border gray500 rounded-pill text-center text-white"
+              class=" col-4 border gray500 rounded-pill text-center text-white m-0"
             >
               Total Profesores : 69
             </div>
             <div
-              class=" col-4 border gray500 bg-gradient rounded-pill text-center text-white "
+              class=" col-4 border gray500 bg-gradient rounded-pill text-center text-white m-0"
             >
               Total Clases : 97
             </div>
           </div>
-          <div class="row p-0 h-50 w-100 m-1">
+          <div class="row p-0 h-50 w-100 m-">
             <div class="col-3 gray400  text center rounded">
               % Estudiantes
             </div>
-            <div class="col-3 border rounded-pill gray500  text-center">
+            <div class="col-3 border rounded-pill gray500  text-center m-0">
               Varones
             </div>
-            <div class="col-3 border rounded-pill gray300  text-center">
+            <div class="col-3 border rounded-pill gray300  text-center m-0">
               Hembras
             </div>
-            <div class="col-3 border rounded-pill gray400  text-center">
+            <div class="col-3 border rounded-pill gray400  text-center m-0">
               info aquí
             </div>
           </div>

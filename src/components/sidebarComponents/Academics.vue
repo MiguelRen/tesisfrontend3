@@ -38,7 +38,7 @@
         </div>
       </div>
 
-      <div class="col p-0 bg-light border rounded d-inline-flex w-100">
+      <div class="col p-0 m-0 bg-light border rounded d-inline-flex w-100">
         <Form
           class="m-3 text-center m-0 p-0"
           @submit="handleCreatePeriod"
@@ -58,12 +58,12 @@
         </Form>
       </div>
 
-      <div class="col p-0 bg-light border rounded">
+      <div class="col p-0 m-0 bg-light border rounded">
         <h3>Actualizar datos</h3>
         <div>
           <Form>
             
-            <div class="row">
+            <div class="row p-0 m-0">
               <h5 class="col-12">Indice {{ updateIndexData }}</h5>
   
               <label for="updatePeriod" class="col-12">Inicio de Periodo</label>
@@ -166,7 +166,7 @@
     <div class="row p-0 m-0 w-100">
       <h2 class="greyColor">Secciones</h2>
 
-      <div class="col">
+      <div class="col  p-0 m-0 w-100">
         <Form>
           <h4>Crear</h4>
           <label for="creationSection"> Periodo</label>
@@ -180,7 +180,7 @@
         </Form>
       </div>
 
-      <div class="col">
+      <div class="col  p-0 m-0 w-100">
         <h3>Registradas</h3>
         <textarea name="" id="" cols="30" rows="10">
                 gestionar secciones
@@ -188,7 +188,7 @@
         >
       </div>
 
-      <div class="col">
+      <div class="col  p-0 m-0 w-100">
         <h3>Actualizar secciones</h3>
         
         <Form>
