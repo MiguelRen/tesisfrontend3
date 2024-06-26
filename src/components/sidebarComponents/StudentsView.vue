@@ -37,7 +37,7 @@ import { validate } from 'vee-validate';
         <template>
             <div class="row h-100 w-100 p-0 m-0">
 
-                <div class="col bg-secondary">
+                <div class="col p-0 m-0">
                     <h1 class="m-0 p-0 text-center">Estudiantes</h1>
                     <div>
                         <Form>
@@ -45,16 +45,36 @@ import { validate } from 'vee-validate';
                             <Field name="studentSearch"/>
                         </Form>
                     </div>
-                    <ul class="list-group list-group-light">
-                        <li v-for="(item,index) in allStudents" class="list-group-item d-flex justify-content-between align-items-center fw-bold">
-                            {{ index + 1 }} - {{item.stu_studenid}} 
-                            - {{ item.stu_student1name}} - {{ item.stu_student2name }} 
-                            - {{ item.stu_student1lastname }} - {{ item.stu_student2lastname }}
-                            - {{ item.stu_studentadress }} - {{ item.stu_studentbirth }}
-                            - {{ item.stu_studentemail }} - {{ item.stu_studentgender }}
-                            - {{ item.stu_studentphone }}
-                        </li>
-                    </ul>
+
+
+ 
+                    <table class="table table-striped ">
+                        <thead>
+                            <tr>
+                                <th class="col">#</th>
+                                <th class="col">Nombre</th>
+                                <th class="col">Apellido</th>
+                                <th class="col">Dirección</th>
+                                <th class="col">E-mail</th>
+                                <th class="col">Género</th>
+                                <th class="col">Teléf.</th>
+                            </tr>
+                        </thead>
+
+                        <tbody v-for="(item,index) in allStudents">
+                            <th class="">{{ index + 1 }}</th>
+                            <td>{{ item.stu_student1name}} {{ item.stu_student2name }}</td>
+                            <td>{{ item.stu_student1lastname }} {{ item.stu_student2lastname }}</td>
+                            <td>{{ item.stu_studentadress }} {{ item.stu_studentbirth }}</td>
+                            <td>{{ item.stu_studentemail }}</td>
+                            <td>{{ item.stu_studentgender }}</td>
+                            <td>{{ item.stu_studentphone }}</td>
+                        </tbody>
+                    </table>
+
+                    
+
+                   
                 </div>
                
             </div>
@@ -62,4 +82,28 @@ import { validate } from 'vee-validate';
 
 
 
- 
+ <style scoped>
+ .flex-list{
+      display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea */
+  gap: 10px; /* Espacio entre elementos */
+ }
+ .flex-list li span{
+      display: flex;
+  /* justify-content: space-between; Distribuye el espacio restante igualmente entre los elementos hijos */
+  /* align-items: center; Alinea los elementos hijos verticalmente en el centro */
+  /* padding: 10px; */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1); /* Sombra suave */
+ }
+.flex-list li{
+      display: flex;
+  /* justify-content: space-between; Distribuye el espacio restante igualmente entre los elementos hijos */
+  /* align-items: center; Alinea los elementos hijos verticalmente en el centro */
+  /* padding: 10px; */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.1); /* Sombra suave */
+ } 
+</style>
