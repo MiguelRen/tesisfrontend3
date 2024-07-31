@@ -51,24 +51,27 @@ import { validate } from 'vee-validate';
                     <table class="table table-striped ">
                         <thead>
                             <tr>
-                                <th class="col">#</th>
-                                <th class="col">Nombre</th>
-                                <th class="col">Apellido</th>
-                                <th class="col">Dirección</th>
-                                <th class="col">E-mail</th>
-                                <th class="col">Género</th>
-                                <th class="col">Teléf.</th>
+                                <th class="col-1">#</th>
+                                <th class="col-1">Nombre</th>
+                                <th class="col-1">Apellido</th>
+                                <th class="col-1">Dirección</th>
+                                <th class="col-1">E-mail</th>
+                                <th class="col-1">Género</th>
+                                <th class="col-1">Teléf.</th>
                             </tr>
                         </thead>
 
-                        <tbody v-for="(item,index) in allStudents">
-                            <th class="">{{ index + 1 }}</th>
-                            <td>{{ item.stu_student1name}} {{ item.stu_student2name }}</td>
-                            <td>{{ item.stu_student1lastname }} {{ item.stu_student2lastname }}</td>
-                            <td>{{ item.stu_studentadress }} {{ item.stu_studentbirth }}</td>
-                            <td>{{ item.stu_studentemail }}</td>
-                            <td>{{ item.stu_studentgender }}</td>
-                            <td>{{ item.stu_studentphone }}</td>
+                        <tbody v-for="(item,index) in allStudents" class="small">
+                            <tr>
+
+                                <th class="">{{ index + 1 }}</th>
+                                <td>{{ item.stu_student1name}} {{ item.stu_student2name }}</td>
+                                <td>{{ item.stu_student1lastname }} {{ item.stu_student2lastname }}</td>
+                                <td>{{ item.stu_studentadress }} {{ item.stu_studentbirth }}</td>
+                                <td>{{ item.stu_studentemail }}</td>
+                                <td>{{ item.stu_studentgender }}</td>
+                                <td>{{ item.stu_studentphone }}</td>
+                            </tr>
                         </tbody>
                     </table>
 

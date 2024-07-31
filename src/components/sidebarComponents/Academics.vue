@@ -40,10 +40,10 @@
 
       <div class="col p-0 m-0 bg-light border rounded d-inline-flex w-100">
         <Form
-          class="m-3 text-center m-0 p-0"
+          class="mb-3 text-center m-0 p-0"
           @submit="handleCreatePeriod"
           :validation-schema="periodSchema"
-        >
+          >
           <h3 clsas="m-0 ">Nuevo Periodo Escolar</h3>
           <div class="form-group row m-4 py-3">
             <label for="dateStart" class="py-2">Fecha Inicio</label>
@@ -61,24 +61,28 @@
       <div class="col p-0 m-0 bg-light border rounded">
         <h3>Actualizar datos</h3>
         <div>
-          <Form>
+          <Form  
+          @submit="handleUpdatePeriod" 
+          >
+          <!-- :validation-schema="periodSchema" -->
             
             <div class="row p-0 m-0">
               <h5 class="col-12">Indice {{ updateIndexData }}</h5>
   
               <label for="updatePeriod" class="col-12">Inicio de Periodo</label>
-              <Field name="updatePediod" v-model="updatePeriodDataStart" class="col-12"/>
-              
+              <Field name="updatePeriod" v-model="updatePeriodDataStart" class="col-12"/>
+              <ErrorMessage name="updatePeriod" class="error-feedback"/>
+
               <label for="startPeriod" class="col-12">Fin de Periodo</label>
               <Field name="startPeriod" v-model="updatePeriodDataEnd" class="col-12"/>
-              
-            </div>
-
-            <div class="row d-inline justify-content-between">
-              <button type="button" class="btn butom btn-primary">Actualizar</button>
-              <button type="button" class="btn butom btn-primary">Eliminar</button>
+              <ErrorMessage name="startPeriod" class="error-feedback"/>
 
             </div>
+            
+ 
+              <button  class="btn butom  btn-block">Actualizar</button>
+              <!-- <button type="button" class="btn butom btn-primary">Eliminar</button> -->
+
             
           </Form>
         </div>
@@ -210,7 +214,7 @@
 
 <script>
 import { Form, Field, ErrorMessage } from "vee-validate";
-import academicPeriods from "../../services/period.services.js";
+
 import * as yup from "yup";
 import courseService from "../../services/course.services.js";
 import sectionService from "../../services/section.services.js";
@@ -340,6 +344,14 @@ export default {
     async handleCreateSection(data) {
       const result = this.section.createSection(data);
     },
+
+   async handleUpdatePeriod(data){
+      console.log("inside academics.vue", data);
+      const result = await this.period.updatePeriod(data);
+      console.log(result);
+      return result;
+    },
+
   },
 }
 

@@ -1,10 +1,10 @@
 <template >
  
-      <div class="row m-0 p-0 container-fluid  heightData15 w-100">
-        <div class="col m-0 p-0 h-100  m-0">
-          <div class="row p-0 m-0 h-50  m-0 ">
+      <div class="row m-0 p-0 container-fluid heightData15 w-100 ">
+        <div class="col m-0 p-3 h-100 w-100 ">
+          <div class="row p-1 m-0  ">
             <div
-              class=" col-4 border gray500  rounded-pill text-center text-white m-0"
+              class=" col-4 border gray500  rounded-pill text-center text-white m-0 p-0"
             >
               Total Estudiantes : 859
             </div>
@@ -19,7 +19,7 @@
               Total Clases : 97
             </div>
           </div>
-          <div class="row p-0 h-50 w-100 m-">
+          <div class="row p-1 h-50 w-100 m-0">
             <div class="col-3 gray400  text center rounded">
               % Estudiantes
             </div>
@@ -36,7 +36,7 @@
         </div>
       </div>
 
-      <div class="row container-fluid  m-0 p-4 heightData85  w-100">
+      <div class="row container-fluid  m-0 p-3 heightData85  w-100 justify-content-between">
         <div
           class="col-sm-4 m-2 gray900 d-flex align-items-center justify-content-center text-center rounded   "
         >
@@ -50,7 +50,7 @@
           class="col-sm-7 m-2 gray500 text-center d-flex align-items-center rounded  "
         >
           <div class=" w-100">
-            <h2>Manejador de Escuelas</h2>
+            <h1>Manejador de Escuelas</h1>
           </div>
         </div>
 

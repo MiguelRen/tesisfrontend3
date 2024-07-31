@@ -1,19 +1,20 @@
 <template>
-  <div class=" container-fluid  p-0  vh-100 w-100 
+  <div class=" container-fluid  p-0  vh-100 vw-100 m-0
   ">
-    <div class="row m-0 p-0   viewportHeight20 fixed-top zdown" >
+    <div class="row m-0 p-0 vw-100  viewportHeight20 fixed-top zdown" >
       <div class="col-12  m-0 p-0   w-100 ">
         <Navbar @componentChange="eventFromNavbar" ></Navbar>
       </div>
     </div>
 
-    <div class="row  mr-0 ml-0 mb-0 p-0 position-relative viewportHeight80 stickySidebar marginTop ">
-      <div class=" col-md-2  col-sm-3 col-5    p-0 m-0   positioning h-100 sticky marginTop ">
+    <div class="row  mr-1 ml-0 mb-0  p-0 position-relative viewportHeight80 stickySidebar marginTop vw-100 ">
+
+      <div class=" col-md-2  col-sm-3 col-5    p-0 m-0   positioning h-100 sticky marginTop">
         <Sidebar @componentChange="eventFromSidebar"></Sidebar>
       </div>
 
-      <div class="  col-md-10  col-sm-9 col-7 offset-sm-3  ms-md-auto p-0 m-0   positioning h-100  ">
-        <keep-alive class="container-fluid h-100 w-100 m-0 p-0 zdown">
+      <div class="  col-md-10  col-sm-9 col-7  ms-md-auto p-0 m-0  positioning h-100   ">
+        <keep-alive class="container-fluid h-100 w-100 m-0 p-0 zdown ">
           <div >
             <component :is="componentName"></component>
           </div>

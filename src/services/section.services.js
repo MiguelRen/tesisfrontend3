@@ -2,7 +2,7 @@ import axios from "axios";
 import {apiUrl} from "../api/apiUrl"
 
 
-const API_URL = apiUrl + "api/section/";
+const API_URL = apiUrl + "/api/section/";
 // const API_URL = "https://tesisbackend3.onrender.com/api/section/";
 
 
