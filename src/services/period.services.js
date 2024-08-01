@@ -58,9 +58,9 @@ class periodServices {
     }
 }
 
-  async updatePeriod(period){
-    console.log("inside period.services", period);
-    const result = await axios.put(API_URL,period,
+  async updatePeriod(periods){
+    // console.log("inside period.services", period);
+    const result = await axios.put(API_URL,periods,
       {
         headers: authHeader(),
       }

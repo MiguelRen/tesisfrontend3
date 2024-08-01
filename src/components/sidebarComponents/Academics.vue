@@ -49,9 +49,13 @@
             <label for="dateStart" class="py-2">Fecha Inicio</label>
             <Field name="dateStart" type="date" class="" />
             <ErrorMessage name="dateStart" class="error-feedback" />
+            
             <label for="dateEnd" class="py-2">Fecha fin </label>
             <Field name="dateEnd" type="date" />
             <ErrorMessage name="dateEnd" class="error-feedback" />
+
+
+      
 
             <button class="btn butom btn-block">Crear</button>
           </div>
@@ -69,13 +73,20 @@
             <div class="row p-0 m-0">
               <h5 class="col-12">Indice {{ updateIndexData }}</h5>
   
-              <label for="updatePeriod" class="col-12">Inicio de Periodo</label>
-              <Field name="updatePeriod" v-model="updatePeriodDataStart" class="col-12"/>
-              <ErrorMessage name="updatePeriod" class="error-feedback"/>
+              <label for="updateStartPeriod" class="col-12">Inicio de Periodo</label>
+              <Field name="updateStartPeriod" v-model="updatePeriodDataStart" class="col-12"/>
+              <ErrorMessage name="updateStartPeriod" class="error-feedback"/>
 
-              <label for="startPeriod" class="col-12">Fin de Periodo</label>
-              <Field name="startPeriod" v-model="updatePeriodDataEnd" class="col-12"/>
-              <ErrorMessage name="startPeriod" class="error-feedback"/>
+              <label for="updateEndPeriod" class="col-12">Fin de Periodo</label>
+              <Field name="updateEndPeriod" v-model="updatePeriodDataEnd" class="col-12"/>
+              <ErrorMessage name="updateEndPeriod" class="error-feedback"/>
+
+<!-- 
+
+
+
+              <Field name="oldStartPeriod" v-model="updatePeriodDataStart" class="col-12"/>
+              <Field name="oldEndPeriod" v-model="updatePeriodDataEnd" class="col-12"/> -->
 
             </div>
             
@@ -274,6 +285,9 @@ export default {
       updatePeriodDataStart: "",
       updatePeriodDataEnd: "",
       updateIndexData:"",
+      
+      oldPeriodDataStart: "",
+      oldPeriodDataEnd: "",
     };
   },
    mounted(){
@@ -290,9 +304,10 @@ export default {
     periodItemClicked(event, item, index){
       this.updatePeriodDataStart = item.peryearstart;
       this.updatePeriodDataEnd = item.peryearend;
-      console.log(item.peryearstart);
-       console.log(item.peryearend);
-       console.log(index);
+
+      this.oldPeriodDataStart =this.updatePeriodDataStart;
+      this.oldPeriodDataEnd =this.updatePeriodDataEnd;
+      
        this.updateIndexData = index + 1;
   },
 
@@ -345,10 +360,19 @@ export default {
       const result = this.section.createSection(data);
     },
 
-   async handleUpdatePeriod(data){
-      console.log("inside academics.vue", data);
-      const result = await this.period.updatePeriod(data);
-      console.log(result);
+   async handleUpdatePeriod(){
+      console.log(this.updatePeriodDataStart , this.updatePeriodDataEnd);
+      const oldPeriod = [ this.oldPeriodDataStart, this.oldPeriodDataEnd];
+      const newPeriod = [ this.updatePeriodDataStart, this.updatePeriodDataEnd];
+       
+      const newData = 
+      {
+        oldPeriod,
+        newPeriod
+      };
+    
+     
+      const result = await this.period.updatePeriod(newData);
       return result;
     },
 
