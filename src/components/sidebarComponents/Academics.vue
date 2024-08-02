@@ -17,10 +17,10 @@
         <ul class="list-group list-group-dark overflowHidden">
           <li
             v-for="(item, index) in allPeriodsObject"
-            class="list-group-item d-flex justify-content-between align-items-center justify-content-around btn "
+            class="list-group-item d-flex justify-content-between align-items-center justify-content-around btn"
             id="liPeriodValue"
             :class="isCurrentDate(item.peryearstart, item.peryearend).className"
-            @click="periodItemClicked(event, item, index);"
+            @click="periodItemClicked(event, item, index)"
           >
             <strong>{{ index + 1 }}</strong>
             <strong>{{ item.peryearstart }}</strong>
@@ -43,19 +43,16 @@
           class="mb-3 text-center m-0 p-0"
           @submit="handleCreatePeriod"
           :validation-schema="periodSchema"
-          >
+        >
           <h3 clsas="m-0 ">Nuevo Periodo Escolar</h3>
           <div class="form-group row m-4 py-3">
             <label for="dateStart" class="py-2">Fecha Inicio</label>
             <Field name="dateStart" type="date" class="" />
             <ErrorMessage name="dateStart" class="error-feedback" />
-            
+
             <label for="dateEnd" class="py-2">Fecha fin </label>
             <Field name="dateEnd" type="date" />
             <ErrorMessage name="dateEnd" class="error-feedback" />
-
-
-      
 
             <button class="btn butom btn-block">Crear</button>
           </div>
@@ -65,36 +62,54 @@
       <div class="col p-0 m-0 bg-light border rounded">
         <h3>Actualizar datos</h3>
         <div>
-          <Form  
-          @submit="handleUpdatePeriod" 
-          >
-          <!-- :validation-schema="periodSchema" -->
-            
+          <Form action="#">
+            <!-- :validation-schema="periodSchema" -->
+
             <div class="row p-0 m-0">
               <h5 class="col-12">Indice {{ updateIndexData }}</h5>
-  
-              <label for="updateStartPeriod" class="col-12">Inicio de Periodo</label>
-              <Field name="updateStartPeriod" v-model="updatePeriodDataStart" class="col-12"/>
-              <ErrorMessage name="updateStartPeriod" class="error-feedback"/>
+
+              <label for="updateStartPeriod" class="col-12"
+                >Inicio de Periodo</label
+              >
+              <Field
+                name="updateStartPeriod"
+                v-model="updatePeriodDataStart"
+                class="col-12"
+              />
+              <ErrorMessage name="updateStartPeriod" class="error-feedback" />
 
               <label for="updateEndPeriod" class="col-12">Fin de Periodo</label>
-              <Field name="updateEndPeriod" v-model="updatePeriodDataEnd" class="col-12"/>
-              <ErrorMessage name="updateEndPeriod" class="error-feedback"/>
+              <Field
+                name="updateEndPeriod"
+                v-model="updatePeriodDataEnd"
+                class="col-12"
+              />
+              <ErrorMessage name="updateEndPeriod" class="error-feedback" />
 
-<!-- 
+              <!-- 
 
 
 
               <Field name="oldStartPeriod" v-model="updatePeriodDataStart" class="col-12"/>
               <Field name="oldEndPeriod" v-model="updatePeriodDataEnd" class="col-12"/> -->
-
             </div>
-            
- 
-              <button  class="btn butom  btn-block">Actualizar</button>
-              <!-- <button type="button" class="btn butom btn-primary">Eliminar</button> -->
 
-            
+            <button
+              type="submit"
+              @click="handleUpdatePeriod"
+              class="btn butom btn-block"
+            >
+              Actualizar
+            </button>
+            <button
+              type="submit"
+              @click="handleDeletePeriod"
+              class="btn butom btn-block"
+            >
+              Eliminar
+            </button>
+
+            <!-- <button type="button" class="btn butom btn-primary">Eliminar</button> -->
           </Form>
         </div>
       </div>
@@ -153,9 +168,7 @@
             <Field name="" />
           </Form>
 
-          <textarea   placeholder="materias del periodo aquí">
-            
-          </textarea>
+          <textarea placeholder="materias del periodo aquí"> </textarea>
         </div>
       </div>
 
@@ -169,9 +182,7 @@
             <label for="periodSearch">Materia</label>
             <Field name="periodSearch" />
           </Form>
-          <p style="color: red">
-     
-          </p>
+          <p style="color: red"></p>
         </div>
       </div>
     </div>
@@ -181,7 +192,7 @@
     <div class="row p-0 m-0 w-100">
       <h2 class="greyColor">Secciones</h2>
 
-      <div class="col  p-0 m-0 w-100">
+      <div class="col p-0 m-0 w-100">
         <Form>
           <h4>Crear</h4>
           <label for="creationSection"> Periodo</label>
@@ -195,7 +206,7 @@
         </Form>
       </div>
 
-      <div class="col  p-0 m-0 w-100">
+      <div class="col p-0 m-0 w-100">
         <h3>Registradas</h3>
         <textarea name="" id="" cols="30" rows="10">
                 gestionar secciones
@@ -203,20 +214,20 @@
         >
       </div>
 
-      <div class="col  p-0 m-0 w-100">
+      <div class="col p-0 m-0 w-100">
         <h3>Actualizar secciones</h3>
-        
+
         <Form>
           <label for="updateSection">Perido</label>
-        <Field name="updateSection" />
+          <Field name="updateSection" />
 
-        <label for="updateSection">Materia</label>
-        <Field name="updateSection" />
+          <label for="updateSection">Materia</label>
+          <Field name="updateSection" />
 
-        <label for="updateSection">Sección</label>
-        <Field name="updateSection" />
-        <button class="btn butom btn-primary">Actualizar</button>
-                <button class="btn butom btn-primary">Eliminar</button>
+          <label for="updateSection">Sección</label>
+          <Field name="updateSection" />
+          <button class="btn butom btn-primary">Actualizar</button>
+          <button class="btn butom btn-primary">Eliminar</button>
         </Form>
       </div>
     </div>
@@ -234,7 +245,7 @@ import periodServices from "../../services/period.services.js";
 import { usePeriodStore } from "../../store/periodStore";
 // components
 // import CourseDropdown from '../academicComponents/CourseDropdown.vue'
-import {ref} from "vue"
+import { ref } from "vue";
 
 export default {
   name: "Academics",
@@ -265,8 +276,6 @@ export default {
     // const yearStartRef =ref("");
     // const yearEndRef =ref("");
 
-
-
     return {
       period: periodServices,
       course: courseService,
@@ -277,65 +286,63 @@ export default {
       message: "",
       succesfull: false,
       periodList: "",
-      allPeriodsObject : "",
-      periodStore : usePeriodStore(),
-      yearStartRef : "",
-      yearEndRef : "",
+      allPeriodsObject: "",
+      periodStore: usePeriodStore(),
+      yearStartRef: "",
+      yearEndRef: "",
+
+      periodIdClicked: "",
 
       updatePeriodDataStart: "",
       updatePeriodDataEnd: "",
-      updateIndexData:"",
-      
+      updateIndexData: "",
+
       oldPeriodDataStart: "",
       oldPeriodDataEnd: "",
     };
   },
-   mounted(){
-
-     this.getAllPeriods();
-     this.periodStore.updateCurrent();
-
-
-
+  mounted() {
+    this.getAllPeriods();
+    this.periodStore.updateCurrent();
   },
 
   methods: {
-  
-    periodItemClicked(event, item, index){
+    periodItemClicked(event, item, index) {
+
+      this.periodIdClicked = item.perperiodid;
+
       this.updatePeriodDataStart = item.peryearstart;
       this.updatePeriodDataEnd = item.peryearend;
 
-      this.oldPeriodDataStart =this.updatePeriodDataStart;
-      this.oldPeriodDataEnd =this.updatePeriodDataEnd;
-      
-       this.updateIndexData = index + 1;
-  },
+      this.oldPeriodDataStart = this.updatePeriodDataStart;
+      this.oldPeriodDataEnd = this.updatePeriodDataEnd;
 
-    async getAllPeriods(){
+      this.updateIndexData = index + 1;
+    },
 
+    async getAllPeriods() {
       this.allPeriodsObject = await this.period.findAllPeriod();
       // console.log(this.allPeriodsObject);
     },
 
-      isCurrentDate(startDate,endDate){
-        const currentDate = new Date();
-        
-        const periodStartDate = new Date(startDate);
-  
-        const periodEndDate = new Date(endDate);
-        const isActive = currentDate >= periodStartDate && currentDate <= periodEndDate;
-        const className =  isActive ? 'active' : "";
-       
-        return {
-          isActive,
-          className,
+    isCurrentDate(startDate, endDate) {
+      const currentDate = new Date();
 
-        }
-      }
+      const periodStartDate = new Date(startDate);
 
-    ,
+      const periodEndDate = new Date(endDate);
+      const isActive =
+        currentDate >= periodStartDate && currentDate <= periodEndDate;
+      const className = isActive ? "active" : "";
+
+      return {
+        isActive,
+        className,
+      };
+    },
+
     async handleCreatePeriod(userPeriodData) {
- //  console.log(userPeriodData);
+      //  console.log(userPeriodData);
       const result = this.period.createPeriod(userPeriodData);
       if (result) {
         this.message = "Creado";
@@ -360,25 +367,32 @@ export default {
       const result = this.section.createSection(data);
     },
 
-   async handleUpdatePeriod(){
-      console.log(this.updatePeriodDataStart , this.updatePeriodDataEnd);
-      const oldPeriod = [ this.oldPeriodDataStart, this.oldPeriodDataEnd];
-      const newPeriod = [ this.updatePeriodDataStart, this.updatePeriodDataEnd];
-       
-      const newData = 
-      {
+    async handleUpdatePeriod(e) {
+      e.preventDefault();
+      console.log(this.updatePeriodDataStart, this.updatePeriodDataEnd);
+      const oldPeriod = [this.oldPeriodDataStart, this.oldPeriodDataEnd];
+      const newPeriod = [this.updatePeriodDataStart, this.updatePeriodDataEnd];
+
+      const newData = {
         oldPeriod,
-        newPeriod
+        newPeriod,
       };
-    
-     
+
       const result = await this.period.updatePeriod(newData);
+
       return result;
     },
+    async handleDeletePeriod(e) {
+      e.preventDefault();
 
+      const periodToErase =this.periodIdClicked;
+      const result = await this.period.deletePeriod(periodToErase);
+ 
+      
+      return false;
+    },
   },
-}
-
+};
 </script>
 <style scoped>
 .butom {

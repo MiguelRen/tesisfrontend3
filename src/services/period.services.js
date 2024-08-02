@@ -59,16 +59,40 @@ class periodServices {
 }
 
   async updatePeriod(periods){
-    // console.log("inside period.services", period);
-    const result = await axios.put(API_URL,periods,
-      {
-        headers: authHeader(),
-      }
-    )
-    console.log(result);
-    return result;
+    try{
+      // console.log("inside period.services", period);
+      const result = await axios.put(API_URL,periods,
+        {
+          headers: authHeader(),
+        }
+      )
+      console.log(result);
+      return result;
+
+    }catch(error){
+      console.log(error);
+    }
+
   }
 
+
+  async deletePeriod(periodToErase){
+    try {
+        console.log(periodToErase);
+      
+      const result = await axios.delete(API_URL + periodToErase,
+        {
+          headers: authHeader(),
+        }
+      )
+      console.log(result);
+  
+      return result;
+    
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
 }
 
