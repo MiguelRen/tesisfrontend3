@@ -44,7 +44,7 @@
           @submit="handleCreatePeriod"
           :validation-schema="periodSchema"
         >
-          <h3 clsas="m-0 ">Nuevo Periodo Escolar</h3>
+          <h3 class="m-0 ">Nuevo Periodo Escolar</h3>
           <div class="form-group row m-4 py-3">
             <label for="dateStart" class="py-2">Fecha Inicio</label>
             <Field name="dateStart" type="date" class="" />
@@ -120,13 +120,44 @@
     <div id="coursesSection" class="row h-100 p-0 m-0 w-100">
       <h2 class="greyColor d-inline">Materias</h2>
 
+      <div id="searchCourse" class="col">
+        <div class="col-2">
+          <h3>Buscador</h3>
+          <Form>
+            <label for="">Periodo</label>
+            <Field name="" />
+
+            <label for="">Materia</label>
+            <Field name="" />
+          </Form>
+
+          <textarea placeholder="materias del periodo aquí"> </textarea>
+        </div>
+      </div>
       <div id="createCourse" class="col">
         <h3>Crear materias</h3>
-        <Form class="">
+
+
+        <Form @submit="handleCreateCourse" class="form">
           <div class="col-2">
+            
             <label for="coursePeriod">periodo</label>
-            <Field name="coursePeriod" />
-            <ErrorMessage name="coursePeriod"></ErrorMessage>
+           <Field as="select"
+                  name="coursePeriod"
+                  v-model="courseItemClicked"
+                 
+           >
+            <option disabled selected value="">Seleccione una opción</option>
+            <option
+            v-for="(item, index) in allPeriodsObject"
+            :key="index"
+            :value="`${item.perperiodid}`"
+             >
+               {{ item.peryearstart }}-{{ item.peryearend }}
+            </option>
+             
+           </Field>
+           <ErrorMassage name="coursePeriod"></ErrorMassage>
           </div>
 
           <div class="col-2">
@@ -141,35 +172,10 @@
             <ErrorMessage name="courseType"></ErrorMessage>
           </div>
 
-          <div class="col-2">
-            <label for="courseReq">Pre-requisito</label>
-            <Field name="courseReq" />
-            <ErrorMessage name="courseReq"></ErrorMessage>
-          </div>
 
-          <div class="col-2">
-            <label for="courseSchedule">horario</label>
-            <Field name="courseType" />
-            <ErrorMessage name="courseType"></ErrorMessage>
-          </div>
 
-          <Button class="btn btn-primary"> Crear Materia</Button>
+          <Button  class="btn btn-primary"> Crear Materia</Button>
         </Form>
-      </div>
-
-      <div id="searchCourse" class="col">
-        <div class="col-2">
-          <h3>Buscador</h3>
-          <Form>
-            <label for="">Periodo</label>
-            <Field name="" />
-
-            <label for="">Materia</label>
-            <Field name="" />
-          </Form>
-
-          <textarea placeholder="materias del periodo aquí"> </textarea>
-        </div>
       </div>
 
       <div id="updateCourse" class="col">
@@ -243,6 +249,7 @@ import sectionService from "../../services/section.services.js";
 // import quarterService from "../../services/quarter.services.js";
 import periodServices from "../../services/period.services.js";
 import { usePeriodStore } from "../../store/periodStore";
+
 // components
 // import CourseDropdown from '../academicComponents/CourseDropdown.vue'
 import { ref } from "vue";
@@ -280,6 +287,7 @@ export default {
       period: periodServices,
       course: courseService,
       section: sectionService,
+      
       // quarter: quarterService,
       // allperiods : periodServices,
       periodSchema,
@@ -287,6 +295,7 @@ export default {
       succesfull: false,
       periodList: "",
       allPeriodsObject: "",
+  
       periodStore: usePeriodStore(),
       yearStartRef: "",
       yearEndRef: "",
@@ -299,6 +308,9 @@ export default {
 
       oldPeriodDataStart: "",
       oldPeriodDataEnd: "",
+
+      courseIdClicked: ref(""),
+      periodCourseIdClicked: "",
     };
   },
   mounted() {
@@ -308,7 +320,8 @@ export default {
 
   methods: {
     periodItemClicked(event, item, index) {
-
+      
+      
       this.periodIdClicked = item.perperiodid;
 
       this.updatePeriodDataStart = item.peryearstart;
@@ -359,10 +372,7 @@ export default {
     //   console.log(userQuarterData);
     //   const result = this.quarter.createQuarter(userQuarterData);
     // },
-    async handleCreateCourse(data) {
-      // console.log(data);
-      const result = this.course.createCourse(data);
-    },
+  
     async handleCreateSection(data) {
       const result = this.section.createSection(data);
     },
@@ -385,12 +395,33 @@ export default {
     async handleDeletePeriod(e) {
       e.preventDefault();
 
-      const periodToErase =this.periodIdClicked;
+      const periodToErase = this.periodIdClicked;
       const result = await this.period.deletePeriod(periodToErase);
- 
-      
+
       return false;
     },
+
+
+    //course setting methods
+
+ async courseItemClicked(event,item,index) {
+      console.log(item);
+     
+
+   
+
+    },
+
+    async handleCreateCourse(newCourse){
+        try {
+          const result = await this.course.createCourse(newCourse);
+        } catch (error) {
+          console.log(error);
+          
+        }
+  
+      return ;
+    }
   },
 };
 </script>
