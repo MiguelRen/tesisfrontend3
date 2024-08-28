@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid p-0 m-0">
+    <div class="container-fluid h-100 w-100 p-0 m-0">
         <div class="row p-0 m-0">
             <div class="col rounded bg-light p-0 ">
                 <h1>Notas</h1>

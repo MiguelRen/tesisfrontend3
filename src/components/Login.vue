@@ -93,7 +93,7 @@ export default {
       
       if( type == 'text'){
         
-        console.log(type.value);
+        // console.log(type.value);
         document.getElementById('theField').type =  'password';
       }
       else{

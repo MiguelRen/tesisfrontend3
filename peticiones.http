@@ -1,1 +1,2 @@
-GET https://despliegue-backend-tesis.onrender.com/api/period HTTP/1.1
+
+GET http://localhost:4500/api/course/ HTTP/1.1

@@ -44,7 +44,7 @@
           @submit="handleCreatePeriod"
           :validation-schema="periodSchema"
         >
-          <h3 class="m-0 ">Nuevo Periodo Escolar</h3>
+          <h3 class="m-0">Nuevo Periodo Escolar</h3>
           <div class="form-group row m-4 py-3">
             <label for="dateStart" class="py-2">Fecha Inicio</label>
             <Field name="dateStart" type="date" class="" />
@@ -86,12 +86,6 @@
               />
               <ErrorMessage name="updateEndPeriod" class="error-feedback" />
 
-              <!-- 
-
-
-
-              <Field name="oldStartPeriod" v-model="updatePeriodDataStart" class="col-12"/>
-              <Field name="oldEndPeriod" v-model="updatePeriodDataEnd" class="col-12"/> -->
             </div>
 
             <button
@@ -109,7 +103,6 @@
               Eliminar
             </button>
 
-            <!-- <button type="button" class="btn butom btn-primary">Eliminar</button> -->
           </Form>
         </div>
       </div>
@@ -123,13 +116,18 @@
       <div id="searchCourse" class="col">
         <div class="col-2">
           <h3>Buscador</h3>
-          <Form>
-            <label for="">Periodo</label>
-            <Field name="" />
 
-            <label for="">Materia</label>
-            <Field name="" />
-          </Form>
+          <select name="" id="">
+            <option
+              value=""
+              v-for="(item, index) in allCoursePeriodsObject"
+              :key="index"
+              @click="coursePeriodItemClicked(item)"
+              :value="'${item.periodid}'"
+            >
+              {{ index + 1 }} - {{ item.peryearstart }} - {{ item.peryearend }}
+            </option>
+          </select>
 
           <textarea placeholder="materias del periodo aquí"> </textarea>
         </div>
@@ -137,32 +135,27 @@
       <div id="createCourse" class="col">
         <h3>Crear materias</h3>
 
-
         <Form @submit="handleCreateCourse" class="form">
           <div class="col-2">
-            
             <label for="coursePeriod">periodo</label>
-           <Field as="select"
-                  name="coursePeriod"
-                  v-model="courseItemClicked"
-                 
-           >
-            <option disabled selected value="">Seleccione una opción</option>
-            <option
-            v-for="(item, index) in allPeriodsObject"
-            :key="index"
-            :value="`${item.perperiodid}`"
-             >
-               {{ item.peryearstart }}-{{ item.peryearend }}
-            </option>
-             
-           </Field>
-           <ErrorMassage name="coursePeriod"></ErrorMassage>
+            <Field as="select" name="coursePeriod" v-model="courseItemClicked">
+              <option disabled selected value="">Seleccione una opción</option>
+              <option
+                v-for="(item, index) in allPeriodsObject"
+                :key="index"
+                :value="`${item.perperiodid}`"
+              >
+                {{ item.peryearstart }}-{{ item.peryearend }}
+              </option>
+            </Field>
+            <ErrorMassage name="coursePeriod"></ErrorMassage>
           </div>
 
           <div class="col-2">
             <label for="courseName">Nombre</label>
-            <Field name="courseName" type="text" />
+            <Field  name="courseName">
+             
+            </Field>
             <ErrorMassage name="courseName"></ErrorMassage>
           </div>
 
@@ -172,9 +165,7 @@
             <ErrorMessage name="courseType"></ErrorMessage>
           </div>
 
-
-
-          <Button  class="btn btn-primary"> Crear Materia</Button>
+          <button class="btn btn-primary"> Crear Materia</button>
         </Form>
       </div>
 
@@ -202,13 +193,32 @@
         <Form>
           <h4>Crear</h4>
           <label for="creationSection"> Periodo</label>
-          <Field name="creationSection" />
+          <Field
+            as="select"
+            name="creationSection"
+            @change="getPeriodCourses"
+          >
+            <option
+              v-for="(item, index) in allPeriodsObject"
+              :key="index"
+              :value="`${item.perperiodid}`"
+            
+            >
+              {{ item.peryearstart }} - {{ item.peryearend }}
+            </option>
+          </Field>
+
 
           <label for="creationSection"> Materia</label>
-          <Field name="creationSection" />
+          <Field 
+          as="select"
+          name="creationSection" 
+          
+          >
 
-          <label for="creationSection"> Sección</label>
-          <Field name="creationSection" />
+        </Field >
+
+          <button class="btn btn-primary">Crear</button>
         </Form>
       </div>
 
@@ -284,10 +294,12 @@ export default {
     // const yearEndRef =ref("");
 
     return {
+
+      //services function
       period: periodServices,
       course: courseService,
       section: sectionService,
-      
+
       // quarter: quarterService,
       // allperiods : periodServices,
       periodSchema,
@@ -295,7 +307,8 @@ export default {
       succesfull: false,
       periodList: "",
       allPeriodsObject: "",
-  
+
+      //the STORE
       periodStore: usePeriodStore(),
       yearStartRef: "",
       yearEndRef: "",
@@ -311,17 +324,24 @@ export default {
 
       courseIdClicked: ref(""),
       periodCourseIdClicked: "",
+
+      allCoursePeriodsObject: "",
+
+      sectionPeriodIdClicked: "",
+
+      allPeriodCoursesObject: "",
+
+      sectionPeriod:"",
     };
   },
   mounted() {
     this.getAllPeriods();
+    this.getAllCoursePeriods();
     this.periodStore.updateCurrent();
   },
 
   methods: {
     periodItemClicked(event, item, index) {
-      
-      
       this.periodIdClicked = item.perperiodid;
 
       this.updatePeriodDataStart = item.peryearstart;
@@ -336,6 +356,10 @@ export default {
     async getAllPeriods() {
       this.allPeriodsObject = await this.period.findAllPeriod();
       // console.log(this.allPeriodsObject);
+    },
+
+    async getAllCoursePeriods() {
+      this.allCoursePeriodsObject = await this.course.getCoursePeriods();
     },
 
     isCurrentDate(startDate, endDate) {
@@ -372,7 +396,7 @@ export default {
     //   console.log(userQuarterData);
     //   const result = this.quarter.createQuarter(userQuarterData);
     // },
-  
+
     async handleCreateSection(data) {
       const result = this.section.createSection(data);
     },
@@ -401,27 +425,47 @@ export default {
       return false;
     },
 
-
     //course setting methods
 
- async courseItemClicked(event,item,index) {
+    async courseItemClicked(event, item, index) {
       console.log(item);
-     
+    },
+    async coursePeriodItemClicked(item) {
+      console.log(item);
+    },
 
-   
+    async handleCreateCourse(newCourse) {
+      try {
+        const result = await this.course.createCourse(newCourse);
+      } catch (error) {
+        console.log(error);
+      }
+
+      return;
+    },
+    //section setting methods
+
+    async sectionPeriodItemClicked(e,value) {
+      try {
+        e.preventDefault();
+        console.log(value);
+        
+        this.console.log(newSection);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async getPeriodCourses(variab){
+      console.log(variab.target._value);
+      const getCourses = this.course.getParticularCourses(variab.target._value);
+     console.log(this.getCourses);
+    //  console.log(variab);
+     return variab
+     
+      
 
     },
 
-    async handleCreateCourse(newCourse){
-        try {
-          const result = await this.course.createCourse(newCourse);
-        } catch (error) {
-          console.log(error);
-          
-        }
-  
-      return ;
-    }
   },
 };
 </script>

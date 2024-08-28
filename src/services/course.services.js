@@ -16,6 +16,30 @@ class courseService{
         return error
         }
         }
+        async getCoursePeriods (){
+            try{
+                const result = await axios.get(API_URL
+                                    );
+                console.log(result);
+                
+                return result.data;
+            }catch (error){
+                console.log(error);
+                
+            }
+        }
+        async getParticularCourses(periodId){
+            try{
+                const result = axios.get(API_URL + periodId,
+                    {
+                        headers: authHeader()
+                    })
+            }
+            catch(error){
+                console.log(error);
+                
+            }
+        }
 
     
 
