@@ -30,10 +30,11 @@ class courseService{
         }
         async getParticularCourses(periodId){
             try{
-                const result = axios.get(API_URL + periodId,
+                const result = await  axios.get(API_URL + periodId,
                     {
                         headers: authHeader()
-                    })
+                    });
+                console.log(result);
             }
             catch(error){
                 console.log(error);
