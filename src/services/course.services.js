@@ -20,7 +20,7 @@ class courseService{
             try{
                 const result = await axios.get(API_URL
                                     );
-                console.log(result);
+         
                 
                 return result.data;
             }catch (error){
@@ -34,7 +34,8 @@ class courseService{
                     {
                         headers: authHeader()
                     });
-                console.log(result);
+                  
+               return result.data
             }
             catch(error){
                 console.log(error);

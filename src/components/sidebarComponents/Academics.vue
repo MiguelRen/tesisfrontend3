@@ -190,12 +190,14 @@
       <h2 class="greyColor">Secciones</h2>
 
       <div class="col p-0 m-0 w-100">
-        <Form>
+        <Form 
+        @submit="createSection"
+        >
           <h4>Crear</h4>
-          <label for="creationSection"> Periodo</label>
+          <label for="periodCreationSection"> Periodo</label>
           <Field
             as="select"
-            name="creationSection"
+            name="periodCreationSection"
             @change="getPeriodCourses"
           >
             <option
@@ -209,14 +211,23 @@
           </Field>
 
 
-          <label for="creationSection"> Materia</label>
+          <label for="courseCreationSection"> Materia</label>
           <Field 
           as="select"
-          name="creationSection" 
+          name="courseCreationSection" 
+          
           
           >
-
+          <option 
+          v-for="item in particularCourses"
+          :value="`${item.cou_courseid}`"
+          >
+          {{ item.cou_coursename }}
+          </option>
         </Field >
+
+        <label for="sectionCreationSection">Nombre de sección</label>
+        <Field name="sectionCreationSection" />
 
           <button class="btn btn-primary">Crear</button>
         </Form>
@@ -332,6 +343,8 @@ export default {
       allPeriodCoursesObject: "",
 
       sectionPeriod:"",
+
+      particularCourses:"",
     };
   },
   mounted() {
@@ -457,13 +470,19 @@ export default {
     },
     async getPeriodCourses(variab){
       console.log(variab.target._value);
-      const getCourses = this.course.getParticularCourses(variab.target._value);
-     console.log(this.getCourses);
+      const courses = await this.course.getParticularCourses(variab.target._value);
+     this.particularCourses = courses;
+     console.log(this.particularCourses);
+     
     //  console.log(variab);
      return variab
      
       
 
+    },
+    async createSection (values){
+      console.log(values);
+      
     },
 
   },
