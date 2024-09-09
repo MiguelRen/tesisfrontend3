@@ -7,7 +7,7 @@ import { apiUrl } from "../api/apiUrl"
 // const API_URL = apiUrl + "/api/course/";
 const API_URL = apiUrl + "api/course/"
 
-class courseService{
+class courseServices{
     async createCourse(data) {
         try {
                 const result = await axios.post(API_URL,data,{headers: authHeader()});
@@ -46,4 +46,4 @@ class courseService{
     
 
 };
-export default new courseService();
+export default new courseServices();

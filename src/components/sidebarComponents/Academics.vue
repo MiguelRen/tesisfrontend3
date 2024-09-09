@@ -191,7 +191,7 @@
 
       <div class="col p-0 m-0 w-100">
         <Form 
-        @submit="createSection"
+        @submit="handleCreateSection"
         >
           <h4>Crear</h4>
           <label for="periodCreationSection"> Periodo</label>
@@ -215,8 +215,6 @@
           <Field 
           as="select"
           name="courseCreationSection" 
-          
-          
           >
           <option 
           v-for="item in particularCourses"
@@ -265,7 +263,7 @@
 import { Form, Field, ErrorMessage } from "vee-validate";
 
 import * as yup from "yup";
-import courseService from "../../services/course.services.js";
+import courseServices from "../../services/course.services.js";
 import sectionService from "../../services/section.services.js";
 // import quarterService from "../../services/quarter.services.js";
 import periodServices from "../../services/period.services.js";
@@ -308,7 +306,7 @@ export default {
 
       //services function
       period: periodServices,
-      course: courseService,
+      course: courseServices,
       section: sectionService,
 
       // quarter: quarterService,
@@ -411,7 +409,12 @@ export default {
     // },
 
     async handleCreateSection(data) {
-      const result = this.section.createSection(data);
+      try{
+       console.log(data);
+        const result = this.section.createSection(data);
+      }catch(error){
+        consle.log(error);
+      }
     },
 
     async handleUpdatePeriod(e) {
@@ -472,18 +475,14 @@ export default {
       console.log(variab.target._value);
       const courses = await this.course.getParticularCourses(variab.target._value);
      this.particularCourses = courses;
-     console.log(this.particularCourses);
-     
+    
     //  console.log(variab);
      return variab
      
       
 
     },
-    async createSection (values){
-      console.log(values);
-      
-    },
+   
 
   },
 };

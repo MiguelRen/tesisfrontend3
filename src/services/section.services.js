@@ -2,7 +2,7 @@ import axios from "axios";
 import {apiUrl} from "../api/apiUrl"
 
 
-const API_URL = apiUrl + "/api/section/";
+const API_URL = apiUrl + "api/section/";
 // const API_URL = "https://tesisbackend3.onrender.com/api/section/";
 
 
@@ -11,9 +11,24 @@ class sectionService {
         try {
           
             const result = await axios.post(API_URL,data)
-            return error;
+            console.log(result);
+            return ;
         } catch (error) {
-            return error;
+           console.log(error)
+        }
+    }
+
+    async findParticularSection(data){
+        try {
+            const courseId = data;
+            console.log(courseId);
+            
+            const result = await axios.get(API_URL + courseId)
+            console.log(result);
+            return result.data
+        } catch (error) {
+            console.log(error);
+            
         }
     }
 }

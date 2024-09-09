@@ -82,10 +82,24 @@
                   </DropdownContent>
                 </Dropdown>
               </a>
-                <a class="list-group-item list-group-item-action  p-2" href="#!" id="Grades"
-                @click="clickedTag">Notas</a>
-              <a class="list-group-item list-group-item-action  p-2" href="#!" id="Curses"
-                @click="clickedTag">Cursos</a>
+              <a class="list-group-item list-group-item-action  p-2" href="#!" id="Grades"
+                @click="clickedTag">
+              <Dropdown>
+                Notas
+                <template slot="toggler">
+                  <button>Toggler</button>
+                </template>
+                
+                <DropdownContent>
+                  <ul>
+                    <li><a href="#!" class="text-decoration-none" id="GradesView" @click="clickedTag">Ver Notas</a></li>
+                    <li><a href="#!"class="text-decoration-none" id="GradesAdd" @click="clickedTag">Gestionar Notas</a></li>
+                  </ul>
+                </DropdownContent>
+              </Dropdown>
+              </a>
+              <a class="list-group-item list-group-item-action  p-2" href="#!" id="Course"
+                @click="clickedTag">Secciones</a>
             </template>
             <a class="list-group-item list-group-item-action  p-2" href="#!" id="Academics"
               @click="clickedTag">Académicos{{ auth.getRole }}</a>

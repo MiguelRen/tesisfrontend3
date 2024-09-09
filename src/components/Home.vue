@@ -45,9 +45,12 @@ import AttendancesView from "./sidebarComponents/AttendancesView.vue";
 import AttendancesAdd from "./sidebarComponents/AttendancesAdd.vue";
 import Calendar from "./sidebarComponents/Calendar.vue";
 // import Pensum from "./sidebarComponents/Pensum.vue";
-import Grades from "./sidebarComponents/Grades.vue";
+// import Grades from "./sidebarComponents/Grades.vue";
 import Academics from "./sidebarComponents/Academics.vue";
 import Profile from "./navbarComponents/Profile.vue";
+import GradesAdd from "./sidebarComponents/GradesAdd.vue"
+import GradesView from "./sidebarComponents/GradesView.vue"
+import Course from "./sidebarComponents/Course.vue"
 
 
 // sidebar sub components
@@ -78,10 +81,13 @@ export default {
     Calendar,
     AttendancesView,
     AttendancesAdd,
-    Grades,
+    // Grades,
     Academics,
     Profile,
     //pinia,
+    GradesAdd,
+    GradesView,
+    Course,
   },
   data() {
 
