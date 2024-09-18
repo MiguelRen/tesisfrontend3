@@ -52,6 +52,7 @@ import { validate } from 'vee-validate';
                         <thead>
                             <tr>
                                 <th class="col-1">#</th>
+                                <th class="col-1">Cédula</th>
                                 <th class="col-1">Nombre</th>
                                 <th class="col-1">Apellido</th>
                                 <th class="col-1">Dirección</th>
@@ -65,6 +66,7 @@ import { validate } from 'vee-validate';
                             <tr>
 
                                 <th class="">{{ index + 1 }}</th>
+                                <th>{{ item.stu_studenid}}</th>
                                 <td>{{ item.stu_student1name}} {{ item.stu_student2name }}</td>
                                 <td>{{ item.stu_student1lastname }} {{ item.stu_student2lastname }}</td>
                                 <td>{{ item.stu_studentadress }} {{ item.stu_studentbirth }}</td>

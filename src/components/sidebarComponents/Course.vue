@@ -32,18 +32,79 @@
             <Field
             as="select"
             name="section"
-
+            @change="getStudentList"
             >
                 <option 
                 v-for="(item,index) in allSectionObject"
-                value="">
+                :key="index"
+                :value="`${ item.sec_sectionid}`">
+                {{ item.sec_sectionid }}
                    {{ item.sec_sectionname }}
+                   {{ item.sec_sectioncourseid_fk }}
                 </option>
             </Field>
 
         </Form>
-        <h1>Etudiantes</h1>
-        <h1>Profesores</h1>
+    </div>
+    
+    <div>
+        <div>
+            <h1>Profesores</h1>
+        </div>
+
+        <div>
+            <h1>Etudiantes</h1>
+            <Form>
+                <label for="studentId">Cédula</label>
+                <Field 
+                name="studentId"
+                @keydown="getStudentId"
+                >
+
+                </Field>
+
+                <label for="studentName">Nombre</label>
+                <Field 
+                
+                name="studenName"
+                >
+                {{ this.studentInf.stu_student1name }}
+                </Field>
+                
+                <label for="StudentLastname" >Apellido</label>
+                <Field 
+                disabled    
+                name="studentLastname"
+                v-model="studentInf"
+                >
+                {{ this.studentInf.stu_student1name }}
+                </Field>
+                
+
+               <button>Registrar</button>
+            </Form>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th class="col-1">#</th>
+                        <th class="col-1">Cédula</th>
+                        <th class="col-1">Nombre</th>
+                        <th class="col-1">Apellido</th>
+                    </tr>
+                </thead>
+                <tbody v-for="(item,index) in allStudentListObject ">
+                    <tr>
+                        <th>{{index + 1}}</th>
+                        <th>{{item.stu_studentid}}</th>
+                        <th>{{ item.stu_student1name}}{{ item.stu_student2name}}</th>
+                        <th>{{ item.stu_student1lastname}}{{ item.stu_student2lastname }}</th>
+
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>                                                
     </div>
 </template>
 
@@ -53,6 +114,7 @@ import {Field, ErrorMessage,Form} from "vee-validate"
 import periodServices from "../../services/period.services"
 import courseServices from "../../services/course.services"
 import sectionServices from "../../services/section.services"
+import studentServices from "../../services/student.services"
 
 export default{
     name:"Course",
@@ -68,6 +130,10 @@ export default{
         const allCourseObject = "";
         const allSectionObject ="";
         
+        const studentData= "";
+
+        const allStudentListObject = "";
+        const studentInf = "";
     return{
         allPeriodObject,
         allCourseObject,
@@ -77,7 +143,10 @@ export default{
         period : periodServices,
         section  : sectionServices,
 
+        student : studentServices,
 
+        allStudentListObject,
+        studentInf,
     }
     },
      mounted(){
@@ -88,7 +157,7 @@ export default{
         async getPeriod (){
             try{
                 this.allPeriodObject = await this.period.findAllPeriod();
-                console.log(this.allPeriodObject);
+                
 
             }catch(error){
                 console.log(error);
@@ -97,7 +166,9 @@ export default{
         },
         async getCourse (data) {
             try {
+                
                 const periodId = data.target.value;
+               
                 this.allCourseObject = await this.course.getParticularCourses(periodId);
                 console.log(this.allCourseObject);
                     
@@ -109,12 +180,41 @@ export default{
         async getSection (data){
             try {
                 const courseId = data.target.value;
+                
                 this.allSectionObject = await this.section.findParticularSection(courseId);
+                console.log(this.allSectionObject);
+                
             } catch (error) {
                 console.log(error);
                 
             }
         },
+        async getStudentId(data){
+            try{
+                const studentId = data;
+                
+               const result  = await this.student.getParticularStudent(studentId);
+               this.studentInf = result.data;
+               console.log(this.studentInf);
+                
+                
+            }catch(error){
+                console.log(error);
+            }
+        },
+        async getStudentList(data){
+            try {
+               
+                const sectionId = data.target._value;
+                
+                
+                this.allStudentListObject = this.student.getStudentBySection(sectionId);
+                console.log(this.allStudentListObject);
+            } catch (error) {
+                console.log(error);
+            }
+        },
+
     },
 
 }

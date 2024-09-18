@@ -11,7 +11,7 @@ class sectionService {
         try {
           
             const result = await axios.post(API_URL,data)
-            console.log(result);
+        
             return ;
         } catch (error) {
            console.log(error)
@@ -21,10 +21,11 @@ class sectionService {
     async findParticularSection(data){
         try {
             const courseId = data;
-            console.log(courseId);
+            
+         
             
             const result = await axios.get(API_URL + courseId)
-            console.log(result);
+           ;
             return result.data
         } catch (error) {
             console.log(error);
