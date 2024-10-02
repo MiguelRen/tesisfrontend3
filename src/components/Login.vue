@@ -7,21 +7,21 @@
 
         <div class=" col w-100 h-auto text-center p-2">
           <h1 class="text-light display-1 font-weight-bold deepshd bold">SimpleClass</h1>
-          <q class="text-light cursive h2"><i>Las naciones marchan hacia el término de su grandeza, con el mismo paso en que camina
+          <q class="text-light cursive h4"><i>Las naciones marchan hacia el término de su grandeza, con el mismo paso en que camina
               la
               educación</i></q>
         </div>
 
-        <div class=" col w-100   p-0 m-0 d-flex justify-content-center  align-content-around">
+        <div class=" col   p-0 m-0 d-flex justify-content-center  align-content-around">
 
-          <Form @submit="handleLogin" :validation-schema="schema" class="card card-container opa bg-opacity-50 w-100 w-md-50 h-75 p-4 text-center ">
+          <Form @submit="handleLogin" :validation-schema="schema" class="card card-container opa bg-opacity-50 w-75 w-md-50 h-75 p-4 text-center ">
             <div class="form-row mt-4  ">
-              <label for="username" class="h5">Usuario</label>
+              <label for="username" class="h4">Usuario</label>
               <Field name="username" type="text" class="form-control opa mt-2-sm" />
               <ErrorMessage name="username" class="error-feedback  m-0 p-0 text-danger" />
             </div>
             <div class="form-group mt-3">
-              <label for="password" class="h5">Contraseña</label>
+              <label for="password" class="h4">Contraseña</label>
               <Field name="password" type="password"  id="theField" class="form-control opa mt-2-sm"/>
               <!-- <span @click="showPassword" class="fa fa-fw fa-eye password-icon show-password eye "></span> -->
 
