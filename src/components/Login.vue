@@ -1,21 +1,21 @@
-<template>
+<template >
   <div class="fondo " >
 
     <div class="container-fluid w-100 p-0  h-100 d-flex  ">
 
-      <div class=" row h-75  m-0  px-12 d-flex justify-content-center align-items-center ">
+      <div class="  row h-100 w-100 m-0  px-12 d-flex justify-content-center align-items-center p-5">
 
-        <div class=" col-sm h-auto text-center ">
-          <h1 class="text-light display-1 font-weight-bold deepshd">SimpleClass</h1>
-          <q class="text-light cursive"><i>Las naciones marchan hacia el término de su grandeza, con el mismo paso en que camina
+        <div class=" col w-100 h-auto text-center p-2">
+          <h1 class="text-light display-1 font-weight-bold deepshd bold">SimpleClass</h1>
+          <q class="text-light cursive h2"><i>Las naciones marchan hacia el término de su grandeza, con el mismo paso en que camina
               la
               educación</i></q>
         </div>
 
-        <div class=" col-sm  h-75 card card-container w-75 p-0 opa bg-opacity-50  ">
+        <div class=" col w-100   p-0 m-0 d-flex justify-content-center  align-content-around">
 
-          <Form @submit="handleLogin" :validation-schema="schema" class=" container-fluid px-4 text-center mt-2 ">
-            <div class="form-row mt-4 ">
+          <Form @submit="handleLogin" :validation-schema="schema" class="card card-container opa bg-opacity-50 w-100 w-md-50 h-75 p-4 text-center ">
+            <div class="form-row mt-4  ">
               <label for="username" class="h5">Usuario</label>
               <Field name="username" type="text" class="form-control opa mt-2-sm" />
               <ErrorMessage name="username" class="error-feedback  m-0 p-0 text-danger" />
@@ -149,9 +149,10 @@ export default {
   background-repeat: no-repeat;
   background-position: 0 0;
   box-sizing: border-box;
-  height: 100vh;
+  height: 100%;
+
   width: 100%;
-  overflow:hiden;
+  /* overflow:hiden; */
 }
  
 .opa {

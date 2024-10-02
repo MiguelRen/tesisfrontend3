@@ -52,37 +52,48 @@
             <h1>Profesores</h1>
         </div>
 
-        <div>
+        <div >
             <h1>Etudiantes</h1>
-            <Form>
-                <label for="studentId">Cédula</label>
-                <Field 
-                name="studentId"
-                @keydown="getStudentId"
-                >
+            <div>
 
-                </Field>
+                <Form  >
+                    <div class="row">
 
-                <label for="studentName">Nombre</label>
-                <Field 
-                
-                name="studenName"
-                >
-                {{ this.studentInf.stu_student1name }}
-                </Field>
-                
-                <label for="StudentLastname" >Apellido</label>
-                <Field 
-                disabled    
-                name="studentLastname"
-                v-model="studentInf"
-                >
-                {{ this.studentInf.stu_student1name }}
-                </Field>
-                
+                        <label  for="studentId">Cédula</label>
+                        <Field  
+                        name="studentId"
+                        @keyup="getStudentId"
+                        >
+        
+                        </Field>
+                    </div>
+    
+                    <label  for="studentName">Nombre:  </label>
+                   <div class="row">
 
-               <button>Registrar</button>
-            </Form>
+                       <Field 
+                     
+                        name="studentName"
+                        >
+                        {{ this.studentInf.stu_student1name }}
+                        </Field>
+                   </div> 
+                    
+                    <label  for="StudentLastname" >Apellido:  </label>
+                    <Field 
+                    
+                    name="studentLastname"
+                    v-model="studentInf"
+                    >
+                    {{ this.studentInf.stu_student1lastname}}
+                    </Field>
+                    
+                    <div class="row">
+
+                        <button>Registrar</button>
+                    </div>
+                </Form>
+            </div>
 
             <table class="table table-striped">
                 <thead>
@@ -194,8 +205,8 @@ export default{
                 const studentId = data;
                 
                const result  = await this.student.getParticularStudent(studentId);
-               this.studentInf = result.data;
-               console.log(this.studentInf);
+               this.studentInf = result;
+                console.log(result);
                 
                 
             }catch(error){

@@ -33,11 +33,11 @@ class studentServices {
     }
     async getParticularStudent (data){
         try {
+            // console.log(data.target._value); 
             const studentId =  data.target._value;
             const result = await axios.get(API_URL + studentId);
-            console.log(result.data);
-            
-            return result;
+            console.log(result)
+            return result.data;
             
         } catch (error) {
             console.log(error);
