@@ -13,7 +13,7 @@ export const useSessionStore = defineStore (
             
             const login = async (currentUser) =>{
                 const serviceResponse = await AuthService.login(currentUser);
-                console.log(serviceResponse);
+                
                 user.value = serviceResponse.username;
                 roles.value = serviceResponse.roles;
                 accessToken.value = serviceResponse.accessToken;
